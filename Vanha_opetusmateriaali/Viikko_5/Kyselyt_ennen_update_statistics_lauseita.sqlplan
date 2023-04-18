@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ShowPlanXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.1" Build="10.0.1600.22" xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="1" StatementEstRows="36.3146" StatementId="1" StatementOptmLevel="FULL" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" StatementSubTreeCost="0.131941" StatementText="SELECT C.CustomerID, C.CompanyName, A.StateProvince, A.CountryRegion, O.SalesOrderID, O.OrderDate &#xD;&#xA;FROM SalesLT.SalesOrderHeader O &#xD;&#xA;INNER JOIN SalesLT.Customer C ON O.CustomerID = C.CustomerID&#xD;&#xA;INNER JOIN SalesLT.Address A ON O.ShipToAddressID = A.AddressID &#xD;&#xA;WHERE A.StateProvince = 'California'&#xD;&#xA;UNION&#xD;&#xA;SELECT C.CustomerID, C.CompanyName, A.StateProvince, A.CountryRegion, O.SalesOrderID, O.OrderDate &#xD;&#xA;FROM SalesLT.SalesOrderHeader O &#xD;&#xA;INNER JOIN SalesLT.Customer C ON O.CustomerID = C.CustomerID&#xD;&#xA;INNER JOIN SalesLT.Address A ON O.ShipToAddressID = A.AddressID &#xD;&#xA;WHERE A.StateProvince = 'Utah';&#xD;&#xA;&#xD;&#xA;&#xD;" StatementType="SELECT" QueryHash="0xB76D674CE9E0AA52" QueryPlanHash="0xEBD03184DB375DF9">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan CachedPlanSize="32" CompileTime="10" CompileCPU="10" CompileMemory="608">
+            <RelOp AvgRowSize="259" EstimateCPU="0.000393851" EstimateIO="0.0112613" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="36.3146" LogicalOp="Distinct Sort" NodeId="0" Parallel="false" PhysicalOp="Sort" EstimatedTotalSubtreeCost="0.131941">
+              <OutputList>
+                <ColumnReference Column="Union1012" />
+                <ColumnReference Column="Union1013" />
+                <ColumnReference Column="Union1014" />
+                <ColumnReference Column="Union1015" />
+                <ColumnReference Column="Union1016" />
+                <ColumnReference Column="Union1017" />
+              </OutputList>
+              <MemoryFractions Input="1" Output="1" />
+              <Sort Distinct="true">
+                <OrderBy>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1012" />
+                  </OrderByColumn>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1013" />
+                  </OrderByColumn>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1014" />
+                  </OrderByColumn>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1015" />
+                  </OrderByColumn>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1016" />
+                  </OrderByColumn>
+                  <OrderByColumn Ascending="true">
+                    <ColumnReference Column="Union1017" />
+                  </OrderByColumn>
+                </OrderBy>
+                <RelOp AvgRowSize="259" EstimateCPU="3.63146E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="36.3146" LogicalOp="Concatenation" NodeId="1" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="0.120286">
+                  <OutputList>
+                    <ColumnReference Column="Union1012" />
+                    <ColumnReference Column="Union1013" />
+                    <ColumnReference Column="Union1014" />
+                    <ColumnReference Column="Union1015" />
+                    <ColumnReference Column="Union1016" />
+                    <ColumnReference Column="Union1017" />
+                  </OutputList>
+                  <Concat>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1012" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1013" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1014" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1015" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1016" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Union1017" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="109" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="27.3146" LogicalOp="Inner Join" NodeId="2" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0744556">
+                      <OutputList>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                      </OutputList>
+                      <NestedLoops Optimized="false" WithUnorderedPrefetch="true">
+                        <OuterReferences>
+                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                          <ColumnReference Column="Expr1018" />
+                        </OuterReferences>
+                        <RelOp AvgRowSize="67" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Inner Join" NodeId="4" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0239026">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                          </OutputList>
+                          <NestedLoops Optimized="false">
+                            <OuterReferences>
+                              <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                            </OuterReferences>
+                            <RelOp AvgRowSize="27" EstimateCPU="0.0001922" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Clustered Index Scan" NodeId="5" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="0.0033172" TableCardinality="32">
+                              <OutputList>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                              </OutputList>
+                              <IndexScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Index="[PK_SalesOrderHeader_SalesOrderID]" Alias="[O]" TableReferenceId="1" IndexKind="Clustered" />
+                              </IndexScan>
+                            </RelOp>
+                            <RelOp AvgRowSize="51" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="6" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0204363" TableCardinality="450">
+                              <OutputList>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                              </OutputList>
+                              <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Index="[PK_Address_AddressID]" Alias="[A]" TableReferenceId="1" IndexKind="Clustered" />
+                                <SeekPredicates>
+                                  <SeekPredicateNew>
+                                    <SeekKeys>
+                                      <Prefix ScanType="EQ">
+                                        <RangeColumns>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="AddressID" />
+                                        </RangeColumns>
+                                        <RangeExpressions>
+                                          <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[ShipToAddressID] as [O].[ShipToAddressID]">
+                                            <Identifier>
+                                              <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </RangeExpressions>
+                                      </Prefix>
+                                    </SeekKeys>
+                                  </SeekPredicateNew>
+                                </SeekPredicates>
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[Address].[StateProvince] as [A].[StateProvince]=N'California'">
+                                    <Compare CompareOp="EQ">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Const ConstValue="N'California'" />
+                                      </ScalarOperator>
+                                    </Compare>
+                                  </ScalarOperator>
+                                </Predicate>
+                              </IndexScan>
+                            </RelOp>
+                          </NestedLoops>
+                        </RelOp>
+                        <RelOp AvgRowSize="55" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="7" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0504192" TableCardinality="440">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                          </OutputList>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Index="[PK_Customer_CustomerID]" Alias="[C]" TableReferenceId="1" IndexKind="Clustered" />
+                            <SeekPredicates>
+                              <SeekPredicateNew>
+                                <SeekKeys>
+                                  <Prefix ScanType="EQ">
+                                    <RangeColumns>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                                    </RangeColumns>
+                                    <RangeExpressions>
+                                      <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[CustomerID] as [O].[CustomerID]">
+                                        <Identifier>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </RangeExpressions>
+                                  </Prefix>
+                                </SeekKeys>
+                              </SeekPredicateNew>
+                            </SeekPredicates>
+                          </IndexScan>
+                        </RelOp>
+                      </NestedLoops>
+                    </RelOp>
+                    <RelOp AvgRowSize="109" EstimateCPU="3.762E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="9" LogicalOp="Inner Join" NodeId="8" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0458269">
+                      <OutputList>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                      </OutputList>
+                      <NestedLoops Optimized="false">
+                        <OuterReferences>
+                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                        </OuterReferences>
+                        <RelOp AvgRowSize="67" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="9" LogicalOp="Inner Join" NodeId="9" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0239026">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                          </OutputList>
+                          <NestedLoops Optimized="false">
+                            <OuterReferences>
+                              <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                            </OuterReferences>
+                            <RelOp AvgRowSize="27" EstimateCPU="0.0001922" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Clustered Index Scan" NodeId="10" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="0.0033172" TableCardinality="32">
+                              <OutputList>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                              </OutputList>
+                              <IndexScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Index="[PK_SalesOrderHeader_SalesOrderID]" Alias="[O]" TableReferenceId="2" IndexKind="Clustered" />
+                              </IndexScan>
+                            </RelOp>
+                            <RelOp AvgRowSize="51" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="11" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0204363" TableCardinality="450">
+                              <OutputList>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                              </OutputList>
+                              <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Index="[PK_Address_AddressID]" Alias="[A]" TableReferenceId="2" IndexKind="Clustered" />
+                                <SeekPredicates>
+                                  <SeekPredicateNew>
+                                    <SeekKeys>
+                                      <Prefix ScanType="EQ">
+                                        <RangeColumns>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="AddressID" />
+                                        </RangeColumns>
+                                        <RangeExpressions>
+                                          <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[ShipToAddressID] as [O].[ShipToAddressID]">
+                                            <Identifier>
+                                              <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </RangeExpressions>
+                                      </Prefix>
+                                    </SeekKeys>
+                                  </SeekPredicateNew>
+                                </SeekPredicates>
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[Address].[StateProvince] as [A].[StateProvince]=N'Utah'">
+                                    <Compare CompareOp="EQ">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Const ConstValue="N'Utah'" />
+                                      </ScalarOperator>
+                                    </Compare>
+                                  </ScalarOperator>
+                                </Predicate>
+                              </IndexScan>
+                            </RelOp>
+                          </NestedLoops>
+                        </RelOp>
+                        <RelOp AvgRowSize="55" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="8" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="12" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0218867" TableCardinality="440">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                          </OutputList>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Index="[PK_Customer_CustomerID]" Alias="[C]" TableReferenceId="2" IndexKind="Clustered" />
+                            <SeekPredicates>
+                              <SeekPredicateNew>
+                                <SeekKeys>
+                                  <Prefix ScanType="EQ">
+                                    <RangeColumns>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                                    </RangeColumns>
+                                    <RangeExpressions>
+                                      <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[CustomerID] as [O].[CustomerID]">
+                                        <Identifier>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </RangeExpressions>
+                                  </Prefix>
+                                </SeekKeys>
+                              </SeekPredicateNew>
+                            </SeekPredicates>
+                          </IndexScan>
+                        </RelOp>
+                      </NestedLoops>
+                    </RelOp>
+                  </Concat>
+                </RelOp>
+              </Sort>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+      <Statements>
+        <StmtSimple StatementCompId="2" StatementEstRows="27.3146" StatementId="2" StatementOptmLevel="FULL" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" StatementSubTreeCost="0.0827863" StatementText="&#xA;SELECT C.CustomerID, C.CompanyName, A.StateProvince, A.CountryRegion, O.SalesOrderID, O.OrderDate&#xD;&#xA;FROM SalesLT.SalesOrderHeader O &#xD;&#xA;INNER JOIN SalesLT.Customer C ON O.CustomerID = C.CustomerID&#xD;&#xA;INNER JOIN SalesLT.Address A ON O.ShipToAddressID = A.AddressID&#xD;&#xA;WHERE A.StateProvince IN ('California', 'Utah')&#xD;&#xA;ORDER BY C.CustomerID, O.SalesOrderID; &#xD;&#xA;" StatementType="SELECT" QueryHash="0x8E38CD3562299573" QueryPlanHash="0x4B8C12FC3718921E">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan CachedPlanSize="24" CompileTime="5" CompileCPU="5" CompileMemory="384">
+            <RelOp AvgRowSize="229" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="27.3146" LogicalOp="Inner Join" NodeId="0" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0827863">
+              <OutputList>
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+              </OutputList>
+              <NestedLoops Optimized="false" WithOrderedPrefetch="true">
+                <OuterReferences>
+                  <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                  <ColumnReference Column="Expr1006" />
+                </OuterReferences>
+                <RelOp AvgRowSize="95" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Inner Join" NodeId="2" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0322334">
+                  <OutputList>
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                  </OutputList>
+                  <NestedLoops Optimized="false">
+                    <OuterReferences>
+                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                    </OuterReferences>
+                    <RelOp AvgRowSize="27" EstimateCPU="0.00013376" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Inner Join" NodeId="3" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.0116352">
+                      <OutputList>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                      </OutputList>
+                      <NestedLoops Optimized="false">
+                        <OuterReferences>
+                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                        </OuterReferences>
+                        <RelOp AvgRowSize="15" EstimateCPU="0.0001922" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="32" LogicalOp="Index Scan" NodeId="4" Parallel="false" PhysicalOp="Index Scan" EstimatedTotalSubtreeCost="0.0033172" TableCardinality="32">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                          </OutputList>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Index="[IX_SalesOrderHeader_CustomerID]" Alias="[O]" IndexKind="NonClustered" />
+                          </IndexScan>
+                        </RelOp>
+                        <RelOp AvgRowSize="19" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="6" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0081842" TableCardinality="32">
+                          <OutputList>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                          </OutputList>
+                          <IndexScan Lookup="true" Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="OrderDate" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Index="[PK_SalesOrderHeader_SalesOrderID]" Alias="[O]" TableReferenceId="-1" IndexKind="Clustered" />
+                            <SeekPredicates>
+                              <SeekPredicateNew>
+                                <SeekKeys>
+                                  <Prefix ScanType="EQ">
+                                    <RangeColumns>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                    </RangeColumns>
+                                    <RangeExpressions>
+                                      <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[SalesOrderID] as [O].[SalesOrderID]">
+                                        <Identifier>
+                                          <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="SalesOrderID" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </RangeExpressions>
+                                  </Prefix>
+                                </SeekKeys>
+                              </SeekPredicateNew>
+                            </SeekPredicates>
+                          </IndexScan>
+                        </RelOp>
+                      </NestedLoops>
+                    </RelOp>
+                    <RelOp AvgRowSize="79" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="12" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0204363" TableCardinality="450">
+                      <OutputList>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                      </OutputList>
+                      <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="CountryRegion" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Index="[PK_Address_AddressID]" Alias="[A]" IndexKind="Clustered" />
+                        <SeekPredicates>
+                          <SeekPredicateNew>
+                            <SeekKeys>
+                              <Prefix ScanType="EQ">
+                                <RangeColumns>
+                                  <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="AddressID" />
+                                </RangeColumns>
+                                <RangeExpressions>
+                                  <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[ShipToAddressID] as [O].[ShipToAddressID]">
+                                    <Identifier>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="ShipToAddressID" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                </RangeExpressions>
+                              </Prefix>
+                            </SeekKeys>
+                          </SeekPredicateNew>
+                        </SeekPredicates>
+                        <Predicate>
+                          <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[Address].[StateProvince] as [A].[StateProvince]=N'California' OR [AdventureWorksLT].[SalesLT].[Address].[StateProvince] as [A].[StateProvince]=N'Utah'">
+                            <Logical Operation="OR">
+                              <ScalarOperator>
+                                <Compare CompareOp="EQ">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Const ConstValue="N'California'" />
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Compare CompareOp="EQ">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Address]" Alias="[A]" Column="StateProvince" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Const ConstValue="N'Utah'" />
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                            </Logical>
+                          </ScalarOperator>
+                        </Predicate>
+                      </IndexScan>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+                <RelOp AvgRowSize="143" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="31" EstimateRewinds="0" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="13" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0504192" TableCardinality="440">
+                  <OutputList>
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                    <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                  </OutputList>
+                  <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CompanyName" />
+                      </DefinedValue>
+                    </DefinedValues>
+                    <Object Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Index="[PK_Customer_CustomerID]" Alias="[C]" IndexKind="Clustered" />
+                    <SeekPredicates>
+                      <SeekPredicateNew>
+                        <SeekKeys>
+                          <Prefix ScanType="EQ">
+                            <RangeColumns>
+                              <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[Customer]" Alias="[C]" Column="CustomerID" />
+                            </RangeColumns>
+                            <RangeExpressions>
+                              <ScalarOperator ScalarString="[AdventureWorksLT].[SalesLT].[SalesOrderHeader].[CustomerID] as [O].[CustomerID]">
+                                <Identifier>
+                                  <ColumnReference Database="[AdventureWorksLT]" Schema="[SalesLT]" Table="[SalesOrderHeader]" Alias="[O]" Column="CustomerID" />
+                                </Identifier>
+                              </ScalarOperator>
+                            </RangeExpressions>
+                          </Prefix>
+                        </SeekKeys>
+                      </SeekPredicateNew>
+                    </SeekPredicates>
+                  </IndexScan>
+                </RelOp>
+              </NestedLoops>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
