@@ -1,6 +1,6 @@
 # Tietokantahallinta (dba)
 
-Tewrvetuloa kurssille.
+Tervetuloa kurssille.
 
 Sisältö:  
 
