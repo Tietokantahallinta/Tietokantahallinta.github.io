@@ -6,10 +6,10 @@ Sisältösuunnitelma:
 - Tietokantapalvelimen rakenne, toiminta ja sen tarjoamat palvelut
 - Tietokantapalvelimen asennus ja konfigurointi
 - Tietokannan luonti ja konfigurointi
-- Pääavain sekä ulkoinen indeksien luonti hakujen nopeuttamiseksi
+- Taulujen luonti, pääavaimet, ulkoiset viite-eheysavaimet sekä ulkoinen indeksien luonti hakujen nopeuttamiseksi ja eheytys
 - Käyttäjätunnukset, oikeudet, käyttäjäryhmät (roolit)
 - Roolien oikeudet tietokantoihin ja tauluihin je sql komentoihin
-- Tietoturva
+- Tietoturva, tietokantojen salakirjoitus
 - Transaktiot ja niihin liittyvät ongelmatilanteet ja selviäminen
 - Varmistustenteko ja niiden palauttaminen (backup, restore)
 - Disaster Recovery: 
