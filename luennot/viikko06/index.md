@@ -6,6 +6,8 @@
 
 # Materiaali: 
 
+- [ Luentokalvot ]()
 
 # Tehtävät:   
 
+- Tehtävä 1: Microsoft Server Management Studion SQL Query Optimazation työkalun käyttö

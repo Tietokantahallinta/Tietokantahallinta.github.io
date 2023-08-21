@@ -7,6 +7,12 @@
 
 # Materiaali: 
 
+- [ Luentokalvot ]()
 
-# Tehtävät:   
+# Tehtävät: 
+
+- Tehtävä 1: Kahden eri transaktion kilpailutilanne samasta datarivistä
+- Tehtävä 2: Tietokannan varmistuksen teko (backup)
+- Tehtävä 3: Tietokannan palauttaminen varmistuksesta (restore)
+
 
