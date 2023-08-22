@@ -11,5 +11,5 @@
 
 # Tehtävät:   
 
-[ Tehtävä 1: Asenna Microsoft SQL Server ](Tehtava_01.pdf)
-[ Tehtävä 2: Asenna Microsoft SQL Management Studio ](Tehtava_02.pdf)
+- [ Tehtävä 1: Asenna Microsoft SQL Server ](Tehtava_01.pdf)
+- [ Tehtävä 2: Asenna Microsoft SQL Management Studio ](Tehtava_02.pdf)
