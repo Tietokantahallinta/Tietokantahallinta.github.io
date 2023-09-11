@@ -1,6 +1,6 @@
 # Tietokantahallinta (dba)
 
- <div w3-include-html="header.md"></div> 
+![](header.md)
 
 Tervetuloa kurssille.
 
