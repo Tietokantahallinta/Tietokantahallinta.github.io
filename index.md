@@ -1,6 +1,6 @@
 # Tietokantahallinta (dba)
 
-@@include[header.md](includes/header.md){ #my-section }
+@@include[header.md](./header.md){ #my-section }
 
 
 Tervetuloa kurssille.
