@@ -1,7 +1,7 @@
 # Tietokantahallinta (dba)
 
 
-[Viikko 01](./luennot/viikko01/index.md) [Viikko 02](./luennot/viikko02/index.md) 
+[Viikko 01](./luennot/viikko01/index.md) [Viikko 02](./luennot/viikko02/index.md) [Viikko 03](./luennot/viikko03/index.md) [Viikko 03](./luennot/viikko03/index.md) [Viikko 05](./luennot/viikko05/index.md) [Viikko 06](./luennot/viikko06/index.md) [Viikko 07](./luennot/viikko07/index.md) [Viikko 08](./luennot/viikko08/index.md) 
 
 Tervetuloa kurssille.
 
