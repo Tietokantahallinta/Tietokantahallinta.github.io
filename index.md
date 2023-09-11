@@ -1,6 +1,6 @@
 # Tietokantahallinta (dba)
 
-![](header.md)
+![](./header.md)
 
 Tervetuloa kurssille.
 
