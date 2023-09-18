@@ -13,3 +13,4 @@
 
 - [ Tehtävä 1: Asenna Microsoft SQL Server ](Tehtava_01.md)
 - [ Tehtävä 2: Asenna Microsoft SQL Management Studio ](Tehtava_02.md)
+- [ Tehtävä 3: SQL Server:in alas ajo ja käynnistäminen ](Tehtava_03.md)

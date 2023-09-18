@@ -1,4 +1,4 @@
-# Tehtävä 01:
+# Tehtävä 02:
 
 - Tietokantapalvelimen hallintatyökalun asennus
 
