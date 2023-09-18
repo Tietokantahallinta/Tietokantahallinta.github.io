@@ -5,9 +5,10 @@
 
 
 # Materiaali: 
-[ Luentokalvot ]()
+[ Luentokalvot ](Luentokalvot_02.pdf)
 
 # Tehtävät:   
 
-- Tehtävä 1: Tietokannan luonti ja konfigurointi
+- Tehtävä 1: 
+[ Tehtävä 1: Tietokannan luonti ja konfigurointi ](Tehtava_01.md)
 - Tehtävä 2: Taulujen luonti tietokantaan ja viite-eheysavaimet ja ulkoisten indeksien luonti
