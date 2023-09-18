@@ -2,7 +2,7 @@
 
 - Tietokannan taulujen luonti
 
-Luo edellisessä tehtävissäsi luomaasi tietokantaan uusia tauluja joiden välillä on suhteita.
+Luo edellisessä tehtävissäsi luomaasi tietokantaan uusia tauluja joiden välillä on suhteita. Sekä ulkoisia indeksejä esimerkiksi ulkoisiin viite-eheysavaimiin.
 
 ? Tähän kuvat luokkakaaviosta tietokannan tauluista ja suhteista...
 
