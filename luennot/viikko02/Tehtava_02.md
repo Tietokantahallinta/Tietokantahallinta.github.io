@@ -2,8 +2,9 @@
 
 - Tietokannan taulujen luonti
 
-Luo edellisessä tehtävissäsi luomaasi tietokantaan uusia tauluja joiden välillä on suhteita. Sekä ulkoisia indeksejä esimerkiksi ulkoisiin viite-eheysavaimiin.
+Luo edellisessä tehtävässäsi luomaasi YhdistyksenTietokanta -nimiseen tietokantaan uudet tietokantataulut ja niiden väliset suhteet. 
 
-? Tähän kuvat luokkakaaviosta tietokannan tauluista ja suhteista...
+![](YhdistyksenTietokantaKaavio.jpg)
+Kuva 1. Yhdistyksen tietokaan relaatiokaavio.
 
 Palauta tämän jälkeen Moodleen, palautuslinkkiin luomastasi tietokannan tauluista generoitu T-SQL kielinen scripti (Transact-SQL).
