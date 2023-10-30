@@ -1,12 +1,12 @@
 # Tavoitteet:
 
 - Käyttäjätunnukset, oikeudet, käyttäjäryhmät (roolit)
-- Roolien oikeudet tietokantoihin ja tauluihin je sql komentoihin
+- Roolien oikeudet tietokantoihin ja tauluihin sekä sql komentoihin
 - Tietoturva, tietokantojen salakirjoitus
 
 
 # Materiaali: 
-[ Luentokalvot ]()
+[ Luentokalvot ](Luentokalvot_02.pdf)
 
 # Tehtävät:   
 - [ Tehtävä 1: Käyttäjätunnuksen luoti ja oikeuksien lisäämien ](Tehtava_01.md)
