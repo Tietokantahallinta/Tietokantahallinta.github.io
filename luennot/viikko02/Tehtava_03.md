@@ -9,4 +9,4 @@ Mitkä ovat ne syyt, miksi näitä ulkoisia indeksejä kannattaa luoda? Anna ain
 ![](YhdistyksenTietokantaKaavio.jpg)<br>
 Kuva 1. Yhdistyksen tietokannan relaatiokaavio.
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin luomasi ulkoisten indeksien  luonti lauseet T-SQL kielisenä scriptinä (Transact-SQL).
+Palauta tämän jälkeen Moodleen, palautuslinkkiin luomasi ulkoisten indeksien  luonti lauseet T-SQL kielisenä scriptinä (Transact-SQL), yhdessä perusteluiden kanssa, milloin ulkoisia indeksejä kannattaa luoda.
