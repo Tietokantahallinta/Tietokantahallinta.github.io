@@ -8,7 +8,7 @@ Sisältö:
 
 [Viikko 02](./viikko02/index.md)    
 
-Viikko 03  
+[Viikko 03](./viikko03/index.md)  
 
 Viikko 04  
 
