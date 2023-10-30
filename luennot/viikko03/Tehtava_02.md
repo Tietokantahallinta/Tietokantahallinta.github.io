@@ -1,4 +1,4 @@
-# Tehtävä 01:
+# Tehtävä 02:
 
 - Roolien luonti ja oikeudet tietokantoihin ja tauluihin sekä sql komentoihin
 
