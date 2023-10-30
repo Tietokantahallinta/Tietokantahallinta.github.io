@@ -1,7 +1,14 @@
 # Tehtävä 01:
 
-- Tietokannan luonti ja konfigurointi
+- Tietokannan käyttäjätunnusten luonti ja oikeuksien antaminen käyttäjätunnus kohtaisesti
 
-Luo uusi YhdistyksenTietokanta -niminen tietokanta koneellasi olevaan SQL Server palvelimeen. Kerro omin sanoin, miten konfiguroisit tietokantaa?
+Käytä tässä tehtävässä YhdistyksenTietokanta -nimistä tietokantaa, jonka olet luonnut aikaisemmissa tehtävissä.
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin luomastasi tietokannasta generoitu T-SQL kielinen scripti (Transact-SQL).
+Luo siihen käyttäjätunnus kyseisen tietokannan datanylläpitäjälle. Tällä käyttäjällä siis pitää olla tarpeelliset oikeudet YhdistysTietokannan sisältämän datan ylläpitämiseen.
+
+Luo käyttäjätunnus, jolla on niin sanotun tavallisen käyttäjän oikeudet. Heitä voi olla useita erilaisia. Toiminnan ohjaaja, yhdistyksen johtaja,  yhdistyksen taloudenhoitaja, yhdistukseen liittymyt asiakas. Millaisia oikeuksia näillä voisi olla. 
+
+Miten nämä oikeudet olisi järkevää jakaa erilaisille käyttäjille. Anna kirjallinen vastaus tästä Moodlessa olevaan tehtävälinkkiin.
+
+
+Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat luotua tarvittavat käyttäjät.
