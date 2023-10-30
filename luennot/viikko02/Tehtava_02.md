@@ -7,4 +7,6 @@ Luo edellisessä tehtävässäsi luomaasi YhdistyksenTietokanta -nimiseen tietok
 ![](YhdistyksenTietokantaKaavio.jpg)<br>
 Kuva 1. Yhdistyksen tietokannan relaatiokaavio.
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin luomastasi tietokannan tauluista generoitu T-SQL kielinen scripti (Transact-SQL).
+Millaisia ulkoisia indeksejä voisi tähän tietokantaan luoda? Mitkä ovat ne syyt, miksi näitä ulkoisia indeksejä kannattaa luoda? Anna ainakin yhdestä ulkoisen indeksin luonnista sen luonti komento vastauksena.
+
+Palauta tämän jälkeen Moodleen, palautuslinkkiin T-SQL kielinen scripti (Transact-SQL), jolla tietokannan taulut loit. Palauta samaan linkkiin myös ainakin yhden ulkoisen indeksin luontikomento ja perusteluja, millä periaatteilla kannattaa ulkoisia indeksejä luoda tietokantaan.
