@@ -1,7 +1,6 @@
-# Materiaali: 
+# Koe
+
+- Katso aikataulu Moodlesta.
 
 
-# Tehtävät: 
-
-- [ Koe ]()
 

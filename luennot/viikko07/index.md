@@ -1,4 +1,4 @@
-# Tavoite:
+# Tavoitteet:
 
 - Tallennetut proseduurit automatisoinnissa ja laajemmin.
 - Koe-alue
