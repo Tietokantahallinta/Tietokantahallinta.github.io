@@ -73,4 +73,4 @@ Kuva 3. Loppu tilanne, jossa lukot vapautetaan.<br>
 
 - Mitä merkitystä tällä on tietokanta palvelimen yllä pidon kannalta? Mitkä ovat seuraukset, jos jossa applikaatiossa on tämän kaltaisesti virheellisesti toimivat transaktio? Miksi tällaisen tilisiirron tai maksu tekemiseen on käytettävä transaktiot, kuten Ikkuna 2:ssa on tehty. Mitkä olisivat seuraukset, jollei käytettäisi?
 
--Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat aikaan kilpailutilanteen. Sekä omin sanoin esittämäsi vastaukset tapahtumien kulusta. 
+Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat aikaan kilpailutilanteen. Sekä omin sanoin esittämäsi vastaukset tapahtumien kulusta. 
