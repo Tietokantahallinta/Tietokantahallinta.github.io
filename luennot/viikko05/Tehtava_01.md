@@ -36,4 +36,4 @@ dbcc showcontig('TAULUNIMI');
 ![](Kuva_T01_05.PNG)<br>
 Kuva 5. AdventureWorks2012_Data.mdf tietokannan erään taulun statistiikka tiedot.<br>
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat selville jonkin AdventureWorks2012_Data tietokannan taulun ...
+Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat selville jonkin AdventureWorks2012_Data tietokannan taulun statistiikka tiedot ja T-SQL komento, jota käytit.
