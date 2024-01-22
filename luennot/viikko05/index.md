@@ -10,5 +10,5 @@
 
 # Tehtävät:   
 
-- Tehtävä 1: Tietokanta taulun eheyttäminen ja eheytystarpeen seuraaminen SSMS työkaluja käyttäen
+- [Tehtävä 1: Tietokanta taulun eheytystarpeen je eheyttäminen seuraaminen SSMS työkaluja käyttäen](Tehtava_01.md)
 - Tehtävä 2: Tietokannan indeksien eheyttäminen ja indeksien seuraaminen SSMS:llä
