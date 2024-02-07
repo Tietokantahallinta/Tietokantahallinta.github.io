@@ -29,6 +29,7 @@ alter database Tietokannan_nimi;<br>
 set single_user;<br>
 go;<br>
 </program>
+<br>
 Nopeita pieniä vikoja eheysehdoissa voi korjata komennolla:
 <program>
 dbcc checkdb (’Tietokannan_nimi’, repair_fast);<br>
