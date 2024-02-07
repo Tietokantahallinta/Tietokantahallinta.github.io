@@ -21,36 +21,36 @@ dbcc checkdb ('tietokannan_nimi');
 
 - Joskin tietokannan taululuista on korruptoitunut, voi sen pyrkiä korjata repair optiolla dc cc checkdb komennossa. Esimerkiksi:
 <br><br>
-Siirry ensin Single User tilanna tietokannassa ensin:
+Siirry ensin Single User tilanna tietokannassa ensin:<br>
 <code>
-alter database Tietokannan_nimi
-set single_user
-go
+alter database Tietokannan_nimi;<br>
+set single_user;<br>
+go;<br>
 </code>
 Nopeita pieniä vikoja eheysehdoissa voi korjata komennolla:
 <code>
-dbcc checkdb (’Tietokannan_nimi’, repair_fast);
-go
+dbcc checkdb (’Tietokannan_nimi’, repair_fast);<br>
+go;<br>
 </code>
 <br><br>
 Edellinen komento ei korjaa indeksejä tietokannassa. Ve voi korjata komennolla:
 <code>
-dbcc checkdb (’Tietokannan_nimi’, repair_rebuild);
-go
+dbcc checkdb (’Tietokannan_nimi’, repair_rebuild);<br>
+go;<br>
 </code>
 <br><br>
 Jos tilanne eheysehtojen korjaamisessa tietokannassa on niin huono, että kumpikaan yllä olevista komennoista ei niitä korjaa, voi yrittää seuraavaa dramaattisempaa komentoa:
 
 <code>
-dbcc checkdb (’Tietokannan_nimi’, repair_allow_data_loss);
-go
+dbcc checkdb (’Tietokannan_nimi’, repair_allow_data_loss);<br>
+go;<br>
 </code>
 
 - Kokeile komentoa AdvetureWorks tietokantaan.
 
 - Tietokannan taulun eheyden voi tarkastaa komennolla:
 <code>
-dbcc checktable('Person.Contact');
+dbcc checktable('Person.Contact');<br>
 </code>
 
 Palauta tämän jälkeen Moodleen, palautuslinkkiin  vastaus tehtävään.
