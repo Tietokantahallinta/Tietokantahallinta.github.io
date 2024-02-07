@@ -19,14 +19,16 @@ dbcc checkdb ('tietokannan_nimi');
 - Käytä tätä komentoa AdventureWorks2012_Data tietokannan eheyden selvittämiseks.
 - Millaisia tietoja saat selville.
 
-- Joskin tietokannan taululuista on korruptoitunut, voi sen pyrkiä korjata repair optiolla dc cc checkdb komennossa. Esimerkiksi:
-<br><br>
+- Joskin tietokannan taululuista on korruptoitunut, voi sen pyrkiä korjata repair optiolla dbcc checkdb komennossa. 
+<br>
+Esimerkiksi:
+<br>
 Siirry ensin Single User tilanna tietokannassa ensin:<br>
-<code>
+<program>
 alter database Tietokannan_nimi;<br>
 set single_user;<br>
 go;<br>
-</code>
+</program>
 Nopeita pieniä vikoja eheysehdoissa voi korjata komennolla:
 <program>
 dbcc checkdb (’Tietokannan_nimi’, repair_fast);<br>
