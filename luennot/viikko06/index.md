@@ -8,6 +8,7 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_06.pdf)
+- [ SQL Server Ylläpitosuunnitelma ](SQL_Server_Ylläpito_suunnitelmanteko.pdf)
 
 # Tehtävät:   
 
