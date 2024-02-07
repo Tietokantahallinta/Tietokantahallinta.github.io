@@ -5,7 +5,7 @@
 
 # Materiaali: 
 
-- [ Luentokalvot ]()
+- [ Luentokalvot ](Luentokalvot_05.pdf)
 
 # Tehtävät:   
 
