@@ -1,6 +1,6 @@
 # Tavoitteet:
 
-- indeksien eheyttäminen ja seuranta
+- Tietokannan indeksien eheyden seuranta ja eheyttäminen
 
 
 # Materiaali: 
