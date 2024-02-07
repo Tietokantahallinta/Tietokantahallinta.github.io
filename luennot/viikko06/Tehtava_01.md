@@ -28,23 +28,23 @@ set single_user;<br>
 go;<br>
 </code>
 Nopeita pieniä vikoja eheysehdoissa voi korjata komennolla:
-<code>
+<program>
 dbcc checkdb (’Tietokannan_nimi’, repair_fast);<br>
 go;<br>
-</code>
+</program>
 <br><br>
 Edellinen komento ei korjaa indeksejä tietokannassa. Ve voi korjata komennolla:
-<code>
+<program>
 dbcc checkdb (’Tietokannan_nimi’, repair_rebuild);<br>
 go;<br>
-</code>
+</program>
 <br><br>
 Jos tilanne eheysehtojen korjaamisessa tietokannassa on niin huono, että kumpikaan yllä olevista komennoista ei niitä korjaa, voi yrittää seuraavaa dramaattisempaa komentoa:
 
-<code>
+<program>
 dbcc checkdb (’Tietokannan_nimi’, repair_allow_data_loss);<br>
 go;<br>
-</code>
+</program>
 
 - Kokeile komentoa AdvetureWorks tietokantaan.
 
