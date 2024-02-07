@@ -1,6 +1,6 @@
 # Tavoitteet:
 
-- Tallennetut proseduurit automatisoinnissa ja laajemmin.
+- Tallennetut proseduurit automatisoinnissa ja ajastus.
 - Koe-alue
 
 # Materiaali: 
@@ -11,4 +11,4 @@
 # Tehtävät:   
 
 - Tehtävä 1: Tietokannan varmistuksen automatisointi ja ajastus
-?- Tehtävä 2: Microsoft Transact SQL, T-SQL jokin tehtävä
+- ?Tehtävä 2: Microsoft Transact SQL, T-SQL jokin tehtävä
