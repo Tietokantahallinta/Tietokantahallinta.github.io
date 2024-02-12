@@ -1,3 +1,4 @@
+# Vko 04
 # Tavoitteet:
 
 - Transaktiot ja niihin liittyvät ongelmatilanteet ja selviäminen

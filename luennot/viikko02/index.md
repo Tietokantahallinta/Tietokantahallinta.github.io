@@ -1,3 +1,4 @@
+# Vko 02
 # Tavoitteet:
 
 - Tietokannan luonti ja konfigurointi

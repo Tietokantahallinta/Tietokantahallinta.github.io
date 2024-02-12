@@ -1,3 +1,4 @@
+# Vko 06
 # Tavoitteet:
 
 - Tietokantojen ja taulujen seuranta ja eheyttäminen
