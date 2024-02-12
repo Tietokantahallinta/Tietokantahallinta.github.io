@@ -9,6 +9,7 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
+- [ Opetusvideo: ](https://video.haaga-helia.fi/media/t/0_ro5q7nae)
 
 # Tehtävät: 
 
