@@ -7,6 +7,7 @@
 
 # Materiaali: 
 - [ Luentokalvot ](Luentokalvot_02.pdf)
+- [ Tietokannan luonti SQL Serverissä ]()
 
 # Tehtävät:    
 - [ Tehtävä 1: Tietokannan luonti ja konfigurointi ](Tehtava_01.md)
