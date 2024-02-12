@@ -13,5 +13,5 @@
 
 # Tehtävät:   
 
-- [Tehtävä 1: Tietokanta taulun eheytystarpeen je eheyttäminen seuraaminen SSMS työkaluja käyttäen](Tehtava_01.md)
+- [Tehtävä 1: Tietokanta taulun eheytystarpeen seuranta ja eheyttäminen  SSMS työkaluja käyttäen](Tehtava_01.md)
 - [Tehtävä 2: Windows Performance Monitor käyttö](Tehtava_02.md) 

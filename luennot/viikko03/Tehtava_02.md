@@ -4,7 +4,7 @@
 
 Käytä tässä tehtävässä YhdistyksenTietokanta -nimistä tietokantaa, jonka olet luonnut aikaisemmissa tehtävissä.
 
-Luo siihen mielestäsi tarvittavat käyttäjäryhmät eli roolit. Anna näille rooleille tarvitavat oikeudet. Esitä vastauksesi T-SQL kieltä käyttäen.
+Luo siihen mielestäsi tarvittavat käyttäjäryhmät eli roolit edellisen tehtävän pohjalta. Anna näille rooleille tarvitavat oikeudet. Esitä vastauksesi T-SQL kieltä käyttäen.
 
 Miten oikeuksia voi jakaa roolien avulla käyttäjille. Esitä tästä myös esimerkkejä T-SQL -kieltä käyttäen käyttätunnusten lisäämisestä kuhunkin rooliin.
 
