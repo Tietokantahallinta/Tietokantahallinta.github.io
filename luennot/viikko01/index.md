@@ -9,6 +9,7 @@
 - [ Luentokalvot ](Luentokalvot_01.pdf)
 - [ Download Microsoft SQL Server 2022 Express ](https://www.microsoft.com/en-US/download/details.aspx?id=104781)
 - [ Download Microsoft SQL Server Management Studio, SSMS ](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+- [Opetusvideo: SQL Server:in alasajo ja käynnistys](https://video.haaga-helia.fi/media/t/0_dqlnxf2r)
 
 # Tehtävät:   
 
