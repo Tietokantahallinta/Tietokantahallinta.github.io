@@ -8,6 +8,8 @@ Luo siihen käyttäjätunnus kyseisen tietokannan datanylläpitäjälle. Tällä
 
 Luo käyttäjätunnus, jolla on niin sanotun tavallisen käyttäjän oikeudet. Heitä voi olla useita erilaisia. Toiminnan ohjaaja, yhdistyksen johtaja,  yhdistyksen taloudenhoitaja, yhdistykseen liittymyt asiakas. Millaisia oikeuksia näillä voisi olla. 
 
+Miten instanssiin kirjautuminen kannattaisi tehdä?
+
 Miten nämä oikeudet olisi järkevää jakaa erilaisille käyttäjille. Anna kirjallinen vastaus tästä Moodlessa olevaan tehtävän palautuslinkkiin.
 
 
