@@ -3,13 +3,13 @@
 
 - Tietokantojen ja taulujen seuranta ja eheyttäminen
 - Tietokantapalvelimen ylläpitäjän tehtävät ja automatisointi
-- [Ylläpitosuunnitelma](SQL_Server_Ylläpito_suunnitelmanteko.pdf)
+- Tietokantapalvelimen ylläpitosuunnitelma
 
 
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_06.pdf)
-- [ Luentojen tietokantojen eheyteen liittyyvien kysymysten vastaukset ](Luentojen_vko6n_tietokantojen_ehdeyden_vastaukset.pdf)
+- [ Luentojen tietokantojen eheyteen liittyvien kysymysten vastaukset ](Luentojen_vko6n_tietokantojen_ehdeyden_vastaukset.pdf)
 - [ SQL Server Ylläpitosuunnitelma ](SQL_Server_Ylläpito_suunnitelmanteko.pdf)
 
 # Tehtävät:   
