@@ -3,6 +3,7 @@
 
 - Tietokantojen ja taulujen seuranta ja eheyttäminen
 - Tietokantapalvelimen ylläpitäjän tehtävät ja automatisointi
+- Disaster Recovery 
 - Tietokantapalvelimen ylläpitosuunnitelma
 
 
