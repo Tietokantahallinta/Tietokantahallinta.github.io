@@ -11,6 +11,8 @@
 - [ Luentokalvot ](Luentokalvot_04.pdf)
 - [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 - [ Opetusvideo: SQL Server varmistuksen tekeminen ](https://video.haaga-helia.fi/media/t/0_ro5q7nae)
+- [ Deadlock, Lukot ja Eristystasot ](Deadlock_Lukot_Eristystasot.pdf)
+
 
 # Tehtävät: 
 
