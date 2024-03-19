@@ -4,6 +4,7 @@
 - Tietokantojen ja taulujen seuranta ja eheyttäminen
 - Tietokantapalvelimen ylläpitäjän tehtävät ja automatisointi
 - Disaster Recovery 
+- SQL Server Error levels
 - Tietokantapalvelimen ylläpitosuunnitelma
 
 
@@ -11,6 +12,7 @@
 
 - [ Luentokalvot ](Luentokalvot_06.pdf)
 - [ Luentojen tietokantojen eheyteen liittyvien kysymysten vastaukset ](Luentojen_vko6n_tietokantojen_ehdeyden_vastaukset.pdf)
+- [ Mitkä SQL Server:in Error Level:it kannattaa tehdä hälytyksen? ](Error_Levels.pdf)
 - [ SQL Server Ylläpitosuunnitelma ](SQL_Server_Ylläpito_suunnitelmanteko.pdf)
 
 # Tehtävät:   

@@ -8,6 +8,7 @@
 
 # Materiaali: 
 [ Luentokalvot ](Luentokalvot_03.pdf)
+[ Käyttäjätunnukset ](Kayttajatunnukset.pdf)
 
 # Tehtävät:   
 - [ Tehtävä 1: Käyttäjätunnuksen luoti ja oikeudet ](Tehtava_01.md)

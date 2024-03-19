@@ -2,6 +2,7 @@
 # Tavoitteet:
 
 - Tietokantojen merkitys ja käyttökohteet 
+- Perussanastoa SQL Server:ssä
 - Tietokantapalvelimen rakenne, toiminta ja sen tarjoamat palvelut
 - Tietokantapalvelimen asennus ja konfigurointi
 

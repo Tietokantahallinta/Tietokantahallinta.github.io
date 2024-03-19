@@ -10,6 +10,7 @@
 - [ Luentokalvot ](Luentokalvot_05.pdf)
 - [ Luentojen indekseihin liittyvien kysymysten vastauksia ](Luennot_vko5_kysymysten_vastauksia.pdf)
 - [ Luentojen defragmentointiin liittyvä vastaus ](Luentojen_vko5n_vastaukset_defragmentointiin.pdf)
+- [ SQL Serverin dbcc komento ](SQL_Server_dbcc_komento.pdf)
 
 
 # Tehtävät:   
