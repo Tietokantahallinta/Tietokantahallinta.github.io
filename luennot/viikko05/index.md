@@ -9,6 +9,7 @@
 
 - [ Luentokalvot ](Luentokalvot_05.pdf)
 - [ Luentojen indekseihin liittyvien kysymysten vastauksia ](Luennot_vko5_kysymysten_vastauksia.pdf)
+- [ Luentojen tietokantojen eheyteen liittyyvien kysymysten vastaukset ](Luentojen_vko5n_tietokantojen_ehdeyden_vastaukset.pdf)
 
 # Tehtävät:   
 
