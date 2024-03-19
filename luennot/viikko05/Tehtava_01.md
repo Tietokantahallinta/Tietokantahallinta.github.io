@@ -19,7 +19,7 @@ Kuva 2. AdventureWorks2012_Data.mdf liittäminen tietokantapalvelimeen.<br>
 ![](Kuva_T01_03.PNG)<br>
 Kuva 3. AdventureWorks2012_Data.mdf lokitiedostoehdotuksen poisto.<br>
 
-- Nyt tietokanta on tietokantapalvelimessasi,
+- Nyt tietokanta on tietokantapalvelimessasi.
 
 <br>
 

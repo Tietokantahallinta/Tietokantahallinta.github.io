@@ -8,6 +8,7 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_05.pdf)
+- [ Luentojen indekseihin liittyvien kysymysten vastauksia ](Luennot_vko5_kysymysten_vastauksia.pdf)
 
 # Tehtävät:   
 
