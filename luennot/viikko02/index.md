@@ -12,6 +12,8 @@
 - [ Tietokannan luonti SQL Serverissä ](https://video.haaga-helia.fi/media/SQL_Server_Tietokannan_luonti.mp4/0_br025ugp)
 - [Esimerkki 1: Tietokannan luonti SQL Server:ssä ](Tietokannan_luonti.pdf)
 - [ Esimerkki 2: Projektitietokannan taulujen luonti script ](Projektitietokanta.pdf)
+- [ Indeksit ]( Indeksit.pdf )
+- [ Ulkoisten indeksien luontikomento SQL Server:ssä ](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-ver16)
 
 
 # Tehtävät:    
