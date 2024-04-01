@@ -14,7 +14,7 @@
 - [ Esimerkki 2: Projektitietokannan taulujen luonti script ](Projektitietokanta.pdf)
 - [ Indeksit ]( Indeksit.pdf )
 - [ Ulkoisten indeksien luontikomento SQL Server:ssä ](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-ver16)
-- [ Ulkoisen indeksin luonti Projektitietokantaan ]() 
+- [ Ulkoisen indeksin luonti Projektitietokantaan ](CREATE_INDEX.pdf) 
 
 
 # Tehtävät:    
