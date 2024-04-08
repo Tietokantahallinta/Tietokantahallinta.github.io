@@ -21,4 +21,6 @@
 # Tehtävät:    
 - [ Tehtävä 1: Tietokannan luonti ja konfigurointi ](Tehtava_01.md)
 - [ Tehtävä 2: Taulujen luonti tietokantaan ja viite-eheysavaimet ja ulkoisten indeksien luonti ](Tehtava_02.md)
+- [ Tehtävä 2: Vastaus T-SQL Script](Tehtava_2_Vastaus.sql)
+- [ Tehtävä 2: Vastaus Diagram](Tehtava_02_Vastaus_Diagram.pdf)
 - [ Tehtävä 3: Ulkoiset indeksit ](Tehtava_03.md)
