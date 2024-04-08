@@ -72,15 +72,14 @@ alter table Yhdistys
 				on delete set null;
 
 alter table Yhdistys 
-	drop constraint constr_yhdistys_tj
-		go;
-drop table Postinumero;
-drop table Osoite;
-drop table Yhdistys;
-drop table Tyontekija;
-drop table Kerho;
-drop table Jasen;
+	drop constraint constr_yhdistys_tj;
 drop table KerhonJasenet;
+drop table Jasen;
+drop table Kerho;
+drop table Tyontekija;
+drop table Osoite;
+drop table Postinumero;
+
 
 
 
