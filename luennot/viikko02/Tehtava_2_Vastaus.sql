@@ -77,6 +77,7 @@ drop table KerhonJasenet;
 drop table Jasen;
 drop table Kerho;
 drop table Tyontekija;
+drop table Yhdistys;
 drop table Osoite;
 drop table Postinumero;
 
