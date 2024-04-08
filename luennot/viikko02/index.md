@@ -24,3 +24,4 @@
 - [ Tehtävä 2: Vastaus T-SQL Script](Tehtava_2_Vastaus.sql)
 - [ Tehtävä 2: Vastaus Diagram](Tehtava_02_Vastaus_Diagram.pdf)
 - [ Tehtävä 3: Ulkoiset indeksit ](Tehtava_03.md)
+- [ Tehtävä 3: Vastaus T-SQL Script ](Tehtava_3_Vastaus.sql)
