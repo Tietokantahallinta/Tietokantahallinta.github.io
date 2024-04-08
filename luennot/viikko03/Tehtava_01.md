@@ -4,9 +4,9 @@
 
 Käytä tässä tehtävässä YhdistyksenTietokanta -nimistä tietokantaa, jonka olet luonnut aikaisemmissa tehtävissä.
 
-Luo siihen käyttäjätunnus kyseisen tietokannan datanylläpitäjälle. Tällä käyttäjällä siis pitää olla tarpeelliset oikeudet YhdistysTietokannan sisältämän datan ylläpitämiseen.
+Luo siihen käyttäjätunnus kyseisen tietokannan datan ylläpitäjälle (ns. pääkäyttäjä). Tällä käyttäjällä siis pitää olla tarpeelliset oikeudet YhdistysTietokannan sisältämän datan ylläpitämiseen.
 
-Luo käyttäjätunnus, jolla on niin sanotun tavallisen käyttäjän oikeudet. Heitä voi olla useita erilaisia. Toiminnan ohjaaja, yhdistyksen johtaja,  yhdistyksen taloudenhoitaja, yhdistykseen liittymyt asiakas. Millaisia oikeuksia näillä voisi olla. 
+Luo käyttäjätunnus, jolla on niin sanotun tavallisen käyttäjän oikeudet. Heitä voi olla useita erilaisia. Toiminnan ohjaaja, yhdistyksen johtaja,  yhdistyksen taloudenhoitaja, yhdistykseen liittynyt asiakas. Millaisia oikeuksia näillä voisi olla. 
 
 Miten instanssiin kirjautuminen kannattaisi tehdä?
 
