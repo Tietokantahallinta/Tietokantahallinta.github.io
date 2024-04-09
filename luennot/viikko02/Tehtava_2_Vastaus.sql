@@ -72,7 +72,8 @@ alter table Yhdistys
 				on delete set null;
 
 delete from KerhonJasenet;
-delete from ....
+delete from Jasenet;
+delete from ...
 
 
 alter table Yhdistys 
