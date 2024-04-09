@@ -71,6 +71,10 @@ alter table Yhdistys
 			references Tyontekija(TyontekijaID)
 				on delete set null;
 
+delete from KerhonJasenet;
+delete from ....
+
+
 alter table Yhdistys 
 	drop constraint constr_yhdistys_tj;
 drop table KerhonJasenet;
