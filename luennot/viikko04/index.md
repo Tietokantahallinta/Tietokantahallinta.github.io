@@ -3,6 +3,7 @@
 
 - Transaktiot ja niihin liittyvät ongelmatilanteet ja selviäminen
 - Varmistusten teko ja niiden palauttaminen (backup, restore)
+- Tietokannan varmistussuunnitelma
 
 
 
