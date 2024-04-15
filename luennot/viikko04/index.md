@@ -10,6 +10,7 @@
 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
 - [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
+- [Esimerkki 1: Kahden transaktion välinen kilpailutilanne](Transaktiot.pdf)
 - [ Deadlock, Lukot ja Eristystasot ](Deadlock_Lukot_Eristystasot.pdf)
 - [ Mitä tarkoitetaan checkpoint:lla ](checkpoint.pdf)
 - [ Varmistukset ](Varmistukset.pdf)
