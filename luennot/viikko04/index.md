@@ -14,8 +14,10 @@
 (Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 - [Esimerkki 1: Kahden transaktion välinen kilpailutilanne](Transaktiot.pdf)
 - [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User1 ja User2](Pankki.sql)
+- [Opetusvideo: Esimerkki 2: Kahden transaktion välinen kilpailutilanne](https://video.haaga-helia.fi/media/t/0_lk4sz760)
 - [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User1](Pankki_User1.sql)
 - [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User2](Pankki_User2.sql)
+
 - [ Deadlock, Lukot ja Eristystasot ](Deadlock_Lukot_Eristystasot.pdf)
 - [ Mitä tarkoitetaan checkpoint:lla ](checkpoint.pdf)
 - [ Varmistukset ](Varmistukset.pdf)
