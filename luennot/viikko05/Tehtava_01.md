@@ -1,6 +1,6 @@
 # Tehtävä 01:
 
-- Lataa koneellesi Kurssin Teams ryhmästä löytyvä AdventureWorks2012_Data.mdf tietokanta tiedosto. Siirrä se SQL Server:isi Data -kansioon, eli
+- Lataa koneellesi kurssin Materiaalit kappaleesta löytyvä AdventureWorks2012_Data.mdf tietokanta tiedosto. Siirrä se SQL Server:isi Data -kansioon, eli
 C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA
 tai jokin vastaava SQL Server versiosta riippuen. Tarvitset Administrator tunnukset - jotka sinulla on omalla koneellasi olevaan SQL Server:iin.<br>
 
