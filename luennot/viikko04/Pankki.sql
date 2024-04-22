@@ -1,3 +1,6 @@
+delete from Tilit;
+drop table Tilit;
+
 create table Tilit (
 	tilinro int not null primary key,
 	saldo decimal(10,2) not null

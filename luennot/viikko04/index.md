@@ -10,8 +10,11 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
-- [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
+- [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ]
+(Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 - [Esimerkki 1: Kahden transaktion välinen kilpailutilanne](Transaktiot.pdf)
+- [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User1 ja User2](Pankki.sql)
+- [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User1](Pankki_User1.sql)
 - [ Deadlock, Lukot ja Eristystasot ](Deadlock_Lukot_Eristystasot.pdf)
 - [ Mitä tarkoitetaan checkpoint:lla ](checkpoint.pdf)
 - [ Varmistukset ](Varmistukset.pdf)
