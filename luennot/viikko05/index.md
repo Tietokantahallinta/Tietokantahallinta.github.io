@@ -11,7 +11,7 @@
 - [ Luentojen indekseihin liittyvien kysymysten vastauksia ](Luennot_vko5_kysymysten_vastauksia.pdf)
 - [ Luentojen defragmentointiin liittyvä vastaus ](Luentojen_vko5n_vastaukset_defragmentointiin.pdf)
 - [ SQL Serverin dbcc komento ](SQL_Server_dbcc_komento.pdf)
-- [ Tehtävä 1:ssä tarvittava AdventureWorks tietokanta ](https://drive.google.com/file/d/1Jfi1897hdSZh-J7N2t397xlwQhXnNNOt/view?usp=drive_link)
+- [ Tehtävä 1:ssä tarvittava AdventureWorks tietokanta ](https://drive.google.com/file/d/1MYXUdgR0vz_YPBeHOA-oS0Uo-gPAFZe_/view?usp=drive_link)
 
 
 # Tehtävät:   
