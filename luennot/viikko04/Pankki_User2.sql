@@ -10,23 +10,9 @@ insert into Tilit (tilinro, saldo) values (910101, 200000);
 
 select * from tilit;
 
-User 2: Milla suorittaa operaattori maksun 40 e
-Ilman transaktioiden hallintaa
-update Tilit set saldo = saldo - 40 where tilinro = 710100;
-update Tilit set saldo = saldo + 40 where tilinro = 910101;
-
-User 2: Milla maksaa operaattori maksunsa, 40 e.
-begin transaction
-update Tilit set saldo = saldo - 40 where tilinro = 710100;
-update Tilit set saldo = saldo + 40 where tilinro = 910101;
-commit
-
-select * from tilit;
-
-(rollback)
-
-User 1: Pankin kontrollori
-select * from Tilit where tilinro = 910101;
+User 2: Milla
+Katsotaan aloitustilanne:
+select * from Tilit;
 
 User 2: Milla maksaa operaattori maksunsa, 40 e.
 Ajetaan ensimmäiseksi
@@ -34,11 +20,12 @@ begin transaction
 update Tilit set saldo = saldo - 40 where tilinro = 710100;
 update Tilit set saldo = saldo + 40 where tilinro = 910101;
 
-Ajeteaan kolmanneksi
+Ajeteaan toiseksi
 select * from tilit;
 
 Ajetaan neljänneksi
-commit
+
+Ajetaan viidenneksi
 select * from tilit;
 
 
