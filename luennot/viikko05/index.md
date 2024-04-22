@@ -16,6 +16,6 @@
 
 # Tehtävät:   
 
-- [Tehtävä 1: AdventureWorks tietokannan liittäminen SQL Serveriin ja sen statistiikka tietojen selvittäminen](Tehtava_01.md)
+- [Tehtävä 1: AdventureWorks tietokannan liittäminen SQL Serveriin ja sen statistiikka tietojen selvittäminen, attach](Tehtava_01.md)
 - [Tehtävä 2: Tietokannan indeksien fragmentoitusmisasteen selvittäminen](Tehtava_02.md)
 - [Tehtävä 3: Tietokannan indeksien fragmentoitumisen poistaminen, reorganize, rebuild](Tehtava_03.md)
