@@ -1,0 +1,8 @@
+Varmistussuunnitelma Pankki tietokannalle:
+
+- Tehdään Full backup sunnuntai - maanatai välisenä aikana, koska on hiljaisinta
+aikaa yritykselle.
+- Tehdään seuraavina viikon päivien yöaikaan diffentiaali varmistuksia eli 
+varmistetaan päivän aikana tulleet muutokset.
+- Sama tehdään myös Pankki tietokannan transaktiolokille. 
+
