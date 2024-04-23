@@ -1,0 +1,13 @@
+DBCC SHOWCONTIG scanning 'WorkOrder' table...
+Table: 'WorkOrder' (846626059); index ID: 1, database ID: 19
+TABLE level scan performed.
+- Pages Scanned................................: 528
+- Extents Scanned..............................: 72
+- Extent Switches..............................: 71
+- Avg. Pages per Extent........................: 7.3
+- Scan Density [Best Count:Actual Count].......: 91.67% [66:72]
+- Logical Scan Fragmentation ..................: 1.33%
+- Extent Scan Fragmentation ...................: 13.89%
+- Avg. Bytes Free per Page.....................: 122.0
+- Avg. Page Density (full).....................: 98.49%
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
