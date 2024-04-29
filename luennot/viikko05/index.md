@@ -2,7 +2,7 @@
 # Tavoitteet:
 
 - Tietokannan indeksien eheyden seuranta ja eheyttäminen
-- Fragmentoituminen
+- Fragmentoituminen, defragmentointi
 
 
 # Materiaali: 
