@@ -1,7 +1,7 @@
 # Vko 06
 # Tavoitteet:
 
-- Tietokantojen ja taulujen seuranta ja eheyttäminen
+- Tietokantojen taulujen ja ulkoisten indeksien seuranta ja eheyttäminen
 - Disaster Recovery 
 
 
