@@ -2,8 +2,8 @@
 # Tavoitteet:
 
 - Tallennetut proseduurit automatisoinnissa ja ajastus.
-- SQL Server Error levels
 - SQL Server Agent
+- SQL Server Error levels
 - Hälytykset
 - Tietokantapalvelimen ylläpitosuunnitelma
 - Koe-alue
