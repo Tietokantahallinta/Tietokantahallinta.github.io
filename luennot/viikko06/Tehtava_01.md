@@ -53,7 +53,7 @@ go;<br>
 
 - Tietokannan taulun eheyden voi tarkastaa komennolla:
 <code>
-dbcc checktable('Person.Contact');<br>
+dbcc checktable('Person.CountryRegion');<br>
 </code>
 
 Palauta tämän jälkeen Moodleen, palautuslinkkiin  vastaus tehtävään.
