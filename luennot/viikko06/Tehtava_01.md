@@ -4,7 +4,7 @@
 
 - Selvitä tietokannan taulujen fragmentoitumisaste. Esimerkiksi AdventureWorks2012_Data tietokannan Person.Contact taulun fragmentoitumisasteen saa selville SQL Server:ssä komennolla:<br>
 <code>
-dbcc showcontig(’Person.CountryRegion’);
+dbcc showcontig(’Purchasing.PurchaseOrderHeader’);
 </code>
 <br>
 - Millainen on kyseisen taulun fragmentoitumisaste?
@@ -53,7 +53,7 @@ go;<br>
 
 - Tietokannan taulun eheyden voi tarkastaa komennolla:
 <code>
-dbcc checktable('Person.CountryRegion');<br>
+dbcc checktable('Purchasing.PurchaseOrderHeader');<br>
 </code>
 
 Palauta tämän jälkeen Moodleen, palautuslinkkiin  vastaus tehtävään.
