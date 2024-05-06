@@ -6,13 +6,13 @@
 - Hiiren oikealla Computer Management eli Tietokoneen hallinta
 - Avaa Performance eli Suorituskyky
 - Ja valitse Performance Monitor eli Suorituskyvyn valvonta
-- Tutustu millaisia kaikenlaisia laskureita löytyy SQL Server:ille. Niitä pääsee tarkastelemaan klikkaamalla + painonappulaa, alle olevan kuvan mukaisesesti:<br>
+- Tutustu millaisia kaikenlaisia laskureita löytyy SQL Server:ille. Niitä pääsee tarkastelemaan klikkaamalla + painonappulaa, alla olevan kuvan mukaisesesti:<br>
 
 ![](Kuva_T02_01.PNG)<br>
 Kuva 1. Windows 10 Performance Monitor Counters.<br>
 
-- Löytyykö seuraavanlaiset laskuri?
-- Suositeltavat laskurit joita kannattaa seurata ylläpidon säännöllisesti :
+- Löytyykö seuraavanlaiset laskurit?
+- Suositeltavat laskurit, joita kannattaa seurata ylläpidon säännöllisesti ovat:
     • SQL Server: Buffer Cache
     • SQL Databases: Transactions/sec
 - Millaisia tuloksia saat?
