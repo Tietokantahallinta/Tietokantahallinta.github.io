@@ -15,6 +15,7 @@ Kuva 1. Windows 10 Performance Monitor Counters.<br>
 - Suositeltavat laskurit, joita kannattaa seurata ylläpidon säännöllisesti ovat:
     - SQL Server Databases: Transactions/sec
 - Millaisia tuloksia saat?
+- [Tutustu sitä esittelevään sivuun Microsoft:illa](https://learn.microsoft.com/en-us/sql/relational-databases/performance-monitor/sql-server-databases-object?view=sql-server-ver16)
 - Tutustu myös 
     - Sql Server Buffer Manager -> Buffer Cache Hit Ratio:oon
 - Millaisia tuloksia saat koneellasi?
