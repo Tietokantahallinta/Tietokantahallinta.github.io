@@ -13,7 +13,7 @@ Kuva 1. Windows 10 Performance Monitor Counters.<br>
 
 - Löytyykö seuraavanlaiset laskurit?
 - Suositeltavat laskurit, joita kannattaa seurata ylläpidon säännöllisesti ovat:
-    - SQL Server: Buffer Cache hit ratio
+    - SQL Server Buffer Manager: Buffer Cache hit ratio
     - SQL Databases: Transactions/sec
 - Millaisia tuloksia saat?
 - Tutustu myös Buffer Manager -> Buffer Cache Hit Ratio:oon
