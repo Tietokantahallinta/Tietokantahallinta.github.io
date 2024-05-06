@@ -11,7 +11,7 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_07.pdf)
-- [ Mitkä SQL Server:in Error Level:it kannattaa tehdä hälytyksen? ](Error_Levels.pdf)
+- [ Mitkä SQL Server:in Error Level:it kannattaa tehdä hälytyksen ylläpitäjälle? ](Error_Levels.pdf)
 - [ SQL Server Ylläpitosuunnitelma ](SQL_Server_Ylläpito_suunnitelmanteko.pdf)
 
 # Tehtävät:   
