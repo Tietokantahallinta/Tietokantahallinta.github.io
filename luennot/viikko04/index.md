@@ -10,7 +10,7 @@
 # Materiaali: 
 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
-- [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ]
+- [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 (Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 - [Esimerkki 1: Kahden transaktion välinen kilpailutilanne](Transaktiot.pdf)
 - [Esimerkki 2: Kahden transaktion välinen kilpailu SQL Server esimerkkinä, User1 ja User2](Pankki.sql)
