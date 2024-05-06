@@ -2,7 +2,7 @@
 # Tavoitteet:
 
 - Tietokantojen taulujen ja ulkoisten indeksien seuranta ja eheyttäminen
-- Windows Performance Monitor
+- Tietokantapalvelimen monitorointi
 - Disaster Recovery 
 
 
