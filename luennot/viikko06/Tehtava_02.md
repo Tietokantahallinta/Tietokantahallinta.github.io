@@ -19,7 +19,7 @@ Kuva 1. Windows 10 Performance Monitor Counters.<br>
 - Tutustu myös 
     - Sql Server Buffer Manager -> Buffer Cache Hit Ratio:oon
 - Millaisia tuloksia saat koneellasi?
-- Millaisia ohjeita Microsoft antaa tästä laskurista?
+- [Millaisia ohjeita Microsoft antaa tästä laskurista?](https://learn.microsoft.com/en-us/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object?view=sql-server-ver16)
 
 
 Palauta tämän jälkeen Moodleen, palautuslinkkiin vastaukseksesi.
