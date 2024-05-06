@@ -32,6 +32,6 @@
 - [Tehtävä 4: Tietokannan varmistussuunnitelman teko](Tehtava_04.md)
 - [Tehtävä 4: Vastaus](Tehtava_04_Vastaus.txt) 
 - [Tehtävä 5: Deadlock](Tehtava_05.md)
-- [Tehtävä 5: Ajoscriptitit: User1 ](Tehtava_05_User1.sql)
-- [Tehtävä 5: Ajoscriptitit: User2 ](Tehtava_05_User2.sql)
+- [Tehtävä 5: Vastaus Ajoscriptiti: User1 ](Tehtava_05_User1.sql)
+- [Tehtävä 5: Vastaus Ajoscriptiti: User2 ](Tehtava_05_User2.sql)
 
