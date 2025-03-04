@@ -6,7 +6,7 @@
 - Perussanastoa SQL Server:ssä
 - Tietokantapalvelimen rakenne, toiminta ja sen tarjoamat palvelut
 - Tietokantapalvelimen asennus ja konfigurointi
-- Tietokantapalvelimen alas ajo ja ylös ajo
+- Tietokantapalvelimen käynnistys, sammutus ja siihen liittyvät tiedot
 
 # Materiaali: 
 - [ Luentokalvot ](Luentokalvot_01.pdf)

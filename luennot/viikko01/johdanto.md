@@ -1,0 +1,5 @@
+- mitä on tietokannanhallinta
+-elinkaari ja siihen liittyvät toiminnot
+- SQl Server ja eri versiot
+- SQL Serveriin liittyviä muita palveluita
+- Pilvi
