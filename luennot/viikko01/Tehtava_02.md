@@ -1,7 +1,7 @@
 # Tehtävä 02:
 
-- Tietokantapalvelimen hallintatyökalun asennus
+### Tietokantapalvelimen hallintatyökalun asennus
 
-Asenna Microsoft SQL Management Studio koneellesi osoitteesta: [ Download Microsoft SQL Server Management Studio, SSMS ](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+Asenna Microsoft SQL Management Studio koneellesi materiaalissa olleesta osoitteesta.
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin näyttökuva ohjelmasta.
+Palauta tämän jälkeen Moodleen kuinka kauan asennus kesti, onnistuiko se ylipäätään ja pystyitkö kytkeytymään tietokantapalvelimeen.

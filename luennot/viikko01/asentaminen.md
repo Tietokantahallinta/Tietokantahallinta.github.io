@@ -24,6 +24,10 @@ Tunnilla käydään koko asennus vaiheittain läpi selityksineen.
 
 Oletuksena asennus onnistuu. Jos jotain outoa tapahtuu asennuksessa, koetetaan vikoja selvitellä tunnin aikana tai jälkikäteen Teamsin kautta.
 
+Samaan palvelimeen (ja samalle työasemalle) voi asentaa useita SQL Server:eitä. Ensimmäinen on ns. oletusinstanssi, jolla ei ole nimeä. Muut asennukset ovat nimettyjä instansseja ja kirjautumisessa palvelimen nimeen lisätään instanssin nimi. Tällä kurssilla riittää yksi asennettu instanssi.
+
+SQL Server tietokantainstanssi pystyy käsittelemään montaa tietokantaa, siksi ei ole kovin usein edes tarvetta asentaa montaa instanssia samalle koneelle.
+
 ### Tietokantapalvelimen käynnistys ja kirjatumistiedot.
 
 SQL Server, kuten muutkin tietokantapalvelimet, on taustaprosessi, jolla ei ole käyttöliittymää. Sitä hallinnoidaan Services-toiminnon kautta (Palvelut, suomenkielisessä versiossa): käynnistys, sammutus, millä tunnuksella suoritetaan jne. 
