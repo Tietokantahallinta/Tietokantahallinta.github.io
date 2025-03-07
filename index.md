@@ -4,7 +4,7 @@
 
 Tervetuloa kurssille.
 
-Sisältö:  
+Sisältöä, tarkentuu kurssin aikana:  
 
 - Tietokantojen elikaari
 - Tietokantapalvelimen asennus, rakenne, toiminta ja sen tarjoamat palvelut
@@ -24,13 +24,9 @@ Sisältö:
 - Tietokantapalvelimen ylläpitäjän tehtävät ja automatisointi
 - Tallennetut proseduurit automatisoinnissa ja laajemmin.
 
-``` sql
-SELECT * 
-    FROM Asiakas
-    WHERE id > 10;
-```
-Siinäpä yksi esimerkki
 
+
+**Tietokannan elinkaareen liittyviä toimintoja**
 1. Tietokantapalvelimen asennus, systeemitietokannat
 2. Konfigurointi, verkkoasetukset
 3. Tietokannan luonti, kryptaukset
@@ -44,7 +40,7 @@ Siinäpä yksi esimerkki
 11. Suorituskyvyn optimointi (mm. indeksit)
 12. Tietokannan siirto
 
-Muita asioita näiden lisäksi:
+Muita asioita näiden lisäksi, joita käsitellään kurssilla:
 - ohjelmarakenteet (trigger, stored proc, function)
 - vaativat SQL-komennot
 - temp-taulut
