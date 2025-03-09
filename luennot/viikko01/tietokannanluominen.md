@@ -46,4 +46,5 @@ Muita optioita voi asettaa, mutta sitä ennen selvitä mitä vaikutusta niillä 
 ### Filegroups
 Tietokantatiedostot, loki ja indeksit voidaan sijoittaa eri levyille ja eri tiedostoihin. Jopa taulu voidaan asettaa tallentumaan haluttuun tiedostoon. Näitä hallinnoidaan filegroups-asetuksilla. 
 
-
+**kuvatesti**
+![alt text](image.png)
