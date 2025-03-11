@@ -64,3 +64,8 @@ Nämä asetukset ovat muutettavissa käyttöliittymän kautta tai TSQL-komennoil
 
 Tunnilla käydään osa asetuksista läpi, lähinnä niitä joita yleisimmin pitää säätää vai muuten parantaa toiminnan ymmärtämistä.
 
+## Asennushakemisto
+Oletuksena SQL Server asentuu hakemistoon C:\Program Files\Microsoft SQL Server, jonka alla on sekä binäärit että tietokantatiedostot. Tietokannat löytyy oletuksena hakemistosta C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA.
+
+Tunnilla tutkitaan hakemistorakennetta lyhyesti File Explorer:in avulla.
+

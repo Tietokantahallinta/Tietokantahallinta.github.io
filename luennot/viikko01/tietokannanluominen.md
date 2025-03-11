@@ -1,6 +1,12 @@
 ## Tietokannan luominen - CREATE DATABASE;
 
-UUsi tietokanta luodaan joko komennolla
+Tietokannalla on sekä looginen että fyysinen rakenne. Looginen rakenne sisältää taulut ja muut objectit, fyysinen taas määrittää missä tiedostoissa data ja objektit, loki ja indeksit sijaitsevat. Datalla ja transaktiolokilla on omat tiedostonsa. Tiedostojen sisälle data tallentuu sivulle, joka on 8 kilotavua, sivu on pienin allokointiyksikkö SQL Serverissä. Tämä vaikuttaa muutamaan asiaan esimerkiksi taulun rivien tallennuksessa ja määrityksissä. Toinen yksikkö, mitä SQL Server käyttää, on Extent joka on 8 sivua (64 kt).
+
+Tietokanta voi sisältää 32767 tiedostoa ja suurin mahdollinen koko on noin 524272 teratavua, tällä kurssilla ei todellakaan kokeilla mitä tapahtuu kun tuo tila loppuu.
+SQL Serverin erilaisia numerorajoja löytyy tämän [linkin](https://learn.microsoft.com/en-us/sql/sql-server/maximum-capacity-specifications-for-sql-server?view=sql-server-ver16) takaa.
+
+
+Uusi tietokanta luodaan joko komennolla
 ```sql
 CREATE DATABASE <nimi>; 
 ```
@@ -19,7 +25,7 @@ Käyttöliittymän kautta uusi tietokanta tehdään Object Explorer-ikkunassa av
 Eri asetukset on helpointa käydä läpi käyttöliittymän kautta, kaikki samat asetukset pystyy tekemään TSQL-komennolla ja jos tietokanta pitää pystyä tekemään uudelleen skriptinä, on luontikomento oltava jossain tiedostossa. Toki jälkikäteen luontiscriptin voi tehdä SSMS:llä Script-toiminnolla ja sen voi tallentaa tiedostoon.
 
 ## New Database
-![New Database](..\kuvat\NewDBPages.jpg)
+![New Database](../kuvat/NewDBPages.JPG)
 
 ### General
 Tässä määritellään tietokannan nimi. Nimi noudattaa SQL Server:in objektien nimisääntöjä, jolloin nimi voi olla melkein mitä tahansa.Kuitenkin kannattaa nimetä tietokanta konservativisesti, ei siis erikoismerkkenä yms kikkailua, siitä ei ole käytännössä hyötyä vaan pelkästään käytännön haittaa.
@@ -41,7 +47,7 @@ Sivun alussa on neljä asetusta ja n+1 kappaletta vielä alla listassa.
 
 **Containment type**, oletuksena ei mitään ja valinta Partial tuottaa eristetyn tietokannan. Siinä olevat käyttäjät eivät voi käsitellä muita tietokantoja.
 
-Muita optioita voi asettaa, mutta sitä ennen selvitä mitä vaikutusta niillä on. Tunnilla selataan muutama asetus läpi, joilla on merkitystä muutamien toimintomallien kannalta.
+Muita optioita voi asettaa, mutta sitä ennen selvitä mitä vaikutusta niillä on. Tunnilla selataan muutama asetus läpi, joilla on merkitystä eräiden toimintomallien kannalta.
 
 ### Filegroups
 Tietokantatiedostot, loki ja indeksit voidaan sijoittaa eri levyille ja eri tiedostoihin. Jopa taulu voidaan asettaa tallentumaan haluttuun tiedostoon. Näitä hallinnoidaan filegroups-asetuksilla. 

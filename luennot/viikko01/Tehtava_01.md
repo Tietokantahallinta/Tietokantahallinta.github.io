@@ -6,4 +6,4 @@ Asenna Microsoft SQL Server Developer Edition koneellesi. Materiaalissa on linkk
 
 Muista asentaa käyttäen kirjautumisen osalta Mixed moodia, jossa on sekä Windows- että SQL Server-tunnukset käytössä.
 
-Palauta tämän jälkeen Moodleen, tieto onnistumisesta/epäonnistumisesta ja kauanko asennukseen kului aikaa. 
+Palauta tämän jälkeen Moodleen tieto onnistumisesta/epäonnistumisesta ja kauanko asennukseen kului aikaa ja mitä mahdollisia ajstuksia ja kysymyksiä asennuksesta. 
