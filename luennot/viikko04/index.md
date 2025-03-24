@@ -1,14 +1,15 @@
 # Vko 04
 # Tavoitteet:
 
-- Transaktiot ja niihin liittyvät ongelmatilanteet ja selviäminen
-- Varmistusten teko ja niiden palauttaminen (backup, restore)
-- Tietokannan varmistussuunnitelma
+- TempDB ja tilapäiset rakenteet
+- Common table expression
+- toimintojen seuranta ja tiedon kryptaaminen
+
 
 
 
 # Materiaali: 
-
+<!-- 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
 - [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
 - [Esimerkki 1: Kahden transaktion välinen kilpailutilanne](Transaktiot.pdf)
@@ -34,4 +35,4 @@
 - [Tehtävä 5: Deadlock](Tehtava_05.md)
 - [Tehtävä 5: Vastaus Ajoscriptiti: User1 ](Tehtava_05_User1.sql)
 - [Tehtävä 5: Vastaus Ajoscriptiti: User2 ](Tehtava_05_User2.sql)
-
+ -->

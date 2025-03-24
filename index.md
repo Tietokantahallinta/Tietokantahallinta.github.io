@@ -47,3 +47,9 @@ Muita asioita näiden lisäksi, joita käsitellään kurssilla:
 - rakenteiden muutokset
 - lokitus
 
+### Loppukommentti jo heti kurssin alkuun
+Tällä kurssilla ehditään käsittelemään vain pieni osa SQL Serveriin liittyvistä palveluista, ominaisuuksista, optimoinnista ja asetuksista. Kokonaiskuva ja tietokannan elinkaari ovat tärkeimmät tavoitteet kurssilla.
+
+Esimerkiksi replikointia, raportointi- analyysi- tai integraatiopalveluita ei käsitellä. Samoin materialisoidut näkymät jää maininnan asteelle. Luultavasti osa taulurakenteista jää käsittelemättä (FilesTables, External Tables, Graph Tables, Dropper Ledger Tables) ja Full Text Catalogs sekä iso joukko muita piirteitä. Kaikkea ei ehdi lyhyellä kurssilla ja asioita on todella paljon. 
+
+On siis hyvä ymmärtää, että opeteltavaa jää vielä kurssin jälkeenkin. Onneksi varsin harvoin kenellekkään annetaan vastuulle tällä kokemuksella kokonaisen tietokantapalvelimen hallintaa. Tekemällä oppii ja perusasioiden omaksuminen helpottaa muiden uusien asioiden oivaltamista ja soveltamista.

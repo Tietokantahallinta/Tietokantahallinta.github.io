@@ -1,7 +1,18 @@
 # Tietokantahallinta (dba)
 
-Sisältösuunnitelma:
+Sisältösuunnitelma viikottain:
 
+1. asennnus, tietokannan luonti, systeemitietokannat
+2. Login, user, schema, oikeudet  ja taulujen luonti, avaimet identity ja sequence, tietokantaobjekti
+3. skriptit, ohjelmarakenteet, triggerit, sp ja function 
+4. temp-taulut, monimutkaiset kyselyt, rakenteiden muuttaminen
+5. import/export, rakenteiden muuttaminen, tapahtumahallinta
+6. Indeksit ja optimointi
+7. Varmistukset ja palautukset 
+8. Koe
+
+
+<!-- 
 - Tietokantapalvelinen asennus, SQL Server
 - Käyttäjät, login ja user, kirjautuminen
 - Työkalut, osql, sqlcmd
@@ -29,7 +40,7 @@ Sisältösuunnitelma:
 - indeksien eheyttäminen ja seuranta
 - SQL Query Optimization
 - Tietokantapalvelimen ylläpitäjän tehtävät ja automatisointi
-- Tallennetut proseduurit automatisoinnissa ja laajemmin.
+- Tallennetut proseduurit automatisoinnissa ja laajemmin. -->
 
 
 

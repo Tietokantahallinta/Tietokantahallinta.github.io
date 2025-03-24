@@ -1,13 +1,14 @@
 # Vko 06
 # Tavoitteet:
 
-- Tietokantojen taulujen ja ulkoisten indeksien seuranta ja eheyttäminen
-- Tietokantapalvelimen monitorointi
-- Disaster Recovery 
+- indeksit, klusteroitu indeksi ja 'tavallinen' indeksi
+- indeksien hallinnointi
+- taulun eheyttäminen ja seuranta
+- SQL Query Optimization
 
 
 # Materiaali: 
-
+<!-- 
 - [ Luentokalvot ](Luentokalvot_06.pdf)
 - [ Luentojen tietokantojen eheyteen liittyvien kysymysten vastaukset ](Luentojen_vko6n_tietokantojen_ehdeyden_vastaukset.pdf)
 - [ SQL Serverin dbcc komento ](SQL_Server_dbcc_komento.pdf)
@@ -21,4 +22,4 @@
 
 - [Tehtävä 1: Tietokanta taulun eheytystarpeen seuranta ja eheyttäminen  SSMS työkaluja käyttäen](Tehtava_01.md)
 - [Tehtävä 1: Vastaus](Tehtava_01_Vastaus.sql)
-- [Tehtävä 2: Windows Performance Monitor käyttö](Tehtava_02.md) 
+- [Tehtävä 2: Windows Performance Monitor käyttö](Tehtava_02.md)  -->

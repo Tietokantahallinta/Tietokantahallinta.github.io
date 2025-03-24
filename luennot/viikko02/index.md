@@ -1,13 +1,19 @@
 # Vko 02
 # Tavoitteet:
 
-- Tietokannan luonti ja konfigurointi
-- SQL Server eheysmallit
-- Taulujen luonti, pääavaimet, ulkoiset viite-eheysavaimet sekä ulkoisen indeksin luonti hakujen nopeuttamiseksi
+- Taulujen luonti, avaimet (primary ja foreign key)
+- avaimien generointi 
+- tietotyypit
+- Schema
+- Login ja user ja käyttöoikeudet
 
 
 # Materiaali: 
-- [ Luentokalvot ](Luentokalvot_02.pdf)
+- [ CREATE TABLE ](taulujenLuominen.md)
+- [Schema](schema.md)
+- [Login ja user](LoginUser.md)
+
+<!-- 
 - [ SQL Server Eheysmallit ](Luennot_vko2_SQL_Server_Eheysmallit.pdf)
 - [ Opetusvideo: Tietokannan luonti SQL Serverissä ](https://video.haaga-helia.fi/media/SQL_Server_Tietokannan_luonti.mp4/0_br025ugp)
 - [Esimerkki 1: Tietokannan luonti SQL Server:ssä ](Tietokannan_luonti.pdf)
@@ -24,4 +30,5 @@
 - [ Tehtävä 2: Vastaus T-SQL Script](Tehtava_2_Vastaus.sql)
 - [ Tehtävä 2: Vastaus Diagram](Tehtava_02_Vastaus_Diagram.pdf)
 - [ Tehtävä 3: Ulkoiset indeksit ](Tehtava_03.md)
-- [ Tehtävä 3: Vastaus T-SQL Script ](Tehtava_3_Vastaus.sql)
+- [ Tehtävä 3: Vastaus T-SQL Script ](Tehtava_3_Vastaus.sql) 
+-->
