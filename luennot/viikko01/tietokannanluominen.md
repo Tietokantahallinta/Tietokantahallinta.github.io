@@ -20,12 +20,12 @@ Tietokannan luonnin yhteydessä voi säätää todella paljon erilaisia asetuksi
 
 Käyttöliittymän kautta uusi tietokanta tehdään Object Explorer-ikkunassa avaamalla context-valikko hiiren oikealla korvalla Databases-kansion päällä.
 
-![Database context menu](..\kuvat\Createdatabase.jpg)
+![Database context menu](CreateDatabase.jpg)
 
 Eri asetukset on helpointa käydä läpi käyttöliittymän kautta, kaikki samat asetukset pystyy tekemään TSQL-komennolla ja jos tietokanta pitää pystyä tekemään uudelleen skriptinä, on luontikomento oltava jossain tiedostossa. Toki jälkikäteen luontiscriptin voi tehdä SSMS:llä Script-toiminnolla ja sen voi tallentaa tiedostoon.
 
 ## New Database
-![New Database](../kuvat/NewDBPages.JPG)
+![New Database](NewDBPages.JPG)
 
 ### General
 Tässä määritellään tietokannan nimi. Nimi noudattaa SQL Server:in objektien nimisääntöjä, jolloin nimi voi olla melkein mitä tahansa.Kuitenkin kannattaa nimetä tietokanta konservativisesti, ei siis erikoismerkkenä yms kikkailua, siitä ei ole käytännössä hyötyä vaan pelkästään käytännön haittaa.
@@ -52,5 +52,5 @@ Muita optioita voi asettaa, mutta sitä ennen selvitä mitä vaikutusta niillä 
 ### Filegroups
 Tietokantatiedostot, loki ja indeksit voidaan sijoittaa eri levyille ja eri tiedostoihin. Jopa taulu voidaan asettaa tallentumaan haluttuun tiedostoon. Näitä hallinnoidaan filegroups-asetuksilla. 
 
-**kuvatesti**
-![alt text](image.png)
+<!-- **kuvatesti**
+![alt text](image.png) -->

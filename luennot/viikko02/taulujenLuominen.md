@@ -63,12 +63,45 @@ INSERT INTO Testi(ID, Nimi) values(999, 'Mustanaamio');
 select * from Testi;
 ```
 
-Scalar Function:in käytöstä voisi olla yksinkertainen tekninen esimerkki käytöstä avaimien generoinnissa. Ei ole ensisikainen käyttökohde, vaan ihan muita käyttöjä löytyy funktioille. 
+Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. 
 
 
 ### Tietotyypit
 - sarakkeiden tietotyypit
-- collate, määrityksissä ja kyselyissä
+Taulun sarakkeille määritellään tietotyypit. SQL standardi määrittää tyypit, mutta käytännössä aika käytetään palvelimen omia tietotyyppejä. Luettelo SQL Serverin [ tietotyypeistä ](https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16) on aika kattava.
+Karkea jako menee näin:
+- Exact numerics
+- Approximate numerics
+- Date and time
+- Character strings
+- Unicode character strings
+- Binary strings
+- Other data types
+
+Muutama huomio näistä: 
+- numeerisista tyypeistä löytyy tarkat ja likimääräiset tyypit
+- merkkijonot talletetaan yhdellä ('esimerkki') tai kahdella tavulla (N'esimerkki', unicode) ja tuki UTF-8 merkistölle löytyy myös
+- sarake voi olla Computed-tyyppinen jolloin sarakkeen tyyppi perustuus laskentakaavaan
+- collate, tekstisarakkeiden merkistö/lajittelujärjestyksen määrittely sekä hakutoiminto, onko eroa isoilla ja pienillä kirjaimilla
+
+**Laskennallinen sarake**
+Sarakkeen arvo voi perustua rivin muihin sarakkeisiin eli olla laskennallinen (Computed column). Tämä johtaa tarkasti ottaen normalisoimattomaan tauluun, mutta ei ole ongelma, vaan joissain tilanteissa oikeasti helpottava ja järkevä ominaisuus.
+
+```SQL
+CREATE TABLE Tuote(
+	TuoteID int PRIMARY KEY IDENTITY,
+	Nimi NVARCHAR(40),
+	Hinta0ALV MONEY DEFAULT 0,
+	VerollinenHinta AS Hinta0ALV * 1.225,
+	[VerollinenHinta€] AS CAST(Hinta0ALV * 1.225 AS MONEY)
+);
+
+INSERT INTO Tuote values('Testipalikka', 100);
+SELECT * FROM Tuote;
+UPDATE Tuote set Hinta0ALV = 42 where TuoteID = 1;
+SELECT * FROM Tuote;
+```
+Esimerkissä verolliseksi hinnaksi tulee float-tyyppinen arvo laskentakaavan perusteella ja toinen vastaava sarake, jossa tyyppi pakotetaan kaavassa tyyppimuunnoksella kahteen desimaaliin (Money). Lisäksi esimerkissä on sarakenimessä euro-merkki, joka on aivan mahdollinen SQL Serverissä jos objektin nimessä käytetään []-määrettä. Tällöin objektin nimi voi sisältää välilyöntejä ja erikoismerkkejä. Normaalisti ei kannata käyttää, hankaloittaa ohjelmallista käyttöä. Kaikkia ominaisuuksia ei tarvitse käyttää, mutta tämä mahdollistaa joitakin erikoistilanteita.
 
 ### Rajoitteet ja muut määreet
 - default

@@ -58,14 +58,14 @@ Kirjautumisessa pitää myös määritellä käytetäänkö SQL Server-tunnusta 
 
 Kirjautumisen jälkeen valitse Object Explorerissa palvelimen päällä hiiren oikealla valikko ja sieltä valitse **Properties**.
 
-![Server properties](..\kuvat\ServerProperties.jpg)
+![Server properties](ServerProperties.jpg)
 
 Nämä asetukset ovat muutettavissa käyttöliittymän kautta tai TSQL-komennoilla, aiheesta lisää [täällä](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/view-or-change-server-properties-sql-server?view=sql-server-ver16). 
 
 Tunnilla käydään osa asetuksista läpi, lähinnä niitä joita yleisimmin pitää säätää vai muuten parantaa toiminnan ymmärtämistä.
 
 ## Asennushakemisto
-Oletuksena SQL Server asentuu hakemistoon C:\Program Files\Microsoft SQL Server, jonka alla on sekä binäärit että tietokantatiedostot. Tietokannat löytyy oletuksena hakemistosta C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA.
+Oletuksena SQL Server asentuu hakemistoon C:\Program Files\Microsoft SQL Server, jonka alla on sekä binäärit että tietokantatiedostot. Tietokannat löytyy oletuksena hakemistosta C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA. Tietokantatiedostot voi sijoittaa mihin tahansa hakemistoon tai mille tahansa levylle (mutta ei verkkolevylle!). 
 
 Tunnilla tutkitaan hakemistorakennetta lyhyesti File Explorer:in avulla.
 
