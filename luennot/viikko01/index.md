@@ -12,7 +12,7 @@
 - [ Johdanto ](johdanto.md)
 - [ Asentaminen ](asentaminen.md)
 - [ Tietokannan luominen ](tietokannanluominen.md)
-
+- [ Systeemitietokannat ](systeemitietokannat.md)
 
 <!-- - [ Perussanastoa SQL Server:issä (Perussanastoa_SQL_Serverssa.pdf)
 - [Opetusvideo: SQL Server:in alasajo ja käynnistys](https://video.haaga-helia.fi/media/t/0_dqlnxf2r) -->
