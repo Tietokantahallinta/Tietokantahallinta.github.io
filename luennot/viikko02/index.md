@@ -10,8 +10,8 @@
 
 # Materiaali: 
 - [ CREATE TABLE ](taulujenLuominen.md)
-- [Schema](schema.md)
-- [Login ja user](LoginUser.md)
+- [Login ja user, schema ja oikeudet](LoginUser.md)
+
 
 <!-- 
 - [ SQL Server Eheysmallit ](Luennot_vko2_SQL_Server_Eheysmallit.pdf)
