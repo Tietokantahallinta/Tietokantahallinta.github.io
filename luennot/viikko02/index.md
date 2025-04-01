@@ -12,6 +12,8 @@
 - [ CREATE TABLE ](taulujenLuominen.md)
 - [Login ja user, schema ja oikeudet](LoginUser.md)
 
+# Tehtävät:    
+- [ Tehtävä 1: Taulujen luonti](Tehtava_01.md)
 
 <!-- 
 - [ SQL Server Eheysmallit ](Luennot_vko2_SQL_Server_Eheysmallit.pdf)
