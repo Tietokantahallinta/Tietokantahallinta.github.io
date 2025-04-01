@@ -14,6 +14,8 @@
 
 # Tehtävät:    
 - [ Tehtävä 1: Taulujen luonti](Tehtava_01.md)
+- [ Tehtävä 2: Login ja user](Tehtava_02.md)
+- [ Tehtävä 3: Schema ja oikeudet](Tehtava_03.md)
 
 <!-- 
 - [ SQL Server Eheysmallit ](Luennot_vko2_SQL_Server_Eheysmallit.pdf)
