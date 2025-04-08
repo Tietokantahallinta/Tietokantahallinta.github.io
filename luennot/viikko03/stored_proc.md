@@ -46,29 +46,29 @@ AS
 EXEC tuotteetHintaNoin 15;
 
 GO
-CREATE PROC tuotteetHintaVälillä -- parametrien käyttö
+CREATE PROC tuotteetHintaValillä -- parametrien käyttö
 	@alaraja MONEY, 
 	@yläraja MONEY 
 AS
 	SELECT Nimi from tuote where Hinta0ALV between @alaraja  AND @yläraja ORDER BY Nimi DESC;
 
 -- käyttö:
-EXEC tuotteetHintaVälillä 20, 30;
+EXEC tuotteetHintaValillä 20, 30;
 
 GO
-ALTER PROC tuotteetHintaVälillä -- muutos ==> parametrien oletusarvot
+ALTER PROC tuotteetHintaValilla -- muutos ==> parametrien oletusarvot
 	@alaraja MONEY = NULL, 
-	@yläraja MONEY = NULL 
+	@ylaraja MONEY = NULL 
 AS
 	IF @alaraja IS NULL SET @alaraja = 0;
-	IF @yläraja IS NULL select @alaraja = MAX(hinta0ALV) from Tuote;
-	SELECT Nimi from tuote where Hinta0ALV between @alaraja  AND @yläraja ORDER BY Nimi DESC;
+	IF @ylaraja IS NULL select @alaraja = MAX(hinta0ALV) from Tuote;
+	SELECT Nimi from tuote where Hinta0ALV between @alaraja AND @ylaraja ORDER BY Nimi DESC;
 
 -- käyttö:
-EXEC tuotteetHintaVälillä null, 20; -- positionaaliset parametrit
-EXEC tuotteetHintaVälillä 38, 42;
-EXEC tuotteetHintaVälillä @yläraja = 5; -- nimetyt parametrit
-EXEC tuotteetHintaVälillä @yläraja = 5, @alaraja = 1;
+EXEC tuotteetHintaValilla null, 20; -- positionaaliset parametrit
+EXEC tuotteetHintaValilla 38, 42;
+EXEC tuotteetHintaValilla @yläraja = 5; -- nimetyt parametrit
+EXEC tuotteetHintaValilla @yläraja = 5, @alaraja = 1;
 ```
 
 CREATE PROC-komennon suorituksessa palvelin tarkistaa syntaksin ja tallettaa koodin systeemitauluihin. Vasta ensimmäisellä suorituskerralla tulee ensimmäisen kerran tarkistus, että koodissa olevat tietokantaobjektit ovat olemassa. Jos kaikki vaikuttaa olevan kunnossa, tulee suorituksen optimointi ja tämä suoritussuunnitelma (execution plan) jää talteen seuraavia suorituskertoja varten. Tämä on yksi seikka, joka parantaa suorituskykyä proseduureja käytettäessä. 
@@ -111,7 +111,7 @@ GO
 DECLARE @paluuarvo INT
 EXEC @paluuarvo = summa 12, 34
 SELECT @paluuarvo
-```sql
+```
 
 Proseduurissa voi kuten skripteissäkin, tarkistaa edellisen lauseen onnistumisen @@ERROR muuttujalla. Nolla (0) tarkoittaa ettei virhettä ole aiheutunut, nollasta poikkeava numero on virhekoodi. Huomaa, että @@ERROR ei talleta viimeisintä virhekoodia vaan sisältää viimeisimmän lauseen suorituksen onnistumistiedon.
 
