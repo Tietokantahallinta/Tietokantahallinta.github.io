@@ -11,6 +11,16 @@
 - [ Funktiot ](function.md)
 - [ Triggerit ](trigger.md)
 
+# Harjoitukset
+- [Proseduurit](Tehtava_01.md)
+- [Funktiot](Tehtava_03.md)
+- [Triggerit](Tehtava_03.md)
+
+###Takkula
+
+- [Takkulan tietokannan luontilauseet](Takkula_CREATE.sql)
+- [Takkulan tietokannan data](Takkula_INSERT.sql)
+
 <!-- 
 - [ Luentokalvot ](Luentokalvot_03.pdf)
 - [ Käyttäjätunnukset ](Kayttajatunnukset.pdf)

@@ -67,8 +67,8 @@ AS
 -- käyttö:
 EXEC tuotteetHintaValilla null, 20; -- positionaaliset parametrit
 EXEC tuotteetHintaValilla 38, 42;
-EXEC tuotteetHintaValilla @yläraja = 5; -- nimetyt parametrit
-EXEC tuotteetHintaValilla @yläraja = 5, @alaraja = 1;
+EXEC tuotteetHintaValilla @ylaraja = 5; -- nimetyt parametrit
+EXEC tuotteetHintaValilla @ylaraja = 5, @alaraja = 1;
 ```
 
 CREATE PROC-komennon suorituksessa palvelin tarkistaa syntaksin ja tallettaa koodin systeemitauluihin. Vasta ensimmäisellä suorituskerralla tulee ensimmäisen kerran tarkistus, että koodissa olevat tietokantaobjektit ovat olemassa. Jos kaikki vaikuttaa olevan kunnossa, tulee suorituksen optimointi ja tämä suoritussuunnitelma (execution plan) jää talteen seuraavia suorituskertoja varten. Tämä on yksi seikka, joka parantaa suorituskykyä proseduureja käytettäessä. 

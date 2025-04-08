@@ -1,13 +1,18 @@
 # Tehtävä 02:
 
-- Roolien luonti ja oikeudet tietokantoihin ja tauluihin sekä sql komentoihin
+##Function
 
-Käytä tässä tehtävässä YhdistyksenTietokanta -nimistä tietokantaa, jonka olet luonnut aikaisemmissa tehtävissä.
+Käytetään yksinkertaista tietokantaa eli kaikille tuttua Takkulaa. Tietokannan tekemiseen löydät viikon 3 materiaalista tarvittavat SQLlauseet.
 
-Poista ensimmäiseksi tehtävässä 1 antamasi oikeudet luomillesi käyttäjätunnuksille. Tässä tehtävässä ne eivät saa olla enää voimassa. Tarvittavat oikeudet on tarkoitus antaa käyttäjäryhmien eli roolien avulla.
+- Tee skalaarifunktio, joka saa Oppilasnumeron parametrina ja palauttaa arvonaan opiskelijan suoritusten keskiarvon yhden desimaalin tarkkuudella. 
+- Kirjoita SQL-lause, jossa tulostat kaikkien opiskelijoiden nimet ja keskiarvosanan.
 
-Luo siihen mielestäsi tarvittavat käyttäjäryhmät eli roolit edellisen tehtävän pohjalta. Anna näille rooleille tarvitavat oikeudet. Esitä vastauksesi T-SQL kieltä käyttäen.
+- Tee funktio, joka palauttaa oppilasnumeron perusteella tekstinä tiedon etenemistahdosta. ENsimmäisen suoritetun kurssin jälkeen jos keskimäärin vuodessa on tullut pisteitä alle 20, funktio palauttaa tekstin 'Valmistuminen vaarassa ohjeajassa', pisteitä 20-30 ==> palauttaa 'Normaali' ja 31 tai enemmän niin paluuarvo on 'Etenee nopeasti'.
+- tee lause, jolla testaa toimintaa ja lisää tarvittaessa aineisto takkulan tietokantantaan tarvittaviin tauluihin jotta voit testata kaikki paluuarvot.
 
-Miten oikeuksia voi jakaa roolien avulla käyttäjille. Esitä tästä myös esimerkkejä T-SQL -kieltä käyttäen käyttätunnusten lisäämisestä kuhunkin rooliin.
+- Tee Table-tyyppinen funktio, joka palauttaa opettajanumeron perusteella taulun, jossa on opettajan nimi muodossa Sukunimi, E. yhdessä kentässä (sukunimi pilkku ja etunimen ensimmäinen kirjain), kurssin nimi ja kurssin suorittaneiden oppilaiden lukumäärä
+- Testaa SQL-lauseella
+- Voitko vastaavan toiminnon tehdä jotenkin näkymän avulla?  
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat luotua tarvittavat roolit oikeuksineen ja niihin lisättyine käyttäjätunniksineen.
+Palauta funktiot ja testaava SQL-lauseet Moodleen tekstinä
+
