@@ -16,7 +16,7 @@
 - [Funktiot](Tehtava_02.md)
 - [Triggerit](Tehtava_03.md)
 
-###Takkula
+### Takkula
 
 - [Takkulan tietokannan luontilauseet](Takkula_CREATE.sql)
 - [Takkulan tietokannan data](Takkula_INSERT.sql)
