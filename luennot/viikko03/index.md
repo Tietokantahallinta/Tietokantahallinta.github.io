@@ -6,6 +6,11 @@
 
 
 # Materiaali: 
+- [ Ohjelmarakenteet ](skriptit.md)
+- [ Proseduurit ](stored_proc.md)
+- [ Funktiot ](function.md)
+- [ Triggerit ](trigger.md)
+
 <!-- 
 - [ Luentokalvot ](Luentokalvot_03.pdf)
 - [ Käyttäjätunnukset ](Kayttajatunnukset.pdf)

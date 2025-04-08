@@ -59,7 +59,7 @@ Sekvenssigeneraattori on objekti, joka ei liity yksittäiseen tauluun, vaan niid
 
 ```SQL
 CREATE SEQUENCE DemoGeneraattori START WITH 1000 INCREMENT BY 1;
-SELECT NEXT VALUE FOR DemoGeraattori; -- Tällä saa seuraavan numeron 
+SELECT NEXT VALUE FOR DemoGeneraattori; -- Tällä saa seuraavan numeron 
 
 create table Testi (
       ID INT PRIMARY KEY DEFAULT(NEXT VALUE FOR DemoGeneraattori),
@@ -67,8 +67,9 @@ create table Testi (
 );
 
 INSERT INTO Testi(Nimi) values('Aku Ankka');
+INSERT INTO Testi(Nimi) values('Jaska Jokunen');
 
--- oletuksen ohitus, voi määrittää avaimen arvon helposti
+-- oletuksen ohitus, voi määrittää avaimen arvon helposti INSERTissä
 INSERT INTO Testi(ID, Nimi) values(999, 'Mustanaamio');
 
 select * from Testi;
