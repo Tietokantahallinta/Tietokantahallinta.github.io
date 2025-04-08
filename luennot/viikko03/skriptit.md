@@ -199,9 +199,9 @@ Dataa tietokannan sisällä käsitellään yleensä komennoilla, jotka kohdistuv
 
 Kursori on käytännössä osoitin johonkin vastausjoukon riviin. Ensin määritellään SELECT-lause ja liitetään siihen kursori, sitten kursori avataan (lauseen suoritus) ja vastausjoukon rivejä voi sen jälkeen käsitellä yksi kerrallaan. Lopuksi kursiri pitää sulkea.
 
-1. määrittele kursori ja lause (DECLARE CURSOT FOR)
+1. määrittele kursori ja lause (DECLARE CURSOR FOR)
 2. avaa kursori (OPEN)
-3. hae rivi käsiteltäväksi (FECTH)
+3. hae rivi käsiteltäväksi (FETCH)
 4. käsittely
 5. toista kunnes kaikki käsitelty
 6. sulje kursori (CLOSE, DEALLOCATE)
@@ -243,7 +243,7 @@ DECLARE c CURSOR
 		ORDER BY 1
 OPEN c
 FETCH NEXT FROM c INTO @taulu
-WHILE (@@FETCH_STATUS = 0) BEGIN '' status -1 ei enää rivejä
+WHILE (@@FETCH_STATUS = 0) BEGIN -- status -1 ei enää rivejä
 		SET @sql = 'select ''' + @taulu + ''' AS Taulu, count(*) AS RiviLkm from ' + @taulu;
 	    exec sp_executesql @sql
 	    FETCH NEXT FROM c INTO @taulu

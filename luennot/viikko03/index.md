@@ -13,7 +13,7 @@
 
 # Harjoitukset
 - [Proseduurit](Tehtava_01.md)
-- [Funktiot](Tehtava_03.md)
+- [Funktiot](Tehtava_02.md)
 - [Triggerit](Tehtava_03.md)
 
 ###Takkula

@@ -11,6 +11,7 @@ Miksi proseduuri:
 - Suojaukset, voidaan päivittää proseduurien kautta 
 - Suorituskyky, toteutussuunnitelma jää muistiin
 - Verkkoliikenteen vähentäminen
+
 Miksi ei:
 - hankala ohjelmointikieli ja ympäristö
 - debuggaaminen ja testaaminen hankalaa
@@ -46,14 +47,14 @@ AS
 EXEC tuotteetHintaNoin 15;
 
 GO
-CREATE PROC tuotteetHintaValillä -- parametrien käyttö
+CREATE PROC tuotteetHintaValilla -- parametrien käyttö
 	@alaraja MONEY, 
-	@yläraja MONEY 
+	@ylaraja MONEY 
 AS
-	SELECT Nimi from tuote where Hinta0ALV between @alaraja  AND @yläraja ORDER BY Nimi DESC;
+	SELECT Nimi from tuote where Hinta0ALV between @alaraja  AND @ylaraja ORDER BY Nimi DESC;
 
 -- käyttö:
-EXEC tuotteetHintaValillä 20, 30;
+EXEC tuotteetHintaValilla 20, 30;
 
 GO
 ALTER PROC tuotteetHintaValilla -- muutos ==> parametrien oletusarvot
