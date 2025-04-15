@@ -1,6 +1,39 @@
 # Tehtävä 01:
 
-- Kahden eri transaktion (esim. kahden eri käyttäjän tai ikkunan) kilpailutilanne samasta datarivistä tietokannassa.
+- Tee lyhyt esimerkki, jolla osoitat missä TRYCAST on parempi kuin CAST ja mistä syystä. Miten yhdistäisit nämä ISNULL tai COALESCE-komentoihin. Mitä eroa on ISNULL ja COALESCE:llä (ainakin kaksi eroa).
+
+
+- JSON-muotoista dataa voi tallentaa merkkijonona SQL Server-tietokantaan. Tehtävänäsi on kirjoittaa lyhyt kysely esimerkkitauluun siten, että se palauttaa seuraavan datan:
+```sql
+id	Nimi	Kaupunki
+1	Matti Teppo	Helsinki
+2	Liisa Virtanen	Turku
+3	Jaakko Parantainen	Vantaa
+```
+
+Käytä esimerkissä seuraavaa taulua ja rivejä:
+```sql
+CREATE TABLE AsiakasData (
+    id INT PRIMARY KEY,
+    tiedot NVARCHAR(MAX)
+);
+
+INSERT INTO AsiakasData VALUES 
+(1, N'{ "nimi": "Matti Teppo", "kaupunki": "Helsinki", "tilaushistoria": [{ "tuote": "Kirja", "maara": 5 }] }'),
+(3, N'{ "nimi": "Jaakko Parantainen", "kaupunki": "Vantaa", "tilaushistoria": [{ "tuote": "Kirja", "maara": 22 }] }'),
+(2, N'{ "nimi": "Liisa Virtanen", "kaupunki": "Turku", "tilaushistoria": [{ "tuote": "ATK-laite", "maara": 1 }] }');
+```
+
+Käytä JSON-datan lukemiseen tarkoitettuja funktiota ja lisätehtävänä on keksiä miten kyselyn voi tehdä ilman JSON-funktioita'
+
+
+
+Palauta vastauksesi Moodleen.
+
+
+
+
+<!-- - Kahden eri transaktion (esim. kahden eri käyttäjän tai ikkunan) kilpailutilanne samasta datarivistä tietokannassa.
 
 - Tee seuraavanlainen tehtävä SQL Server:in Management Studiossa.
 - Tee Pankki niminen tietokanta.
@@ -73,4 +106,5 @@ Kuva 3. Loppu tilanne, jossa lukot vapautetaan.<br>
 
 - Mitä merkitystä tällä on tietokanta palvelimen yllä pidon kannalta? Mitkä ovat seuraukset, jos jossa applikaatiossa on tämän kaltaisesti virheellisesti toimivat transaktio? Miksi tällaisen tilisiirron tai maksu tekemiseen on käytettävä transaktiot, kuten Ikkuna 2:ssa on tehty. Mitkä olisivat seuraukset, jollei käytettäisi?
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat aikaan kilpailutilanteen. Sekä omin sanoin esittämäsi vastaukset tapahtumien kulusta. 
+Palauta tämän jälkeen Moodleen, palautuslinkkiin  T-SQL kielinen scripti (Transact-SQL), jolla saat aikaan kilpailutilanteen. Sekä omin sanoin esittämäsi vastaukset tapahtumien kulusta.  
+-->

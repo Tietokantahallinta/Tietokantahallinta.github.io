@@ -3,12 +3,15 @@
 
 - TempDB ja tilapäiset rakenteet
 - Common table expression
+- muita SQL-komentoja
 - toimintojen seuranta ja tiedon kryptaaminen
 
-
-
-
 # Materiaali: 
+- [ Temp-taulut ](temp_table.md)
+- [ SQL-kielestä lisää](SQL_jatko.md)
+- [ Seuranta ](toiminnan_seuraaminen.md)
+- [ Tiedon suojaaminen](tiedon_suojaaminen.md)
+
 <!-- 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
 - [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
@@ -33,6 +36,6 @@
 - [Tehtävä 4: Tietokannan varmistussuunnitelman teko](Tehtava_04.md)
 - [Tehtävä 4: Vastaus](Tehtava_04_Vastaus.txt) 
 - [Tehtävä 5: Deadlock](Tehtava_05.md)
-- [Tehtävä 5: Vastaus Ajoscriptiti: User1 ](Tehtava_05_User1.sql)
-- [Tehtävä 5: Vastaus Ajoscriptiti: User2 ](Tehtava_05_User2.sql)
+- [Tehtävä 5: Vastaus Ajoscriptit: User1 ](Tehtava_05_User1.sql)
+- [Tehtävä 5: Vastaus Ajoscriptit: User2 ](Tehtava_05_User2.sql)
  -->
