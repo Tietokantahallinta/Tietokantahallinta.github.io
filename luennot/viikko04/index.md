@@ -12,6 +12,12 @@
 - [ Seuranta ](toiminnan_seuraaminen.md)
 - [ Tiedon suojaaminen](tiedon_suojaaminen.md)
 
+
+# Harjoitukset
+- [SQL](Tehtava_01.md)
+- [Seuranta](Tehtava_02.md)
+- [Suojaukset](Tehtava_03.md)
+
 <!-- 
 - [ Luentokalvot ](Luentokalvot_04.pdf)
 - [ Vastaukset luentojen kysymyksiin buffer pool:ista ja transaktioidenhallinnasta ](Luentojen_vko4n_vastaukset_transaktoiidenhallinnasta.pdf)
