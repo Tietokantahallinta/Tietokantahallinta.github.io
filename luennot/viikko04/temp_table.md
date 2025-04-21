@@ -96,7 +96,7 @@ JOIN Asiakkaat a ON o.asiakas_id = a.id;
 -- Siivous
 DROP TABLE #OstosYhteenveto;
 
-### sama CTE:llä 
+### sama CTE:n avulla
 ```sql
 WITH OstosYhteenveto AS (
     SELECT asiakas_id, SUM(ostot) AS Yhteensa

@@ -70,7 +70,7 @@ Ei käsitellä enempää koska Enterprise-versiota ei ole käytössä.
 
 ## Yhteenveto
 
-| Menetelmä         | Vaatii Enterprise? | Tukee automaattista historiaa? | Vaatii triggerit? | Tukee SELECT-lokistusta? |
+| Menetelmä         | Vaatii Enterprise-version | Tukee automaattista historiaa | Vaatii triggerit | Tukee SELECT-lokistusta |
 |-------------------|--------------------|-------------------------------|--------------------|---------------------------|
 | CDC               | ❌ (myös Std)       | 🔶 (muutostiedot erikseen)    | ❌                 | ❌                        |
 | Temporal Tables   | ❌ (myös Std)       | ✅                             | ❌                 | ❌                        |

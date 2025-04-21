@@ -90,7 +90,7 @@ Toiminta käytännössä:
 Varmuuskopion suojaaminen tiedostotasolla.
 
 ```sql
-BACKUP DATABASE TietokantaNimi
+BACKUP DATABASE TietokannanNimi
 TO DISK = 'D:\Backup\Tietokanta.bak'
 WITH COMPRESSION,
 ENCRYPTION(ALGORITHM = AES_256, SERVER CERTIFICATE = TDE_Certificate);

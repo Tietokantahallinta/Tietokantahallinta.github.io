@@ -36,7 +36,7 @@ SQL-kielellä tämä logiikka piti alunpitäen tehtä ohjelmallisikka rakenteill
 
 Merge-komennon [syntaksi](https://learn.microsoft.com/en-us/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver16) ei ole lyhyt, joten ehkä esimerkin avulla on helpompi selittää ja esittää miten MERGE toimii.
 
-🎯 Tavoite
+🎯 **Tavoite**: <br>
 Päivitetään Asiakkaat-taulua uusien tietojen mukaan, joita tulee UudetAsiakkaat-taulusta:
 - Jos asiakkaan ID löytyy jo, päivitä nimi ja sähköposti
 - Jos ei löydy, lisää uutena
@@ -47,13 +47,13 @@ Ensin demotaulut:
 CREATE TABLE Asiakkaat (
     AsiakasID INT PRIMARY KEY,
     Nimi NVARCHAR(100),
-    Sähköposti NVARCHAR(100)
+    Email NVARCHAR(100)
 );
 
 CREATE TABLE UudetAsiakkaat (
     AsiakasID INT,
     Nimi NVARCHAR(100),
-    Sähköposti NVARCHAR(100)
+    Email NVARCHAR(100)
 );
 
 -- Alkuperäisiä asiakkaita
@@ -76,11 +76,11 @@ ON Kohde.AsiakasID = Lahde.AsiakasID
 WHEN MATCHED THEN
     UPDATE SET
         Kohde.Nimi = Lahde.Nimi,
-        Kohde.Sähköposti = Lahde.Sähköposti
+        Kohde.Email = Lahde.Email
 
 WHEN NOT MATCHED BY TARGET THEN
-    INSERT (AsiakasID, Nimi, Sähköposti)
-    VALUES (Lahde.AsiakasID, Lahde.Nimi, Lahde.Sähköposti);
+    INSERT (AsiakasID, Nimi, Email)
+    VALUES (Lahde.AsiakasID, Lahde.Nimi, Lahde.Email);
 
  -- myös poisto olisi mahdollista, ei tehdä tässä
  --WHEN NOT MATCHED BY SOURCE THEN
@@ -90,7 +90,7 @@ WHEN NOT MATCHED BY TARGET THEN
 -- tarkistetaan tilanne päivityksen jälkeen
 select * from Asiakkaat;
 select * from UudetAsiakkaat;
-delete from uudetasiakkaat;  -- näitä turkin tarvitsee enää
+delete from uudetAsiakkaat;  -- näitä tuskin tarvitsee enää
 ```
 ### 🧾 Lopputulos
 Taulussa Asiakkaat tapahtuu:
@@ -159,7 +159,7 @@ Tässä kokoelma tehokkaita ja hyödyllisiä T-SQL-ominaisuuksia, jotka täydent
 | **`IIF`** | Lyhytmuotoinen `CASE`-lause – esim. `IIF(arvo > 100, 'Korkea', 'Matala')`. |
 | **`FORMAT`** | Ihmislukijalle suunnattu päivämäärien ja numeroiden muotoilu, esim. eurot, päivämäärät. |
 | **`EXCEPT` ja `INTERSECT`** | Sarjojen välinen vertailu: `EXCEPT` palauttaa A:n miinus B:n, `INTERSECT` yhteiset. |
-| **`SEQUENCE`** | Kehittyneempi tapa generoida numeroita kuin `IDENTITY` – joustavampi ja hallittavampi. |
+| **`SEQUENCE`** | Sekvessigeneraattori avainmien ja yleensä kokonaislukujen generointiin.Vaihtoehto `IDENTITY` – määrittelylle. |
 | **`JSON`-toiminnot (`OPENJSON`, `FOR JSON`)** | T-SQL tukee JSON-tietojen purkua ja muotoilua, erittäin hyödyllistä kun sarake sisältää dataa JSON-muodossa. |
 | **`TRY...CATCH`** | Virheenkäsittely, edellisellä viikolla käsitelty aihe. |
 | **`WAITFOR`** | Voit viivyttää komennon suorittamista sekunneilla tai kellonajalla – esim. testaukseen tai ajastamiseen. |
@@ -173,11 +173,11 @@ Tässä kokoelma tehokkaita ja hyödyllisiä T-SQL-ominaisuuksia, jotka täydent
 ###  ROW_NUMBER() – Esimerkiksi top 3 per ryhmä:
 
 ```sql
-WITH Järjestys AS (
+WITH Jarjestys AS (
     SELECT *, ROW_NUMBER() OVER (PARTITION BY Ainenro ORDER BY Arvosana DESC) AS Rivi
     FROM Suoritus
 )
-SELECT * FROM Järjestys WHERE Rivi <= 3;
+SELECT * FROM Jarjestys WHERE Rivi <= 3;
 ```
 
 ---
@@ -217,11 +217,12 @@ SELECT oppilasnro, ainenro, arvosana,
        IIF(arvosana >= 3, 'Hyvä',
        IIF(arvosana >= 1, 'Läpi',
        'Hylätty'))) AS arvio
-FROM SUORITUS;```
+FROM SUORITUS;
+```
 
 ### FORMAT
 ```sql
-'' päivämäärä
+-- päivämäärä
 SELECT 
     FORMAT(GETDATE(), 'dd.MM.yyyy') AS Paivays,
     FORMAT(GETDATE(), 'dddd', 'fi-FI') AS Viikonpaiva;
