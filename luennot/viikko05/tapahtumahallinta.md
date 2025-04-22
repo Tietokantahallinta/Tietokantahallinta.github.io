@@ -148,7 +148,7 @@ COMMIT;
 
 ### 🔎 aktiiviset lukot
 ```sql
--- Kolmas istunto: Näe avoimet lukot
+-- Kolmas istunto: lukot
 SELECT 
     request_session_id AS SessionID,
     resource_type,
@@ -224,6 +224,7 @@ ALTER DATABASE [TietokannanNimi] SET READ_COMMITTED_SNAPSHOT ON;
 ## Snapshot konfliktiesimerkki
 
 1. alustetaan taulu ja luodaan hieman aineistoa.
+
 ```sql
 -- taitaa olla jo tuttu taulu aikaisemmista esimerkeistä...
 CREATE TABLE Tuotteet (
@@ -295,6 +296,7 @@ SELECT * FROM sys.dm_tran_active_snapshot_database_transactions;
 
 ### Sitten vielä RCSI-esimerkki:
 RCSI: Snapshot ilman että sitä tarvitsee erikseen pyytää
+
 🔧 1. Otetaan RCSI käyttöön tietokannassa:
 ```sql
 ALTER DATABASE [TestiTietokanta] SET READ_COMMITTED_SNAPSHOT ON;
@@ -302,8 +304,10 @@ ALTER DATABASE [TestiTietokanta] SET READ_COMMITTED_SNAPSHOT ON;
 Tämä vaatii, että ei ole aktiivisia yhteyksiä tietokantaan. Jos tulee virhe, sulje yhteydet ja yritä uudelleen.
 
 Nyt kaikki transaktiot, jotka käyttävät READ COMMITTED -tasoa (oletus), lukevat snapshotin, eivät lukitsevia rivejä.
+
 🧪 RCSI-esimerkki
 1. Sessio A (hidas päivitys):
+
 ```sql
 BEGIN TRANSACTION;
 
@@ -320,6 +324,7 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 ```
 
 🔍 Mitä tapahtuu?
+
 - Ilman RCSI:tä sessio B odottaa, että sessio A vapauttaa lukon.
 - RCSI:n kanssa: sessio B lukee alkuperäisen version rivistä (ennen päivitystä), ilman lukkoja ja odotusta!
 
@@ -329,7 +334,6 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 - ✅ Ei enää turhia luku-lukkoja tai lukupatoutumia.
 - ⚠️ Kirjoituskonfliktit ovat edelleen mahdollisia (kuten snapshotissa yleensäkin).
 
-🎯 TL;DR:
 
 |Eristystaso	| Lukee version?	| Tarvitsee määritellä?	 | Estääkö lukot?|
 |---------------|-------------------|------------------------|---------------|
@@ -340,8 +344,8 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 
 ## SQL Serverin eristystasot: Snapshot vs. RCSI
 
-| Ominaisuus / Taso                     | Read Committed (oletus) | Snapshot Isolation           | Read Committed Snapshot (RCSI) |
-|--------------------------------------|--------------------------|------------------------------|----------------------------------|
+| Ominaisuus / Taso                    | Read Committed (oletus) | Snapshot Isolation           | Read Committed Snapshot (RCSI) |
+|--------------------------------------|-------------------------|------------------------------|--------------------------------|
 | **Näkeekö versioidun datan?**        | ❌ Ei                   | ✅ Kyllä                     | ✅ Kyllä                         |
 | **Tarvitsee erillisen asetuksen?**   | ❌ Ei                   | ✅ `SET TRANSACTION ISOLATION LEVEL SNAPSHOT` | ❌ Ei (automaattinen)           |
 | **Tarvitsee tietokanta-asetuksen?**  | ❌ Ei                   | ✅ `ALLOW_SNAPSHOT_ISOLATION ON` | ✅ `READ_COMMITTED_SNAPSHOT ON` |
@@ -414,6 +418,7 @@ Palvelin kontrolloi samanaikaisten transaktioiden dataan kohdistamia operaatioit
 Lukot ovat bittilippuja, joita voi olla erityppisiä 
 - päivityslukko (X-lukko, exclusive)
 - lukulukko (S-lukko, shared)
+
 ja eritasoisia
 - rivitason lukko (row lock)
 - datasivutason lukko (page lock)
@@ -424,6 +429,7 @@ Lukkoja ja lukitustilanteita voi tutkia näkymien avulla:
 - Sys.dm_exec_sessions
 - Sys.dm_exec_requests
 - Sys.dm_tran_locks
+
 Tai komennoilla: 
 - sp_lock [prosessin id], [prosessin id] - Tulostaa kaikki / yhden prosessin käyttämät lukot, ks. esimerkki alla
 - sp_who, sp_who2 - Näyttää infon prosesseista sekä myös blokkaustiedon
@@ -449,8 +455,10 @@ Sisäkkäiset tapahtumat
 - Rollback peruuttaa aina ennen viimeistä commitia annettuna
 
 Pari käsitettä lisää:
+
 **Blocking**
 - Prosessi joutuu odottamaan toisen prosessin varaamia resursseja
+
 **Deadlock**
 - Prosessit varaavat toistensa varaamat resurssit ristiin, eikä eteenpäin pääsyä ole
 - SQL Server purkaa automaattisesti

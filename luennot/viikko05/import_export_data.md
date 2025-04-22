@@ -71,7 +71,7 @@ Soveltuu erityisesti jos käytät Azure SQL, Blob Storagea tai muita pilvipalvel
 📝 5. Muita keinoja
 - ohjelmalliset ratkaisut tai kolmannen osapuolen sovellukset
 
-##ETL
+## ETL
 Edellä oli mainittu ETL-prosessi. Pelkän datan import/export-toimintojen ohella tehdään 'laajempia' tiedon keräys tai muokkaustoimenpiteitä tietovarastojen välillä. Tästä käytetään termiä ETL (Extract-Transform-Load):
 1. Extract (Poiminta): Tiedon kerääminen eri lähteistä, kuten tietokannoista, sovelluksista tai tiedostoista.
 2. Transform (Muunnos): Tiedon muokkaaminen, kuten puhdistus, yhdistäminen ja muotoilu, jotta se sopii kohdejärjestelmään.
@@ -94,7 +94,8 @@ Miten tämä sisältö tuodaan Tuotteet-tauluun? Tai miten Tuotteet.csv voidaan 
 Koska tällä kertaa ei ole asennettuna Visual Studiota eikä siis saada tehtyä SSIS-pakettia, käytetään toista tapaa. Tietokannasta voidaan siirtää dataa muualle tai tuoda dataa erilaisista tietolähteistä toiminnolla <Tietokanta> | Tasks | Import/Export Data..., kokeillaan siis tätä.
 
 ### Datan Export
-1. valitse tietokanta ==> Tasks | Export Data... (--> SQL Server Import and Export Wizard)
+
+1. valitse tietokanta ==> Tasks -> Export Data... (--> SQL Server Import and Export Wizard)
 2. valitse Data Source (listan viimeinen!)
 3. täytä kirjautumistiedot 
 4. valitse kohde, esimerkiksi Flat File ja määritä tiedoston nimi sekä muut tarvittavat tiedot

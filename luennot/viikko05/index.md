@@ -11,11 +11,10 @@
 - [ Tapahtumahallinta](tapahtumahallinta.md)
 - [ Import/Export ](import_export_data.md)
 
-
 # Harjoitukset
-- [Muutokset](Tehtava_01.md)
-- [Tapahtumat](Tehtava_02.md)
-- [Import/Export](Tehtava_03.md)
+- [ Muutokset ](Tehtava_01.md)
+- [ Tapahtumat ](Tehtava_02.md)
+- [ Import/Export ](Tehtava_03.md)
 
 <!-- 
 - [ Luentokalvot ](Luentokalvot_05.pdf)

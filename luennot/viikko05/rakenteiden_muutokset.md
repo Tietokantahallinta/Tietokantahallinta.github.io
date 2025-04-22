@@ -46,9 +46,11 @@ GO
 -- takaisin normaaliin tilaan:
 ALTER DATABASE AdventureWorks2022
     SET MULTI_USER;
-GO```
+GO
+```
 
 On myös mahdollista käynnistää tietokantapalvelin rajoitetussa tilassa, esimerkiksi seuraava komento sallii vain SSMS:n Query-ikkunan kautta kytkeytymisen ja siirtyy samalla single-user moodiin (on ensin stop-komennolla pysäytettävä):
+
 ```cmd
 net start "SQL Server (MSSQLSERVER)" /m"Microsoft SQL Server Management Studio - Query"
 ```
