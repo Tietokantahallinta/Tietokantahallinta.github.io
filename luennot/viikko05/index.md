@@ -13,9 +13,9 @@
 
 
 # Harjoitukset
-- [SQL](Tehtava_01.md)
-- [Seuranta](Tehtava_02.md)
-- [Suojaukset](Tehtava_03.md)
+- [Muutokset](Tehtava_01.md)
+- [Tapahtumat](Tehtava_02.md)
+- [Import/Export](Tehtava_03.md)
 
 <!-- 
 - [ Luentokalvot ](Luentokalvot_05.pdf)
