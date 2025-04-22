@@ -7,9 +7,9 @@
 
 
 # Materiaali: 
-- [ Rakenteiden muutokset ](rakenteiden_muotokset.md)
+- [ Rakenteiden muutokset ](rakenteiden_muutokset.md)
 - [ Tapahtumahallinta](tapahtumahallinta.md)
-- [ Import/Export ](impoert_export_data.md)
+- [ Import/Export ](import_export_data.md)
 
 
 # Harjoitukset
