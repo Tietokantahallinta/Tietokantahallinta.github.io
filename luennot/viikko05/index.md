@@ -7,6 +7,16 @@
 
 
 # Materiaali: 
+- [ Rakenteiden muutokset ](rakenteiden_muotokset.md)
+- [ Tapahtumahallinta](tapahtumahallinta.md)
+- [ Import/Export ](impoert_export_data.md)
+
+
+# Harjoitukset
+- [SQL](Tehtava_01.md)
+- [Seuranta](Tehtava_02.md)
+- [Suojaukset](Tehtava_03.md)
+
 <!-- 
 - [ Luentokalvot ](Luentokalvot_05.pdf)
 - [ Luentojen indekseihin liittyvien kysymysten vastauksia ](Luennot_vko5_kysymysten_vastauksia.pdf)

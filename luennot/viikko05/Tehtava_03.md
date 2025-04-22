@@ -1,6 +1,11 @@
 # Tehtävä 03:
 
-- Valitse haluamasi taulun jokin indeksi hiiren oikealla korvalla napauttaena. Valitse Reorganize. Tutki tämän jälkeen, mitä vaikutuksia operaatiolla oli. 
+Vielä pysytään Takkulassa. Tee Export-toiminto SUoritus-taululle ja koeta siirtää data Excel-tiedostoon tai vaihtoehtoisesti CSV-tiedostoon. Talleta SSIS-paketti levylle tai tietokantaan ja ajasta toiminto suorittumaan joka ilta klo 20.00.
+Jatka harjoitusta tekemällä sama BCP-sovelluksen avulla. Kokeile vielä ajastaa BCP-komento SQL Server Agent:lla tai Windows Task Schedulerilla.
+
+Palauta Moodleen kommentit kumpi oli lopulta helpompi tapa ja mieti milloin BCP voisi olla parempi tai huonompi vaihtoehto.
+
+<!-- - Valitse haluamasi taulun jokin indeksi hiiren oikealla korvalla napauttaena. Valitse Reorganize. Tutki tämän jälkeen, mitä vaikutuksia operaatiolla oli. 
 
 <br>
 
@@ -12,4 +17,4 @@ Kuva 1. AdventureWorks2012_Data.mdf erään taulun indeksin reorganisointi ja re
 - Tee kaikesta huolimatta myös harjoituksen vuoksi Rrbuild kyseiselle indeksille.
 - Millaiset olivat Rebuild:auksen vaikutukset kyseisen indeksin frakmentoitumisasteeseen?
 
-Palauta Moodleen, palautuslinkkiin  vastauksesi.
+Palauta Moodleen, palautuslinkkiin  vastauksesi. -->
