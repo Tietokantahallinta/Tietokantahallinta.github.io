@@ -305,7 +305,7 @@ Tämä vaatii, että ei ole aktiivisia yhteyksiä tietokantaan. Jos tulee virhe,
 
 Nyt kaikki transaktiot, jotka käyttävät READ COMMITTED -tasoa (oletus), lukevat snapshotin, eivät lukitsevia rivejä.
 
-🧪 RCSI-esimerkki
+**RCSI-esimerkki**
 1. Sessio A (hidas päivitys):
 
 ```sql
@@ -316,7 +316,9 @@ UPDATE Tuotteet SET Hinta = 8.99 WHERE TuoteID = 1;
 
 -- Odotetaan manuaalisesti (esim. älä paina vielä COMMIT)
 ```
+
 2. Sessio B (normaali SELECT):
+
 ```sql
 -- Ei tarvitse määritellä eristystasoa: käytetään oletusta (READ COMMITTED)
 
@@ -328,18 +330,17 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 - Ilman RCSI:tä sessio B odottaa, että sessio A vapauttaa lukon.
 - RCSI:n kanssa: sessio B lukee alkuperäisen version rivistä (ennen päivitystä), ilman lukkoja ja odotusta!
 
-
-🧠 Käytännön hyödyt RCSI:stä
+**Käytännön hyödyt RCSI:stä**
 - ✅ Parantaa suorituskykyä, kun paljon lukijoita (raportointi, dashboardit).
 - ✅ Ei enää turhia luku-lukkoja tai lukupatoutumia.
 - ⚠️ Kirjoituskonfliktit ovat edelleen mahdollisia (kuten snapshotissa yleensäkin).
 
 
-|Eristystaso	                | Lukee version? | Tarvitsee määritellä?  | Estääkö lukot?|
-|-------------------------------|----------------|------------------------|---------------|
-|Read Committed (oletus)        |❌ Ei          |❌ Ei                   |✅ Kyllä      |
-|Snapshot Isolation             |✅ Kyllä       |✅ Kyllä                |❌ Ei         |
-|Read Committed Snapshot (RCSI) |✅ Kyllä       |❌ Ei (automaattinen)   |❌ Ei         |
+| Eristystaso                   | Lukee version? | Tarvitsee määritellä?  | Estääkö lukot? |
+|-------------------------------|----------------|------------------------|----------------|
+|Read Committed (oletus)        | ❌ Ei         | ❌ Ei                  | ✅ Kyllä       |
+|Snapshot Isolation             | ✅ Kyllä      | ✅ Kyllä               | ❌ Ei          |
+|Read Committed Snapshot (RCSI) | ✅ Kyllä      | ❌ Ei (automaattinen)  | ❌ Ei          |
 
 
 ## SQL Serverin eristystasot: Snapshot vs. RCSI
@@ -354,6 +355,7 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 | **Kirjoituskonfliktit mahdollisia?** | ❌ Ei                   | ✅ Kyllä (commit-vaiheessa)  | ✅ Kyllä (commit-vaiheessa)     |
 | **Vaikuttaa tempdb-kuormaan?**       | ❌ Ei                   | ✅ Kyllä (row versioning)    | ✅ Kyllä (row versioning)        |
 | **Hyöty lukuvaltaisuudessa?**        | ❌ Ei                   | ✅ Suuri                     | ✅ Suuri                         |
+
 
 📌 Vinkki: Jos dokumentoit järjestelmäsi toimintaa tai kehitysohjeita, kannattaa liittää kaavion alle vielä huomautus esim.:
 
