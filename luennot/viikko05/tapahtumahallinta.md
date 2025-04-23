@@ -335,11 +335,11 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 - ⚠️ Kirjoituskonfliktit ovat edelleen mahdollisia (kuten snapshotissa yleensäkin).
 
 
-|Eristystaso	| Lukee version?	| Tarvitsee määritellä?	 | Estääkö lukot?|
-|---------------|-------------------|------------------------|---------------|
-|Read Committed (oletus) |	❌ Ei |	❌ Ei |	✅ Kyllä |
-|Snapshot Isolation |	✅ Kyllä |	✅ Kyllä |	❌ Ei |
-|Read Committed Snapshot (RCSI) |	✅ Kyllä |	❌ Ei (automaattinen) |	❌ Ei |
+|Eristystaso	                | Lukee version? | Tarvitsee määritellä?  | Estääkö lukot?|
+|-------------------------------|----------------|------------------------|---------------|
+|Read Committed (oletus)        |❌ Ei          |❌ Ei                   |✅ Kyllä      |
+|Snapshot Isolation             |✅ Kyllä       |✅ Kyllä                |❌ Ei         |
+|Read Committed Snapshot (RCSI) |✅ Kyllä       |❌ Ei (automaattinen)   |❌ Ei         |
 
 
 ## SQL Serverin eristystasot: Snapshot vs. RCSI
@@ -351,9 +351,10 @@ SELECT * FROM Tuotteet WHERE TuoteID = 1;
 | **Tarvitsee tietokanta-asetuksen?**  | ❌ Ei                   | ✅ `ALLOW_SNAPSHOT_ISOLATION ON` | ✅ `READ_COMMITTED_SNAPSHOT ON` |
 | **Lukee ilman lukkoja?**             | ❌ Ei                   | ✅ Kyllä                     | ✅ Kyllä                         |
 | **Kirjoitukset lukitsevat rivit?**   | ✅ Kyllä                | ✅ Kyllä                     | ✅ Kyllä                         |
-| **Kirjoituskonfliktit mahdollisia?** | ❌ Ei                   | ✅ Kyllä (commit-vaiheessa) | ✅ Kyllä (commit-vaiheessa)     |
+| **Kirjoituskonfliktit mahdollisia?** | ❌ Ei                   | ✅ Kyllä (commit-vaiheessa)  | ✅ Kyllä (commit-vaiheessa)     |
 | **Vaikuttaa tempdb-kuormaan?**       | ❌ Ei                   | ✅ Kyllä (row versioning)    | ✅ Kyllä (row versioning)        |
 | **Hyöty lukuvaltaisuudessa?**        | ❌ Ei                   | ✅ Suuri                     | ✅ Suuri                         |
+
 📌 Vinkki: Jos dokumentoit järjestelmäsi toimintaa tai kehitysohjeita, kannattaa liittää kaavion alle vielä huomautus esim.:
 
 
@@ -366,15 +367,15 @@ NOLOCK ja SNAPSHOT ISOLATION saattavat vaikuttaa samanlaisilta, koska molemmat a
 
 | Ominaisuus                            | `NOLOCK`                                      | `SNAPSHOT ISOLATION`                       |
 |---------------------------------------|-----------------------------------------------|--------------------------------------------|
-| **Lukee ilman lukkoja?**              | ✅ Kyllä                                      | ✅ Kyllä                                   |
-| **Versioitu data (row versioning)?**  | ❌ Ei                                         | ✅ Kyllä                                   |
-| **Näkeekö commitoimattomia muutoksia?**| ✅ Kyllä (dirty reads)                        | ❌ Ei                                      |
-| **Data konsistenttia koko transaktiossa?** | ❌ Ei (voi muuttua kesken transaktion)   | ✅ Kyllä (snapshot transaktion alusta)    |
-| **Rivien duplikaatit tai torn reads?**| ✅ Mahdollisia                                | ❌ Ei                                      |
-| **Vaatii tietokanta-asetuksia?**      | ❌ Ei                                         | ✅ `ALLOW_SNAPSHOT_ISOLATION ON`          |
-| **Vaikuttaa tempdb-kuormaan?**        | ❌ Ei                                         | ✅ Kyllä (version store)                  |
-| **Soveltuu tuotantoon / raportointiin?**| 🚫 Ei suositeltu (vain erityistapauksissa) | ✅ Kyllä                                   |
-| **Turvallisuus ja luotettavuus?**     | ❌ Heikko                                     | ✅ Hyvä                                    |
+| Lukee ilman lukkoja?                  | ✅ Kyllä                                      | ✅ Kyllä                                  |
+| Versioitu data (row versioning)?      | ❌ Ei                                         | ✅ Kyllä                                  |
+| Näkeekö commitoimattomia muutoksia?   | ✅ Kyllä (dirty reads)                        | ❌ Ei                                     |
+| Data konsistenttia koko transaktiossa?| ❌ Ei (voi muuttua kesken transaktion)        | ✅ Kyllä (snapshot transaktion alusta)    |
+| Rivien duplikaatit tai torn reads?    | ✅ Mahdollisia                                | ❌ Ei                                     |
+| Vaatii tietokanta-asetuksia?          | ❌ Ei                                         | ✅ `ALLOW_SNAPSHOT_ISOLATION ON`          |
+| Vaikuttaa tempdb-kuormaan?            | ❌ Ei                                         | ✅ Kyllä (version store)                  |
+| Soveltuu tuotantoon/raportointiin?    | 🚫 Ei suositeltu (vain erityistapauksissa)    | ✅ Kyllä                                  |
+| Turvallisuus ja luotettavuus?         | ❌ Heikko                                     | ✅ Hyvä                                   |
 
 
 **Esimerkki:** miten ne käyttäytyvät eri tilanteissa
@@ -400,7 +401,7 @@ SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
 BEGIN TRANSACTION;
 SELECT * FROM Asiakkaat;
 COMMIT;
-→ Ei odota lukkoja, mutta ei näe Transaktio A:n tekemättömiä muutoksia.
+-- Ei odota lukkoja, mutta ei näe Transaktio A:n tekemättömiä muutoksia.
 ```
 
 NOLOCK on sopiva kun tarvitaan mahdollisimman nopea luku ja ei ole katastrofi jos data on osin virheellistä. SNAPSHOT tai RCSI silloin datan pitää olla luotettavaa ja luku ei saa lukita mitään.
