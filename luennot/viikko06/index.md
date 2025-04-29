@@ -12,7 +12,7 @@
 
 # Tehtävät:   
 
-- [Tehtävä 1: Tietokantan eheyden tarkistaminen](Tehtava_01.md)
+- [Tehtävä 1: Tietokannan eheyden tarkistaminen](Tehtava_01.md)
 - [Tehtävä 2: Varmistukset](Tehtava_02.md)
 - [Tehtävä 3: Koekysymys](Tehtava_03.md)  
 
