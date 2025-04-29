@@ -25,18 +25,18 @@ dbcc checkdb ('tietokannan_nimi');
 Esimerkiksi:
 ```sql
 --Siirry ensin Single User tilanna tietokannassa ensin:<br>
-alter database Tietokannan_nimi;
+alter database Tietokannan_nimi
 set single_user;
 go;
 ```
-Nopeita pieniä vikoja eheysehdoissa voi korjata komennolla:
+Pieniä vikoja eheysehdoissa voi korjata komennolla:
 ```sql
 dbcc checkdb ('Tietokannan_nimi', repair_fast);
 go;
 ```
 Edellinen komento ei korjaa indeksejä tietokannassa. Ve voi korjata komennolla:
 ```sql
-dbcc checkdb ('Tietokannan_nimi', repair_rebuild);<br>
+dbcc checkdb ('Tietokannan_nimi', repair_rebuild);
 go;
 ```
 Jos tilanne eheysehtojen korjaamisessa tietokannassa on niin huono, että kumpikaan yllä olevista komennoista ei niitä korjaa, voi yrittää seuraavaa dramaattisempaa komentoa:

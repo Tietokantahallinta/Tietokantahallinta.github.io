@@ -6,10 +6,10 @@
 - Auttaa jatkuvassa ylläpidossa ja optimoinnissa
 - Vähentää seisokkeja ja tietoturvariskejä
 
-2. 🔍 **Seurattavia asioita SQL Serverissä
-**
+2. 🔍 **Seurattavia asioita SQL Serverissä**
+
 | Mitä kannattaa seurata?           | Miksi?                                       |
-|----------------------------------|----------------------------------------------|
+|-----------------------------------|----------------------------------------------|
 | Levytila                          | Estää varmistusten ja lokien epäonnistumisen |
 | Tietokannan koko ja kasvu         | Hallitsee levyresursseja                     |
 | Lokitiedostojen koko              | Estää transaktiolokin täyttymisen            |

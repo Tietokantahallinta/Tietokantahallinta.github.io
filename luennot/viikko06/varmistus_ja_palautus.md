@@ -3,6 +3,7 @@
 Tieto on arvokasta, virheellinen tai puuttuva tieto on arvotonta. Tietokannoissa voi aina mennä jotain pieleen ja siksi tietojen varmistaminen ja palauttaminen on keskeistä liiketoiminnan jatkuvuuden kannalta. Riski ilman varmistuksia on tiedon menetys ja siitä aiheutuvat virhetilanteet tai jopa liiketoiminnan keskeytykset.
 
 Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma tehdään sen perusteella, miten paljon ollaan valmiita menettämään dataa pahimmassa tapauksessa. Samoin varmistusten lisäksi pitää harjoitella ja testata tietokannan palauttaminen RESTORE), varmistuksesta ei ole apua, jos palautus ei onnistu tai palauttaminen kestää liian kauan.
+
 **Varmistusstrategiat**
 1. **RPO (Recovery Point Objective):**
 - Kuinka paljon tietoa voidaan menettää.
@@ -381,7 +382,8 @@ SELECT * FROM DemoTable;
 ----------
 
 ## Miten SQL Server -varmistukset kannattaa ajastaa?
-1. Ymmärrä tarpeet:
+
+Ymmärrä tarpeet:
 - RPO (Recovery Point Objective)<br>
 = Kuinka paljon tietoa voidaan menettää? (esim. 5 min, 1 tunti, 1 päivä?)
 
@@ -452,8 +454,8 @@ WITH INIT, NAME = '15 min Lokivarmistus';
 ## Varmistukset SQL Serverin ulkopuolelta
 Varmistukset voi tehdä SQLCMD-sovelluksen avulla ja ajastaa Windowsin Task Schedulerilla. Tarvitaan ensin cmd-tiedosto (tai bat) joka sisältää varmistuksen ottamisen. Tässä esimerkissä otetaan varmistuksen joka päivä ja kierrätetään varmistustiedostoa viikon kuluttua:
 ```code
-sqlcmd -E -Q "backup database Formula1 to disk = 'c:\temp\cmdtesti\F1.bak' "
-Xcopy .\F1.bak .\F1_%date:~0,3%.bak /Y /-I
+sqlcmd -E -Q "backup database Formula1 to disk = 'c:\temp\backup\F1.bak' "
+Xcopy c:\temp\backup\F1.bak c:\temp\jemma\F1_%date:~0,3%.bak /Y /-I
 ```
 Ajastus Task Schedulerilla. Tämä on siis vaihtoehtoinen ja täysin toimiva tapa ottaa ajastettuja varmistuksia.
 
@@ -603,7 +605,7 @@ WITH INIT, FORMAT, NAME = 'Daily Full Backup';
 2. Luo ajettava komentorivi (.bat tiedosto tai suora komento)
 Voit tehdä erillisen .bat-tiedoston (esim. RunBackup.bat), jossa on:
 ```sql
-sqlcmd -S localhost -d master -E -i "C:\BackupScripts\FullBackup.sql"
+sqlcmd -S localhost -d master -E -i "C:/BackupScripts/FullBackup.sql"
 ```
 Selitykset:
 - -S localhost → palvelimen nimi (tai instanssin nimi, esim. localhost\SQLExpress)
@@ -630,7 +632,7 @@ Selitykset:
 - Program/script: sqlcmd
 - Add arguments:
 
-´´´sql
+```sql
 -S localhost -d master -E -i "C:\BackupScripts\FullBackup.sql"
 ```
 Tai jos käytät .bat-tiedostoa:
