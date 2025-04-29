@@ -8,7 +8,7 @@
 # Materiaali:
 
 - [Tietokannan varmistaminen ja palautus](varmistus_ja_palautus.md)
-- [Hälätykset](alertit.md)
+- [Hälytykset](alertit.md)
 
 # Tehtävät:   
 
