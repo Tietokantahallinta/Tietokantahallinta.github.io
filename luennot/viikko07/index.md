@@ -1,9 +1,11 @@
 # Vko 07
 # Tavoitteet:
 
-- Varmistukset ja palauttaminen
-- SQL Server Agent
-- Hälytykset
+
+- indeksit, klusteroitu indeksi ja 'tavallinen' indeksi (toisioindeksi)
+- indeksien hallinnointi
+- taulun eheyttäminen ja seuranta
+- SQL Query Optimization
 - Koe-alue
 
 # Materiaali: 
