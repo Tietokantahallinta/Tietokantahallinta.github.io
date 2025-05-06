@@ -303,6 +303,15 @@ ALTER INDEX ALL ON Tuotteet REBUILD;
 ALTER INDEX ALL ON Tuotteet REORGANIZE;
 ```
 
+**📅 Milloin huoltaa?**
+- Säännöllinen ajastus (esim. yöaikaan, viikoittain)
+- ETL- tai massapäivitysten jälkeen
+- Suorituskykyongelmia tutkiessa
+- Fragmentaation ylittäessä 5 % tai 30 % rajan
+
+**🎓 Vinkki: Automaattinen huolto**
+Voit automatisoida indeksien huollon SQL Server Agent -jobin tai huoltosuunnitelmien avulla. Kehittyneempi vaihtoehto on käyttää dynaamista skriptiä, joka valitsee REORGANIZE tai REBUILD automaattisesti fragmentaation perusteella.
+
 -----
 
 
