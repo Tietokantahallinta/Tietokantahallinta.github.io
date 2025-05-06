@@ -7,7 +7,7 @@ Eräs tietokannan suorituskykyyn liittyvä asia on indeksointi.
 - Datatiedosto koostuu 64 kilotavun extenteistä
 - Extent sisältää 8 peräkkäistä 8 kilotavun sivua
 - Sivu on aina 8 Kt ja on pienin IO-yksikkö muistin ja levyn välillä
-    -Sivu sisältää 1–n kpl saman taulun tai indeksin riviä
+    - Sivu sisältää 1–n kpl saman taulun tai indeksin riviä
     - Vakiomittaisen rivin pitää mahtua sivulle,  rivin maksimi pituus 8000 tavua
     - Poikkeus: vaihtuvamittaiset rivit ja lob-tietotyypit (varchar(MAX), navarchar(MAX), varbinary(MAX), text, ntext ja image sallivat 2 GB dataa)
 
@@ -27,7 +27,7 @@ IAM-sivun tehtävänä on pitää kirjaa, mitkä extentit (fyysiset alueet levyl
 Kun SQL Server tarvitsee lukea tietoa (suorittaa hakua tai etsii päivitettäviä rivejä), se voi käyttää IAM-sivuja selvittääkseen nopeasti, missä kohdin levyä kyseisen taulun tai indeksin tiedot sijaitsevat ilman, että sen tarvitsee lukea koko tietokantatiedostoa läpi. IAM on siis eräänlainen hakemisto tietokannan sisällä, joka SQL Server käyttää hyväkseen hakiessaan tietoja levyltä. 
 
 ## Indeksi
-Ilman indeksejä rivien haku pitää tehdä ns. Table Scan-toiminnolla eli selata kaikki rivit läpi. Taulun rivit löytyy IAM.n avulla. Indeksointi nopeuttaa haun kohteena olevien rivien löytymistä. Jos taulussa on vain vähän rivejä (kymmeniä tai satoja), on Table Scan tehokas tapa etsiä sataa. Useimmiten rivejä on kuitenkin paljon enemmän jolloin jos haetaan where-ehdolla jotain tiettyjä rivejä, olisi hyvä löytää oikeat rivit mahdollisimman vähillä tiedosto-IO -toiminnoilla. Levykäsittely on hidasta verrattuna datan käsittelyyn keskusmuistissa.
+Ilman indeksejä rivien haku pitää tehdä ns. Table Scan-toiminnolla eli selata kaikki rivit läpi. Taulun rivit löytyy IAM.n avulla. Indeksointi nopeuttaa haun kohteena olevien rivien löytymistä. Jos taulussa on vain vähän rivejä (kymmeniä tai satoja), on Table Scan tehokas tapa etsiä dataa. Useimmiten rivejä on kuitenkin paljon enemmän, jolloin jos haetaan where-ehdolla jotain tiettyjä rivejä, olisi hyvä löytää oikeat rivit mahdollisimman vähillä tiedosto-IO -toiminnoilla. Levykäsittely on hidasta verrattuna datan käsittelyyn keskusmuistissa.
 
 Indeksit on toteutettu B-puu rakenteen avulla, josta löytyy joko rivin sisältämä sivu tai suoraan rivin positio. Indeksi tavoitteena on minimoida datan hakemiseen käytettävä aika ja levykäsittely. Indeksi siis parantaa suorituskykyä, mutta ei kaikissa tilanteissa. Indeksejä on myös ylläpidettävä (päivitettävä) aina kun taulun sisältö muuttuu indekseihin kuuluvien sarakkeiden osalta. Kaikki INSERT, UPDATE ja DELETE -toiminnot yleensä aiheuttavat indeksin B-puun päityksiä. Indeksille joutuu allokoimaan lisää sivuja tietokannasta ja tekemään ns. splittauksia eli B-puun sivuja jaetaan useampaan osaan. Kaikki indeksin muutokset vaativat siis prosessoriaikaa ja levy-IO toimintoja. Siksi kannattaa miettiä tarkkaan mitä kannattaa indeksoida suhteessa datan käsittelytapaan ja -logiikkaan. OLTP tietokannassa optimaalinen indeksointi on varmasti erilainen kuin OLAP-tietokannassa, jossa pääsääntöisesti tulee lukuoperaatoita kun OLTP:ssä tulee paljon päivitystoimintoja.
 
@@ -80,7 +80,7 @@ Pääjako SQL Serverin indekseissä on clustered ja non-clustered -indeksit, Nä
 Todellisuudessa SQL Server tukee ja käyttää montaa erilaista [indeksityyppiä](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/indexes?view=sql-server-ver16). Näitä kaikkia ei käydä läpi tällä kurssilla, keskitytään ensi pääasiaan jotka on pakko tietää ja tuntea tietokantojen optimoinnissa ja hallinnassa.
 
 ### Indeksit taulun luonnissa
-Kun luot taulun jossa on PROMERY KEY, muodostuu automaattisesti myös indeksi joka on clustered-tyyppinen (ja unique):
+Kun luot taulun jossa on PROMERY KEY, muodostuu automaattisesti myös indeksi, joka on clustered-tyyppinen (ja unique):
 ```sql
 CREATE TABLE Esimerkki (
     ID INT PRIMARY KEY,
@@ -91,7 +91,7 @@ CREATE TABLE Esimerkki (
 sp_help Esimerkki;
 ```
 
-Jos jostain syystä halutaan normaali indeksi clusteroidun tilalle, voidaan indeksti poistaa ja luoda uudelleen tai sitten luonnin yhdeydessä määriteään indeksin tyyppi:
+Jos jostain syystä halutaan normaali-indeksi clusteroidun tilalle, voidaan indeksi poistaa ja luoda uudelleen tai sitten luonnin yhdeydessä määritetään indeksin tyyppi:
 ```sql
 CREATE TABLE Esimerkki (
     ID INT NOT NULL,
@@ -135,7 +135,7 @@ Huom. jos CREATE TABLE -komennossa sarakkeeseen liittyy UNIQUE-rajoite, muodostu
 
 ## Indeksisarakkeet ja INCLUDE
 
-Indeksissä voidaan INCLUDE-lauseella ottaa mukaan myös lisäsarakkeita, jolloin kysely voidaan käsitellä vain indeksiä lukemalla ilman että tarvitsee taulu sivuilta käydä hakemassa mitään. 
+Indeksissä voidaan INCLUDE-lauseella ottaa mukaan myös lisäsarakkeita, jolloin kysely voidaan käsitellä vain indeksiä lukemalla ilman että tarvitsee taulun datasivuilta käydä hakemassa mitään. 
 Esimerkki miten INCLUDE:lla lisätään dataa indeksisivuille:
 ```sql
 CREATE NONCLUSTERED INDEX IX_Tuotteet_Tyyppi
@@ -150,7 +150,7 @@ FROM Production.Product
 WHERE Color = 'Red';
 ```
 Ilman sopivaa indeksiä SQL Server tekee taulun skannauksen (table scan) joka on hidasta isoissa tauluissa.
-Lisätää indeksim jossa on mukana muita sarakkeita:
+Lisätää indeksi, jossa on mukana muita sarakkeita:
 ```sql
 CREATE NONCLUSTERED INDEX IX_Product_Color
     ON Production.Product (Color)
