@@ -81,6 +81,23 @@ Azure SQL -palveluiden hinnoittelu perustuu useisiin tekijöihin:
 
 ---
 
+**📊 Vertailu (kustannukset + ominaisuudet)**
+
+| Ominaisuus | Azure SQL Database | Azure SQL Managed Instance |
+|----------------------------------------------------------------------|--------------------------------------|-----------------------------|
+| Kustannustaso                                                        |✅ Halvempi (alhaisimmillaan ~5 €/kk) | ❌ Kalliimpi (alkaa useista kymmenistä euroista/kk) |
+| Laskutusmalli                                                        | DTU tai vCore                      | Ainoastaan vCore |
+| Minimiresurssit                                                      | Pieniä, 1 vCore mahdollinen        | Vähintään 2 vCore |
+| Täysi SQL Server -yhteensopivuus	                                   | ❌ Osittainen        | ✅ Täysi yhteensopivuus |
+| Palvelimen ominaisuudet (SQL Agent, DB Mail, cross-db queries, jne.) | ❌ Rajalliset / puuttuvat | ✅ Sisältyy |
+| Verkkoliikenne                                                       | Julkinen tai yksityinen | Vain VNet (erillinen konfigurointi) |
+| Käyttötarkoitus                                                      | Kevyet tai keskisuuret sovellukset | Siirrettäessä olemassa oleva SQL Server pilveen |
+
+
+
+
+---
+
 ## Yhteenveto
 
 Azure SQL tarjoaa joustavan ja hallitun tavan käyttää relaatiotietokantoja pilvessä. Valittavissa on eri palvelumalleja tarpeen mukaan – kevyistä, täysin hallituista ratkaisuista aina täyteen kontrolliin IaaS-muodossa. Siirtymä vaatii suunnittelua, mutta tuo merkittäviä hyötyjä ylläpidon helppouden, saatavuuden ja skaalautuvuuden osalta.
