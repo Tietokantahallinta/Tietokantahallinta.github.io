@@ -226,6 +226,7 @@ Mitä käytännössä tapahtuu?
 - FILLFACTOR = 80: jokaisella sivulla on 20 % tilaa tuleville arvoille → lisäys ilman splittausta mahdollista.
 
 **Yhteenveto**
+
 | Termi      | Tarkoitus                                                                |
 |------------|--------------------------------------------------------------------------|
 | Page Split | Sivu täyttyy, jaetaan kahteen osaan lisäyksen vuoksi                     |
