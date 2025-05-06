@@ -1,6 +1,7 @@
 # Tehtävä 01:
 
-- Tallennetut proseduurit. Microsoft Transact SQL, T-SQL
+
+<!-- - Tallennetut proseduurit. Microsoft Transact SQL, T-SQL
 - Tietokannan varmistuksen automatisointi ja ajastus
 
 - Perehdy SQL Server Agent:iin koulun SQL-EDU-02 SQL Server palvelimella.
@@ -9,4 +10,4 @@
 - Miten se kannattaa tehdä? Kannattaako aina tehdä ns. full backup? Milloin kannatta ryhtyä tekemään ns. Incremental backup:ia.
 - Miten teet näitä käyttäen ajastuksen varmistuksesta tietokannalle?
 
-Palauta tämän jälkeen Moodleen, palautuslinkkiin  vastaus tehtävään.
+Palauta tämän jälkeen Moodleen, palautuslinkkiin  vastaus tehtävään. -->

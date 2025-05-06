@@ -2,5 +2,5 @@
 
 - 
 
-
-Palauta tämän jälkeen Moodleen, palautuslinkkiin vastauksesi.
+<!-- 
+Palauta tämän jälkeen Moodleen, palautuslinkkiin vastauksesi. -->
