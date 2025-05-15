@@ -1,6 +1,6 @@
 # Tehtävä 03:
 
-Vielä pysytään Takkulassa. Tee Export-toiminto SUoritus-taululle ja koeta siirtää data Excel-tiedostoon tai vaihtoehtoisesti CSV-tiedostoon. Talleta SSIS-paketti levylle tai tietokantaan ja ajasta toiminto suorittumaan joka ilta klo 20.00.
+Vielä pysytään Takkulassa. Tee Export-toiminto Suoritus-taululle ja koeta siirtää data Excel-tiedostoon tai vaihtoehtoisesti CSV-tiedostoon. Talleta SSIS-paketti levylle tai tietokantaan ja ajasta toiminto suorittumaan joka ilta klo 20.00.
 Jatka harjoitusta tekemällä sama BCP-sovelluksen avulla. Kokeile vielä ajastaa BCP-komento SQL Server Agent:lla tai Windows Task Schedulerilla.
 
 Palauta Moodleen kommentit kumpi oli lopulta helpompi tapa ja mieti milloin BCP voisi olla parempi tai huonompi vaihtoehto.

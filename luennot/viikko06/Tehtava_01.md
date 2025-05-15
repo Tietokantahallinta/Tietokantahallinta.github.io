@@ -1,13 +1,14 @@
 # Tehtävä 01:
 
 Tehtävässä käytettävä tietokanta löytyy [osoitteesta](https://drive.google.com/file/d/1MYXUdgR0vz_YPBeHOA-oS0Uo-gPAFZe_/view?usp=drive_link). 
-Kyseessä on erän SQL Serverin virallisista demotietokannointa.
+Kyseessä on erän SQL Serverin virallisista demotietokannoista.
 
-1. Lataa tiedosto, kopioi se sopivaan paikkaan ja ota tietokanta käyttöön. Tiedostopäätteen perusteella pystyt päättelemään miten saat sen tehtyä (restore tai attach). Toiminnon voi tehdä joko SSMS:n käyttöliittymän kautta tai TSQL-komennolla.
+1. Lataa tiedosto, kopioi se sopivaan paikkaan ja ota tietokanta käyttöön. Tiedostopäätteen perusteella pystyt päättelemään miten saat sen tehtyä (restore vai attach). Toiminnon voi tehdä joko SSMS:n käyttöliittymän kautta tai TSQL-komennolla.
 
-2. Selvitä tietokannan taulujen fragmentoitumisaste. Esimerkiksi AdventureWorks2012_Data tietokannan Person.Contact taulun fragmentoitumisasteen saa selville SQL Server:ssä komennolla:<br>
+2. Selvitä tietokannan taulujen fragmentoitumisaste. Esimerkiksi AdventureWorks2012_Data tietokannan Person.Contact taulun fragmentoitumisasteen saa selville SQL Server:ssä komennolla:
+<br>
 ```sql
-dbcc showcontig(’Purchasing.PurchaseOrderHeader’);
+dbcc showcontig('Purchasing.PurchaseOrderHeader');
 ```
 
 - Millainen on kyseisen taulun fragmentoitumisaste?

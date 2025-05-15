@@ -6,6 +6,7 @@ Kahden eri transaktion (esim. kahden eri käyttäjän tai ikkunan) kilpailutilan
 - Tee seuraavanlainen tehtävä SQL Server:in Management Studiossa.
 - Tee Pankki niminen tietokanta.
 - Luo sinne tietokanta taulu, jonka nimi on tilit: 
+
 ```sql
 create table tilit
     (tiliNro int primary key,
@@ -13,11 +14,12 @@ create table tilit
 );
 ```
 - Lisää sen jälkeen tilit tauluun muutama tili tieto tilinumerolle 1001001 ja 1001002:
+
 ```sql
 insert into tilit (tiliNro, summa) VALUES (1001001,700);
 insert into tilit (tiliNro, summa) VALUES (1001002,500.5);
 
--- Varmistu, että rivien lisäämenen tauluun onnistui:
+-- Varmistu, että rivien lisääminen tauluun onnistui:
 select * from tilit;
 ´
 -- Tuloksena pitäisi tulla vastaus:
@@ -44,6 +46,7 @@ select * from tilit;
 ```
 
 - Siirry takaisin Ikkuna 1:een
+
 ```sql
 select * from tilit;
 ```

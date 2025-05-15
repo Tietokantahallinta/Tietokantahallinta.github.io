@@ -4,7 +4,6 @@
 
 Tässä harjoituksessa huomaat, miten indeksin fillfactor vaikuttaa päivitysten jälkeen syntyvään fragmentaatioon ja kuinka SQL Server tarjoaa kaksi vaihtoehtoa indeksin ylläpitoon: **reorganize** ja **rebuild**.
 
----
 
 1. Luo testitaulu AdventureWorksin yhteyteen
 
@@ -39,15 +38,18 @@ WITH (FILLFACTOR = 90);
 ```
 🔍 Fillfactor 90 % tarkoittaa, että sivuille jätetään 10 % tilaa tulevia muutoksia varten.
 
-3. Päivitä dataa niin, että sivut hajoavat (page splits)
+3. Päivitä dataa niin, että sivut hajoavat (page splits):
+
 ```sql
 UPDATE dbo.CustomerTest
 SET Name = Name + ' updated'
 WHERE CustomerID % 10 = 0;
 ```
+
 🔄 Tässä päivitetään joka kymmenes rivi – monissa tapauksissa tiedon pidentyminen aiheuttaa sivujen jakautumista.
 
 4. Tarkista indeksin pirstoutuminen (fragmentaatio)
+
 ```sql
 SELECT 
     ips.index_id,
@@ -65,6 +67,7 @@ JOIN sys.indexes AS i
     ON ips.object_id = i.object_id AND ips.index_id = i.index_id
 WHERE ips.page_count > 100;
 ```
+
 📉 Jos avg_fragmentation_in_percent on yli 10–15 %, indeksi kannattaa reorganisoida. Jos se on yli 30 %, kannattaa uudelleenrakentaa.
 
 5. Korjaa pirstoutunut indeksi
