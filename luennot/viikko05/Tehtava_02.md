@@ -13,7 +13,7 @@ create table tilit
     summa money
 );
 ```
-- Lisää sen jälkeen tilit tauluun muutama tili tieto tilinumerolle 1001001 ja 1001002:
+- Lisää sen jälkeen tilit-tauluun muutama tilitieto tilinumerolle 1001001 ja 1001002:
 
 ```sql
 insert into tilit (tiliNro, summa) VALUES (1001001,700);
