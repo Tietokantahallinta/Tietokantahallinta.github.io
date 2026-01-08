@@ -24,7 +24,7 @@ CREATE [ OR ALTER ] TRIGGER [ schema_name.]trigger_name
 AS { sql_statement  [ ; ] [ ,...n ] | EXTERNAL NAME <method specifier [ ; ] > }  
 ```
 
-Triggerin toiminta, trigger käynnistyy aina muutoksen jälkeen (AFTER-trigger, on oletus). CHECK-konstraintilla pystyy tekemään samoja asioita kuin triggereillä, mutta CHECK suoritetaan aina ennen päivitystä. INSTEAD OD -tyyppinen trigger korvaa päivityslauseen, yleensä tätä käytetään näkymien yhteydessä ja on käytännössä harvinaisempi. Trigger sisältää TSQL-komentoja, mutta ei kaikkia. Esimerkiksi komentoja; CREATE DATABASE, CREATE PROCEDURE, CREATE TABLE, ALTER TABLE, DROP TABLE, jne ei voi käyttää. Triggerin talletuksessa tulee virheilmoitus jos koetat käyttää jotain kiellettyä komentoa, mutta hyvin harvoin sellainen tulee edes käytännössä vastaan.
+Triggerin toiminta, trigger käynnistyy aina muutoksen jälkeen (AFTER-trigger, on oletus). CHECK-konstraintilla pystyy tekemään samoja asioita kuin triggereillä, mutta CHECK suoritetaan aina ennen päivitystä. INSTEAD OF -tyyppinen trigger korvaa päivityslauseen, yleensä tätä käytetään näkymien yhteydessä ja on käytännössä harvinaisempi. Trigger sisältää TSQL-komentoja, mutta ei kaikkia. Esimerkiksi komentoja; CREATE DATABASE, CREATE PROCEDURE, CREATE TABLE, ALTER TABLE, DROP TABLE, jne ei voi käyttää. Triggerin talletuksessa tulee virheilmoitus jos koetat käyttää jotain kiellettyä komentoa, mutta hyvin harvoin sellainen tulee edes käytännössä vastaan.
 
 Triggereiden avulla ei enää kannata huolehtia viiteavaineheydestä, FOREIGN KEY -määritys on parempi. Edelleen sopivia käyttökohteita ovat suojaukset, lokitietojen kirjaus ja tiedon automaattinen laskenta esimerkkeinä mainittuna.
 
