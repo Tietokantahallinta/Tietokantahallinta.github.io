@@ -1,6 +1,8 @@
 # Asentaminen
 
-SQL Serveistä on olemassa monta erilaista versiota, tällä kurssilla käytetään Developer Edition:ia, se on oikea tietokantapalvelin ja sitä saa käyttää kehitys ja testauskäytössä.
+SQL Serveistä on olemassa monta erilaista versiota, tällä kurssilla käytetään Developer Edition:ia. Developer Edition on tarkoitettu testaus- sekä kehityskäyttöön ja on teknisesti sama kuin maksullinen tuote. 
+
+SQL Serveristä on olemassa useita eri tuotteita (Edition), joista lisätietoa löytyy [täältä](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2025?view=sql-server-ver17)
 
 Tietokantapalvelimen asennus:
 [Microsoft SQL Server asennus](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
@@ -8,8 +10,9 @@ Tietokantapalvelimen asennus:
 Hallintatyökalu: 
 [Microsoft SQL Server Management Studio, SSMS ](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms)
 
-Vaihtoehto SSMS:lle:
-[Azure Data Studio](https://learn.microsoft.com/en-us/azure-data-studio/download-azure-data-studio?tabs=win-install%2Cwin-user-install%2Credhat-install%2Cwindows-uninstall%2Credhat-uninstall)
+Vaihtoehto SSMS:lle on VS Code:
+[MSSQL Extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
+
 
 Asennusjärjestys on yksinkertainen, ensin kannattaa asentaa Tietokantapalvelin ja vasta sitten muut tarvittavat ohjelmistot (SSMS, ADT).
 
@@ -19,10 +22,10 @@ Tällä kurssilla jokainen asentaa SQL Serverin omalle koneelle, asennus vaatii 
 
 Asennusohjeet löytyy täältä: [asennusohje](https://learn.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server?view=sql-server-ver16)
 
-Katsotaan kuitenkin asennuksen vaiheet yksi kerrallaan täältä: [step-by-step](https://www.csharp.com/article/step-by-step-installation-of-microsoft-sql-server-on-windows-system/) tai täältä [installation guide](https://www.visual-expert.com/EN/visual-expert-documentation/install-and-configure-visual-expert/sql-server-2019-installation-guide-visual-expert.html), näiden sivujen kautta pääsee tutustumaan asennusohjelman vaiheisiin ja asetuksiin, joten niitä voi selvitellä jo etukäteen. 
+Katsotaan kuitenkin asennuksen vaiheet yksi kerrallaan tästä ohjeesta: [step-by-step](https://www.csharp.com/article/step-by-step-installation-of-microsoft-sql-server-on-windows-system/) tai täältä [installation guide](https://www.visual-expert.com/EN/visual-expert-documentation/install-and-configure-visual-expert/sql-server-2019-installation-guide-visual-expert.html), näiden sivujen kautta pääsee tutustumaan asennusohjelman vaiheisiin ja asetuksiin, joten niitä voi selvitellä jo etukäteen. 
 Tunnilla käydään koko asennus vaiheittain läpi selityksineen.
 
-Oletuksena asennus onnistuu. Jos jotain outoa tapahtuu asennuksessa, koetetaan vikoja selvitellä tunnin aikana tai jälkikäteen Teamsin kautta.
+Oletuksena asennus onnistuu. Jos kuitenkin jotain outoa tapahtuu asennuksessa, koetetaan vikoja selvitellä tunnin aikana tai jälkikäteen Teamsin kautta.
 
 Samaan palvelimeen (ja samalle työasemalle) voi asentaa useita SQL Server:eitä. Ensimmäinen on ns. oletusinstanssi, jolla ei ole nimeä. Muut asennukset ovat nimettyjä instansseja ja kirjautumisessa palvelimen nimeen lisätään instanssin nimi. Tällä kurssilla riittää yksi asennettu instanssi.
 
@@ -38,7 +41,7 @@ Tietokantapalvelimen ohella asentuu myös muita sovelluksia, esimerkiksi *SQL Se
 
 Configuration Managerilla voit myös hallita palvelinta käynnistysten osalta. Sen lisäksi tällä sovelluksella voit määritellä mitkä kommunikointiprotokollat ovat käytössä (Shared Memory, Named Pipes, TCP/IP). Jaettu muisti on oletuksena paikallisessa kommunoikoinnissa ollen myös nopein. Nimetyt putket ovat jo historian havinaa, verkossa liikennöidessä käytetään TCP/IP:tä. Nimetty putki voi olla tarpeen jokin todella vanhan client-kirjaston käytön yhteydessä. 
 
-### SSMS ja ADT 
+### SSMS ja/tai MSSQL Extension (VS Code)
 Näiden asennus menee oletusarvoilla. Asennuksen jälkeen onkin vuorossa tarkistus, että tietokantapalvelimeen pääset tietokantaan kiinni SSMS:llä.
 
 SQL Serverin asennuksessa koneelle asentuu myös osql ja **SQLCMD**, nämä ovat komentorivipohjaisia hallintatyökaluja. Käynnistä komentotulkki (Command prompt) ja anna komento:

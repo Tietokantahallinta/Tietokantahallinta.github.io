@@ -28,18 +28,19 @@ Eri asetukset on helpointa käydä läpi käyttöliittymän kautta, kaikki samat
 ![New Database](NewDBPages.JPG)
 
 ### General
-Tässä määritellään tietokannan nimi. Nimi noudattaa SQL Server:in objektien nimisääntöjä, jolloin nimi voi olla melkein mitä tahansa.Kuitenkin kannattaa nimetä tietokanta konservativisesti, ei siis erikoismerkkenä yms kikkailua, siitä ei ole käytännössä hyötyä vaan pelkästään käytännön haittaa.
+Tässä määritellään tietokannan nimi. Nimi noudattaa SQL Server:in objektien nimisääntöjä, jolloin nimi voi olla melkein mitä tahansa. Kuitenkin kannattaa nimetä tietokanta konservativisesti, ei siis erikoismerkkenä yms kikkailua, siitä ei ole käytännössä hyötyä vaan pelkästään käytännön haittaa.
 
 Tietokannan omistajaksi tulee oletuksena komennon suorittava käyttäjä (login), omistajan voi valita listalta olemassa olevista login-tunniksista. Login/User-käsitteestä tuonnempana lisää.
 
-Tietokanta muodostuu vähintään kahdesta tiedostosta, varsinainen tietokantadata .MDF-päätteinen tiedosto (File Type: ROWS) ja lisäksi transaktiolokitiedosto LDF-päätteellä. Oletuksena tiedostot tulevat asennushakemiston alle tai hakemistoon, joka on tietokantapalvelimen asetuksissa määritelty. Paikallisesti asennettuna oletus on hyvä, mutta tuotantoympäristössä kannattaa tietokantatiedostot sijoittaa omalle levylle ja mahdollisesti jopa data ja loki eri levyille. Näin saa lisää suorituskykyä kun levy-IO jakaantuu eri levyille.   
-Tietokannan koko voidaan asettaa, oletuksena 8Mt. Tietokannan koko voi kasvaa automaattisesti tai koko voidaan rajoittaa tiettyyn arvoon. Jos koko saa kasvaa automaattisesti ja levytila loppuu, loppuu myös tietokannan käyttö ja vaatii hallintatoimenpiteitä. Esimerikiksi virtuaalikoneeseen lisää levyä tai perinteiseen laitteistoon levyn siivous ja sitten siirto toiselle levylle tai uusien tietokantatiedostojen avulla jatketaan tallennnusta useammalle levylle.
+Tietokanta muodostuu vähintään kahdesta tiedostosta, varsinainen tietokantadata .MDF-päätteinen tiedosto (File Type: ROWS) ja lisäksi transaktiolokitiedosto LDF-päätteellä. Oletuksena tiedostot tulevat asennushakemiston alle tai hakemistoon, joka on tietokantapalvelimen asetuksissa määritelty. Paikallisesti asennettuna oletus on hyvä, mutta tuotantoympäristössä kannattaa tietokantatiedostot sijoittaa omalle levylle ja mahdollisesti jopa data ja loki eri levyille. Näin saa lisää suorituskykyä koska levy-IO jakaantuu eri levyille.  
+
+Tietokannan koko voidaan asettaa, oletuksena 8Mt. Tietokannan koko voi kasvaa automaattisesti tai koko voidaan rajoittaa tiettyyn arvoon. Jos koko saa kasvaa automaattisesti ja levytila loppuu, loppuu myös tietokannan käyttö ja vaatii hallintatoimenpiteitä. Esimerkiksi virtuaalikoneeseen lisää levyä tai perinteiseen laitteistoon levyn siivous ja sitten siirto toiselle levylle tai uusien tietokantatiedostojen avulla jatketaan tallennnusta useammalle levylle.
 
 ### Options
 
 Sivun alussa on neljä asetusta ja n+1 kappaletta vielä alla listassa.
 
-**Collation** määrittää 'merkistön', jonka mukaan palvelin vertailee ja lajittelee tekstiä. Oletuksena käytetään palvelimen oletusta, muutoin valitaan tilanteeseen sopiva. Kollaatioiden nimissä näkyy usein CI/CS ja AI/AS, nämä tarkoittavat Case Insensitive, Case Sensitive, Accent Insensitive ja Accent Sensitive. Kannatta huomata, että löytyy Finnish_Swedish -kollaatio, joka lienee aika sopiva tähän ilmastoon.
+**Collation** määrittää 'merkistön', jonka mukaan palvelin vertailee ja lajittelee tekstiä. Oletuksena käytetään palvelimen oletusta, muutoin valitaan tilanteeseen sopiva. Kollaatioiden nimissä näkyy usein CI/CS ja AI/AS, nämä tarkoittavat Case Insensitive, Case Sensitive, Accent Insensitive ja Accent Sensitive. Kannatta huomata, että löytyy Finnish_Swedish -kollaatio, joka lienee aika sopiva tähän ilmastoon. Merkistöstä myöhemmin lisää.
 
 **Recovery model**: Full, Bulk-logged ja Simple. Näistä simple sopii kehitys- ja testikantaan, tuotannossa taas käytössä Full. Lisää tietoa löytyy [täältä](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver16). 
 

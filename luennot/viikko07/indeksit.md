@@ -232,7 +232,7 @@ Mitä käytännössä tapahtuu?
 | Page Split | Sivu täyttyy, jaetaan kahteen osaan lisäyksen vuoksi                     |
 | Fillfactor | Kuinka täyteen sivu alun perin täytetään (jotta vältettäisiin splittaus) |
 
-
+Lisää asiaa indeksien toiminnasta ja fragmentoinnista löytyy täältä: https://www.sqlservercentral.com/articles/understanding-curd-operations-on-tables-with-b-tree-indexes-page-splits-and-fragmentation
 
 ## Indeksien huolto
 
