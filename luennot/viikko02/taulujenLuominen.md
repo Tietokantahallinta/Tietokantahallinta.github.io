@@ -201,7 +201,7 @@ Tyypillisiä muutoksia taulun rakenteeseet ovat:
 - sarakkeiden poisto (ei välttämättä tehdä vaikka poisto loogisesti olisi järkevää)
 - sarakkeen tietotyyppin muutos
 
-```sql
+```SQL
 -- lisäys
 ALTER TABLE Tuotekuvaus ADD Varastotuote BIT NULL;
 
@@ -210,7 +210,7 @@ ALTER TABLE Tuotekuvaus DROP COLUMN Varastotuote;
 
 -- tyypin muutos
 ALTER TABLE Tuotekuvaus ALTER COLUMN Kuvaus NVARCHAR(1000);
-```sql
+```
 
 Tietotyypin muunnoksessa on huomioitava olemassa oleva data. Tyyppi voi vaihtua, jos konversio on mahdollista. Tyypillisesti kuitenkin muutetaan numeerinen tyyppi toiseen tai lisätään tekstisarakkeen pituutta (harvoin lyhennetään).
 
@@ -223,10 +223,11 @@ INSERT INTO t2 VALUES('POKS');
 SELECT * FROM t2;
 ALTER TABLE t2 ALTER COLUMN Nimi INT; -- onnistuuko vai ei?
 SELECT * FROM t2;
+
 ```
 
 ### Clustered Index ja primary key
-Taulun luonnin yhteydessä muodostuu automaattisesti klusteroitu indeksi (Clustered index). Indeksi on mahdollista poistaa ja tehdä uudelleen vaikka jonkin muun sarakkeen perustella, jos hakuja tehdään tauluun paljon jonkin muun kuin avainsarakkeen perusteella. Useimmiten oletusindeksointi on kuitenkin hyvä ja toimiva. Indekseistä lisää myöhemmin kurssin aikana.
+Taulun luonnin yhteydessä muodostuu automaattisesti klusteroitu indeksi (Clustered index). Indeksi on mahdollista poistaa ja tehdä uudelleen vaikka jonkin muun sarakkeen perustella, jos hakuja tehdään tauluun paljon jonkin muun kuin avainsarakkeen perusteella. Useimmiten oletusindeksointi on kuitenkin hyvä ja toimiva. Indekseistä lisää asiaa myöhemmin kurssin aikana.
 
 
 <!-- ## Muut taulutyypit
