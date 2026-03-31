@@ -16,7 +16,7 @@ master-tietokanta sisältää kaikki järjestelmätasoiset tiedot SQL Serverin o
 msdb-tietokannassa on Job-objetit ja niiden ajastukset. Lisäksi tässä tietokannassa on uusien tietokantojen oletusasetukset, sekä tiedot kaikkien käyttäjän tietokantojen varmistuksista. Seurantaan liittyvät hälytykset ovat talletettu tähän tietokantaan. Pitää varmistaa ajoittain. 
 
 ### model
-model-tietokanta on template luotaville tietokannoille. Kun tämän tietokannan asetuksia muuttaa, vaikuttaa se tämän jälkeen luotavien tietokantojen oletusasetuksiin. Muutosten jälkeen otettava varmistus.
+model-tietokanta on template (pohja) luotaville tietokannoille. Kun tämän tietokannan asetuksia muuttaa, vaikuttaa muutokset tämän jälkeen luotavien tietokantojen oletusasetuksiin. Muutosten jälkeen otettava varmistus (backup).
 
 ### Resource
 Sisältää objektit jotka näkyvät sys-skemassa jokaisessa tietokannassa. Tämä tietokanta ei näy SSMS:n Object Explorerissa eli on piilotettu. Ei sisällä dataa eikä voi varmistaa, ei myöskään ole tarvetta varmistusten ottamiselle. Resurssikannasta löytyy erilaisia asetuksia esimerkiksi:

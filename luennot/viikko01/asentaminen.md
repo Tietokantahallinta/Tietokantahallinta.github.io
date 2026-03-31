@@ -14,7 +14,7 @@ Vaihtoehto SSMS:lle on VS Code:
 [MSSQL Extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
 
 
-Asennusjärjestys on yksinkertainen, ensin kannattaa asentaa Tietokantapalvelin ja vasta sitten muut tarvittavat ohjelmistot (SSMS, ADT).
+Asennusjärjestys on yksinkertainen, ensin kannattaa asentaa Tietokantapalvelin ja vasta sitten muut tarvittavat ohjelmistot (SSMS, VS Code Extensions).
 
 Tällä kurssilla jokainen asentaa SQL Serverin omalle koneelle, asennus vaatii admin-oikeudet. Asennuksen voi tehdä yleensä oletusasetuksilla, mutta on hyvä tietää mitä vaihtoehtoja on asennuksessa ja mihin ne vaikuttaa.
 

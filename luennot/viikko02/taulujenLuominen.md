@@ -28,7 +28,7 @@ CREATE TABLE Tuote (
 ```
 
 ### Avaimet
-taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan kolmella eri tavalla: IDENTITY, SEQUENCE ja Scalar Function.  
+taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan neljällä eri tavalla: IDENTITY, SEQUENCE, TRIGGER ja Scalar Function.  
 
 Jos avain muodostuu useammasta sarakkeesta, pitää PRIMARY KEY-määritys tehdä vasta sarakkeiden jälkeen.
 
@@ -75,7 +75,7 @@ INSERT INTO Testi(ID, Nimi) values(999, 'Mustanaamio');
 select * from Testi;
 ```
 
-Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. 
+Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. Triggeriä voidaan myös käyttää avaimen generointiin ja silloin saadaan ohjelmalogiikka mukaan joten automaattinen merkkijono-tyyppinen avainkin on mahdollinen.
 
 
 ### Tietotyypit
@@ -97,7 +97,7 @@ Muutama huomio näistä:
 - collate, tekstisarakkeiden merkistö/lajittelujärjestyksen määrittely sekä hakutoiminto, onko eroa isoilla ja pienillä kirjaimilla
 
 **Laskennallinen sarake**
-Sarakkeen arvo voi perustua rivin muihin sarakkeisiin eli olla laskennallinen (Computed column). Tämä johtaa tarkasti ottaen normalisoimattomaan tauluun, mutta ei ole ongelma, vaan joissain tilanteissa oikeasti helpottava ja järkevä ominaisuus.
+Sarakkeen arvo voi perustua rivin muihin sarakkeisiin eli olla laskennallinen (Computed column). Tämä johtaa tarkasti ottaen normalisoimattomaan tauluun, mutta ei ole ongelma, vaan joissain tilanteissa oikeasti helpottava ja järkevä ominaisuus. Vaihtoehtoinen tapa on tehdä trigger, joka laskee sarakkeen sisällön muiden sarakkeiden perusteella.
 
 ```SQL
 CREATE TABLE Tuote(
