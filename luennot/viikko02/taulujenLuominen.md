@@ -121,7 +121,7 @@ Collation määrittää miten sarakkeessa olevaa dataa käsitellään haku- ja l
 Kollaatioita on paljon ja oleellisin asia on ymmärtää mitä nimiin koodatut asiat tarkoittavat. Esimerkiksi kollaatio **Finnish_Swedish_CI_AS**, alkuosa lienee selvä ja lopussa olevat CI ja AS tarkoittavat Case-Insensitive ja Accent-Sensitive. CS ja AI ovatkin jo arvattavissa. 
 Mihin tämä sitten vaikuttaa? Jos kollaatio sarakkeella on CS, pitää hakutoiminnossa WHERE-ehto kirjoittaa täsmälleen samalla tavalla kuin tietokantaan talletettu data on kirjoitettu, CI vastaavasti ei välitä hakutoiminnossa kirjainten koosta. AI/AS taas erottaa tai ei erota toistaan a ja ä kirjainta ORDER BY-lauseessa. Siksipä AS-tyyppiset kollaatiot on yleensä suomessa käytössä.   
 
-```sql 
+```SQL
 CREATE TABLE Kollaatio (
 	id int IDENTITY(1,1) NOT NULL,
 	nimi1 nvarchar(50) COLLATE Finnish_Swedish_CI_AS,
@@ -135,11 +135,11 @@ SELECT * FROM sys.fn_helpcollations() WHERE Name like 'Finnish%';
 
 -- ehkä helpoin tapa selvittää tauluun liittyviä tietoja, esim kollaatio
 sp_help <taulu>;
-```sql 
+``` 
 
 ### Rajoitteet ja muut määreet
 
-```sql 
+```SQL 
 CREATE TABLE Rajoitteita (
 	ID int PRIMARY KEY IDENTITY,
 	Tuotekoodi CHAR(10) UNIQUE NOT NULL,
@@ -166,7 +166,7 @@ Viiteavaimet määritellään taulun luonnin yhdeydessä normaalisti. Joissakin 
 
 INSERT-komentoon ei voi liittää muutossääntöjä, se epäonnistuu aina jos viite-eheys ei toteudu
 
-```sql
+```SQL
 -- sarakkeen yhteydessä
 CREATE TABLE Tuotekuvaus (
 	TuotekuvausID int primary key identity(1,1),
@@ -190,7 +190,8 @@ ALTER TABLE Kuvaus
 ADD CONSTRAINT FK_Kuvaus_Tuote FOREIGN KEY (TuoteId) REFERENCES Tuote(TuoteId) 
 	ON DELETE CASCADE 
 	ON UPDATE CASCADE; -- nämä voi olla myös CREATE TABLE –komennossa mukana
-```sql
+
+```
 
 Jos viiteavainmääritys lisätään taulun luonnin jälkeen, pitää olemassa olevan data toteuttaa viite-eheys, tai muuten viiteavainmäärittely epäonnistuu.
 
@@ -213,7 +214,7 @@ ALTER TABLE Tuotekuvaus ALTER COLUMN Kuvaus NVARCHAR(1000);
 
 Tietotyypin muunnoksessa on huomioitava olemassa oleva data. Tyyppi voi vaihtua, jos konversio on mahdollista. Tyypillisesti kuitenkin muutetaan numeerinen tyyppi toiseen tai lisätään tekstisarakkeen pituutta (harvoin lyhennetään).
 
-```sql
+```SQL
 CREATE TABLE t2(
 	nimi varchar(10)
 );
