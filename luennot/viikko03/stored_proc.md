@@ -1,6 +1,7 @@
 # Talletut proseduurit, stored procs
 
-Stored Procedure on nimensä mukaisesti aliohjelma, joka on talletettu tietokantaan, se vastaa varsinaisten ohjelmointikielten funktiota (metodi). SQL Server sisältää paljon valmiita proseduureja (sp_attachdb, sp_help, ...) ja niitä voidaan tarpeen mukaan tehdä lisää CREATE PROC -komennolla. Muutos ALTER PROC ja poisto DROP PROC, nämä kaikki komennot pitää olla omassa batch:ssa. Proseduurille voidaan välittää parametreja (maksimi 2100 parametria) ja se voi palauttaa vastausjoukon tai yksittäisen paluuarvon kuten muutkin ohjelmointikielet sekä dataa voi palauttaa OUTPUT-tyyppisessä parametrissa. Proseduurin koodilogiikan toteuttaminen muuttujien, ehtojen, toistojen ja tietysti TSQL:n avulla.
+Stored Procedure on nimensä mukaisesti aliohjelma, joka on talletettu tietokantaan, se vastaa varsinaisten ohjelmointikielten funktiota (metodi). SQL Server sisältää paljon valmiita proseduureja (sp_attachdb, sp_help, ...) ja niitä voidaan tarpeen mukaan tehdä lisää CREATE PROC -komennolla. Muutos ALTER PROC ja poisto DROP PROC, nämä kaikki komennot pitää olla omassa batch:ssa. Uusimmat versiot osaavat myös yhdistetyn komennon CREATE OR ALTER.
+Proseduurille voidaan välittää parametreja (maksimi 2100 parametria) ja se voi palauttaa vastausjoukon tai yksittäisen paluuarvon kuten muutkin ohjelmointikielet. Dataa voi palauttaa myös  OUTPUT-tyyppisessä parametrissa. Proseduurin koodilogiikan toteuttaminen tehdään muuttujien, ehtojen, toistojen ja ylipäätään TSQL:n avulla.
 
 Syitä miksi proseduureja käytetään:
 
@@ -72,7 +73,7 @@ EXEC tuotteetHintaValilla @ylaraja = 5; -- nimetyt parametrit
 EXEC tuotteetHintaValilla @ylaraja = 5, @alaraja = 1;
 ```
 
-CREATE PROC-komennon suorituksessa palvelin tarkistaa syntaksin ja tallettaa koodin systeemitauluihin. Vasta ensimmäisellä suorituskerralla tulee ensimmäisen kerran tarkistus, että koodissa olevat tietokantaobjektit ovat olemassa. Jos kaikki vaikuttaa olevan kunnossa, tulee suorituksen optimointi ja tämä suoritussuunnitelma (execution plan) jää talteen seuraavia suorituskertoja varten. Tämä on yksi seikka, joka parantaa suorituskykyä proseduureja käytettäessä. 
+CREATE PROC-komennon suorituksessa palvelin tarkistaa syntaksin ja tallettaa koodin systeemitauluihin. Vasta ensimmäisellä suorituskerralla tulee ensimmäisen kerran tarkistus, että koodissa olevat tietokantaobjektit ovat olemassa. Jos kaikki vaikuttaa olevan kunnossa, tapahtuu suorituksen optimointi ja tämä suoritussuunnitelma (execution plan) jää talteen seuraavia suorituskertoja varten. Tämä parantaa suorituskykyä proseduureja käytettäessä. 
 
 ```sql
 CREATE PROC demo2proc 
@@ -80,7 +81,7 @@ AS
     -- virheellinen taulunimi, proseduuri tallettuu kuitenkin
 	SELECT Nimi from tuoteEIOO where Hinta0ALV < 10 ORDER BY Nimi;
 
-demo2proc; -- suoritus epäonnistuu ==> korjataan ALTER PROC komennolla
+demo2proc; -- suoritus epäonnistuu ==> korjataan ALTER PROC komennolla tai CREATE OR ALTER
 ```
 Esimerkki OUTPUT-parametrin käytöstä:
 ```sql

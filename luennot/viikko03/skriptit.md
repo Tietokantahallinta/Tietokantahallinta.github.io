@@ -127,10 +127,10 @@ SQL Server toteuttaa kaksi eri [CASE-muotoa](https://learn.microsoft.com/en-us/s
 -- Simple yksinkertainen, vain yhtäsuuruusvertailut:
 SELECT TuoteID,
 CASE Hinta0ALV
-     WHEN 0 THEN 'PUUTTUU'
-	 WHEN NULL THEN 'VIRHE'
-     ELSE CAST(Hinta0ALV as NVARCHAR)
-END	 AS Hinta
+    WHEN 0 THEN 'PUUTTUU'
+	WHEN NULL THEN 'VIRHE'
+    ELSE CAST(Hinta0ALV as NVARCHAR)
+END	AS Hinta
 FROM Tuote;
 
 -- Searched
@@ -165,12 +165,13 @@ print ERROR_STATE()
 print ERROR_MESSAGE()
 print ERROR_LINE() 
 
-	print 'virhekoodi: ' 
-	print @virhe;
-	if @virhe = 20001 
-		print 'Virhe käsitelty'
-	else
-		print 'tunnistamaton tilanne';
+print 'virhekoodi: ' 
+print @virhe;
+if @virhe = 20001 
+	print 'Virhe käsitelty'
+else
+	print 'tunnistamaton tilanne';
+	
 END CATCH
 ```
 

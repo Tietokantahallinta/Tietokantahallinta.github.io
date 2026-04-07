@@ -58,10 +58,10 @@ AS BEGIN
 	RETURN COALESCE(@data, '');
 END
 
-	insert into TuoteKommentti values(2, 'Loistava', getdate());
+insert into TuoteKommentti values(2, 'Loistava', getdate());
 
-	select * from TuoteKommentti;
-	select * from Tuote;
+select * from TuoteKommentti;
+select * from Tuote;
 
 
 --Monilauseinen Table-funktio:
@@ -69,8 +69,8 @@ GO
 CREATE FUNCTION Tuotenimet(@muoto nvarchar(5))
 RETURNS 
 	@t table
-   (TuoteId 	int PRIMARY KEY NOT NULL,
-   Nimi  nvarchar(200) NULL)
+   (TuoteId int PRIMARY KEY NOT NULL,
+   Nimi nvarchar(200) NULL)
 AS
 BEGIN
    IF @muoto = 'Lyhyt'
