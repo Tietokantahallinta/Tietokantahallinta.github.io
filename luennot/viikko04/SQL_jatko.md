@@ -86,14 +86,13 @@ WHEN NOT MATCHED BY TARGET THEN
  --WHEN NOT MATCHED BY SOURCE THEN
  --    DELETE;
 
-
 -- tarkistetaan tilanne päivityksen jälkeen
 select * from Asiakkaat;
 select * from UudetAsiakkaat;
 delete from uudetAsiakkaat;  -- näitä tuskin tarvitsee enää
 ```
 ### 🧾 Lopputulos
-Taulussa Asiakkaat tapahtuu:
+Taulussa Asiakkaat tapahtuu muutokset:
 - Matti saa uuden sähköpostin
 - Kalle lisätään uutena
 - Liisa jää ennalleen (jos DELETE-ehtoa ei ole)
@@ -101,7 +100,7 @@ Taulussa Asiakkaat tapahtuu:
 
 ## STRING_AGG ja COALESCE
 
-Joskus on tarve muuttaa data rivin sarakkeista yhdeksi ainoaksi arvoksi. Siihen voi käyttää STRING_AGG tai COALESCE -funktioita. STRING_AGG on SQL Serverin oma erikoisfunktio (versiosta 2017 lähtien) ja COALESCE on SQL-stadardissa ja sen avulla voidaan korvata null-arvoja. 
+Joskus on tarve muuttaa data rivin sarakkeista yhdeksi ainoaksi arvoksi. Siihen voi käyttää STRING_AGG tai COALESCE -funktioita. STRING_AGG on SQL Serverin oma erikoisfunktio (versiosta 2017 lähtien) ja COALESCE on SQL-stadardissa ja sen avulla voidaan korvata null-arvoja. SQL Server sisältää oman funktion ISNULL, joka poikkeaa hieman COALESCE-funktiosta, vaikka peruskäyttöperiaate on sama.
 Esimerkki:
 
 ```sql
@@ -148,22 +147,20 @@ SELECT @aineet AS KaikkiNimet;
 
 Tässä kokoelma tehokkaita ja hyödyllisiä T-SQL-ominaisuuksia, jotka täydentävät `MERGE`, `CTE` ja `STRING_AGG` -osaamista.
 
-## 🚀 Keskitason ja edistyneen tason T-SQL-komentoja ja -ominaisuuksia
-
 | Komento / Ominaisuus     | Kuvaus |
 |--------------------------|--------|
-| **`WINDOW FUNCTIONS`** (OVER, ROW_NUMBER, RANK, etc.) | Suorita laskentoja riveittäin ilman ryhmittelyä – erittäin hyödyllisiä esimerkiksi top-listoihin, järjestyksiin, vertailuihin. |
-| **`PIVOT` ja `UNPIVOT`** | Taulun rivien ja sarakkeiden välinen muuntaminen – hyvä raportoinnissa. |
-| **`APPLY` (CROSS APPLY, OUTER APPLY)** | Käytetään liittymään taulufunktioihin tai aliin (subqueryihin) – ikään kuin liittymä alitauluun rivikohtaisesti. |
-| **`TRY_CAST`, `TRY_CONVERT`** | Turvallinen tapa muuntaa tietotyyppejä ilman virheilmoituksia – antaa `NULL` epäonnistumisessa. |
-| **`IIF`** | Lyhytmuotoinen `CASE`-lause – esim. `IIF(arvo > 100, 'Korkea', 'Matala')`. |
-| **`FORMAT`** | Ihmislukijalle suunnattu päivämäärien ja numeroiden muotoilu, esim. eurot, päivämäärät. |
-| **`EXCEPT` ja `INTERSECT`** | Sarjojen välinen vertailu: `EXCEPT` palauttaa A:n miinus B:n, `INTERSECT` yhteiset. |
-| **`SEQUENCE`** | Sekvessigeneraattori avainmien ja yleensä kokonaislukujen generointiin.Vaihtoehto `IDENTITY` – määrittelylle. |
-| **`JSON`-toiminnot (`OPENJSON`, `FOR JSON`)** | T-SQL tukee JSON-tietojen purkua ja muotoilua, erittäin hyödyllistä kun sarake sisältää dataa JSON-muodossa. |
-| **`TRY...CATCH`** | Virheenkäsittely, edellisellä viikolla käsitelty aihe. |
-| **`WAITFOR`** | Voit viivyttää komennon suorittamista sekunneilla tai kellonajalla – esim. testaukseen tai ajastamiseen. |
-| **`CURSOR`** | Rivi riviltä tapahtuva käsittely – hitaampi ja usein vältettävä, mutta joskus tarpeellinen. |
+| **`WINDOW FUNCTIONS`** (OVER, ROW_NUMBER, RANK, etc.) | Suorita laskentoja riveittäin ilman ryhmittelyä – erittäin hyödyllisiä esimerkiksi top-listoihin, järjestyksiin, vertailuihin  |
+| **`PIVOT` ja `UNPIVOT`** | Taulun rivien ja sarakkeiden välinen muuntaminen, esim. raportoinnissa  |
+| **`APPLY` (CROSS APPLY, OUTER APPLY)** | Käytetään liittymään taulufunktioihin tai alikyselyihin (subquery) – ikään kuin liittymä alitauluun rivikohtaisesti  |
+| **`TRY_CAST`, `TRY_CONVERT`** | Turvallinen tapa muuntaa tietotyyppejä ilman virheilmoituksia – antaa `NULL` epäonnistumisessa  |
+| **`IIF`** | Lyhytmuotoinen `CASE`-lause – esim. `IIF(arvo > 100, 'Korkea', 'Matala')`  |
+| **`FORMAT`** | Päivämäärien ja numeroiden muotoilu, esim. eurot, päivämäärät  |
+| **`EXCEPT` ja `INTERSECT`** | Sarjojen välinen vertailu: `EXCEPT` palauttaa A:n miinus B:n, `INTERSECT` yhteiset  |
+| **`SEQUENCE`** | Sekvessigeneraattori avaimien ja yleensä kokonaislukujen generointiin. Vaihtoehto `IDENTITY` – määrittelylle  |
+| **`JSON`-toiminnot (`OPENJSON`, `FOR JSON`)** | T-SQL tukee JSON-tietojen purkua ja muotoilua, helpottaa JSON-muotoisen datan käsittelyä   |
+| **`TRY...CATCH`** | Virheenkäsittely, edellisellä viikolla käsitelty aihe |
+| **`WAITFOR`** | Voit viivyttää komennon suorittamista sekunneilla tai kellonaikaan saakka, voi käyttää esim. testaukseen  |
+| **`CURSOR`** | Rivi riviltä tapahtuva käsittely – hitaampi ja usein vältettävä, mutta joskus tarpeellinen |
 | **`WITH (NOLOCK)`** | Luku ilman lukituksia – tuo suorituskykyä, mutta voi aiheuttaa likaisia lukuja (DIRTY READ, käsitellään tapahtumahallinnan yhdeydessä). Käytä harkiten! |
 
 ---
@@ -179,7 +176,6 @@ WITH Jarjestys AS (
 )
 SELECT * FROM Jarjestys WHERE Rivi <= 3;
 ```
-
 ---
 
 ### PIVOT
@@ -238,10 +234,10 @@ SELECT FORMAT(12345.6789, 'N2', 'FI') AS Muotoiltu;
 **FORMAT** ja käyttötarkoitukset
 
 | Käyttötilanne        | Miksi hyvä?                                |
-|----------------------|---------------------------------------------|
+|----------------------|--------------------------------------------|
 | Raportointi          | Päivämäärät ja summat selkokielelle        |
-| Kieliversiointi      | Sama data eri kulttuurimuodoilla            |
-| Näyttömuotoilu       | Vältetään sovelluspuolen käsittely          |
+| Kieliversiointi      | Sama data eri kulttuurimuodoilla           |
+| Näyttömuotoilu       | Vältetään sovelluspuolen käsittely         |
 | Datan esikatselu     | SQL-tulokset valmiiksi ihmisen luettavaksi |
 
 ---

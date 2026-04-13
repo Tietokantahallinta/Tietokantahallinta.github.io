@@ -9,7 +9,7 @@ Data on syytä suojata käyttöoikeuksien hallinnalla ja muilla tietoturvaan lii
 
 ## TDE
 Näillä kaikilla on erilaisia ominaisuuksia ja käyttötarkoituksia. Aloitetaan ensimmäisestä (**TDE**), jolla suojataan tietokantatiedostot (sekä data- että lokitiedostot) sekä varmuuskopiot. Jos TDE ei ole käytössä ja tietokantatiedostot vuotavat jotenkin ulkopuoliselle taholle, pystyy eri työkaluilla lukemaan tietokantatiedoston sisältä kaiken datan (DEMO). Jotta tämä riski vältetään, voidaan käyttää TDE:tä. EU:ssa käytössä oleva GDPR taitaa jopa määrätä että tietokantatiedostot on kryptattava.
-Silloin kun tietokanta on käytössä, pitää SQL Server tiedostot lukittuna ja niitä ei pääse lukemaan ohi tietokantapalvelimen. Jos palvelimen ajaa alas, on tietokanta luettavissa eri työkaluilla. Lisää tietoa [TDE:stä](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver16) löytyy Learn-sivukstolta.
+Silloin kun tietokanta on käytössä, pitää SQL Server tiedostot lukittuna ja niitä ei pääse lukemaan ohi tietokantapalvelimen. Jos palvelimen ajaa alas, on tietokanta luettavissa eri työkaluilla. Lisää tietoa [TDE:stä](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver16) löytyy Learn-sivustolta.
 Lyhyesti vaiheet miten TDE-suojaus tapahtuu: 
 
 ```sql
@@ -33,7 +33,7 @@ GO
 ALTER DATABASE SalattavaDB
     SET ENCRYPTION ON;
 ```
-Tämän toimenpidesarjan jälkeen tietokantatiedostot ovat kryptattu, eikä niistä saa mitään tietoa luettue millään työkalulla. Salaaminen ja purkaminen tapahtuu täysin automaattisesti, eikä se näy sovellustasolle lainkaan. 
+Tämän toimenpidesarjan jälkeen tietokantatiedostot ovat kryptattu, eikä niistä saa mitään tietoa luettua millään työkalulla. Salaaminen ja purkaminen tapahtuu täysin automaattisesti, eikä se näy sovellustasolle lainkaan. 
 
 ### Column-Level Encryption ([CLE](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=sql-server-ver16))
 

@@ -2,7 +2,7 @@
 
 Tieto on arvokasta, virheellinen tai puuttuva tieto on arvotonta. Tietokannoissa voi aina mennä jotain pieleen ja siksi tietojen varmistaminen ja palauttaminen on keskeistä liiketoiminnan jatkuvuuden kannalta. Riski ilman varmistuksia on tiedon menetys ja siitä aiheutuvat virhetilanteet tai jopa liiketoiminnan keskeytykset.
 
-Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma tehdään sen perusteella, miten paljon ollaan valmiita menettämään dataa pahimmassa tapauksessa. Samoin varmistusten lisäksi pitää harjoitella ja testata tietokannan palauttaminen RESTORE), varmistuksesta ei ole apua, jos palautus ei onnistu tai palauttaminen kestää liian kauan.
+Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma tehdään sen perusteella, miten paljon ollaan valmiita menettämään dataa pahimmassa tapauksessa. Samoin varmistusten lisäksi pitää harjoitella ja testata tietokannan palauttaminen RESTORE). Varmistuksesta ei ole apua, jos palautus ei onnistu tai palauttaminen kestää liian kauan.
 
 **Varmistusstrategiat**
 1. **RPO (Recovery Point Objective):**
@@ -14,7 +14,6 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 - 3 kopiota tiedoista
 - 2 eri mediaa
 - 1 kopio eri fyysisessä sijainnissa
-
 
 
 ## Miksi varmistuksia pitää ottaa: jotain voi mennä rikki!
@@ -46,7 +45,7 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 🧩 7. SQL Server -bugit tai virheellinen konfigurointi
 - Harvinaisissa tapauksissa SQL Serverin ohjelmavirhe voi aiheuttaa vioittumista.
 - Esimerkiksi tempdb:n toimintahäiriö voi estää koko palvelimen käynnistymisen.
-- Levytilan loppuminen estää tietokannan käytön, onneksi tästä selviää ilman datan palautusta jos levytilaa järjsetyy lisää.
+- Levytilan loppuminen estää tietokannan käytön, onneksi tästä selviää ilman datan palautusta jos levytilaa järjestyy lisää. 
 
 🔁 Milloin palautus varmuuskopiosta on ainoa ratkaisu?
 - Jos tiedostot ovat fyysisesti vioittuneet.
@@ -59,11 +58,12 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 - Täysi varmuuskopio (FULL) vähintään kerran päivässä.
 - Transaktiolokin varmuuskopio (LOG) usein, esim. 15 min välein — erityisesti tuotantoympäristöissä.
 - Testaa palautus säännöllisesti: pelkkä varmuuskopio ei riitä, ellei se toimi.
+- Varmista myös master ja msdb kun niihin on tullut muutoksia.
 
 🧪 2. Aja CHECKDB säännöllisesti
 - Komento DBCC CHECKDB tarkistaa tietokannan sisäisen eheyden.
 - Ajoita se yöllä tai hiljaisina aikoina.
-- Jos CHECKDB löytää virheitä, toimi heti: varmuuskopioi ja harkitse palautusta tai korjausta (REPAIR_ALLOW_DATA_LOSS vain viimeisenä keinona).
+- Jos DBCC CHECKDB löytää virheitä, toimi heti: varmuuskopioi ja harkitse palautusta tai korjausta (REPAIR_ALLOW_DATA_LOSS vain viimeisenä keinona).
 
 ⚙️ 3. Käytä luotettavaa ja suojattua tallennustilaa
 - Käytä RAID 10 tai muuta vikasietoista levyjärjestelmää.
@@ -76,7 +76,7 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 - Aktivoi auditoiva lokitus (esim. SQL Server Audit) tärkeille muutoksille.
 
 🌐 5. Pidä SQL Server ja Windows ajan tasalla
-- Asenna turva- ja bugikorjaukset (Service Packit, Cumulative Updates).
+- Asenna turva- ja bugikorjaukset (Service Packs, Cumulative Updates).
 - Vanhat versiot sisältävät tunnettuja haavoittuvuuksia ja bugeja.
 
 🔁 6. Suojaa ympäristö haittaohjelmilta
@@ -87,11 +87,11 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 - Monitoroi levyviiveitä (I/O latency), muistin käyttöä ja prosessikuormaa.
 - Tarkkaile SQL Serverin virhelokia (ERRORLOG) ja tapahtumalokia (Event Viewer).
 
-🗂️ 8. Älä pidä tietokantaa liian suurena ilman huoltoa
+🗂️ 8. Huolla tietokantaa, seuraa kokoa
 - Suorita indeksien uudelleenrakennus ja statistiikan päivitys säännöllisesti.
-- Vältä levytilan loppumista — se voi pysäyttää koko palvelimen.
+- Vältä levytilan loppumista, se voi pysäyttää koko palvelimen.
 
-🧭 Yhteenvetona:
+**Yhteenvetona:**
 
 | Suositus               | Hyöty                                  |
 |------------------------|----------------------------------------|
@@ -110,6 +110,7 @@ SQL Serverissä on kolme pääasiallista recovery modelia: Simple, Full ja Bulk-
 1. Simple Recovery Model
 - SQL Server tallentaa vain sen hetkiset tiedot ja ei pidä kirjaa transaktioista pysyvästi. Transaktiolokit (logit) eivät kasva jatkuvasti, vaan ne "kierrätetään" eli vanhat transaktiotiedot poistetaan, kun varmuuskopiot otetaan.
 - Tämä tarkoittaa, että vain täydelliset varmuuskopiot (FULL) ovat käytettävissä palautukseen, eikä transaktiolokin varmuuskopioita voi käyttää. Palauttaminen tapahtuu viimeisimmän täydellisen varmuuskopion ja mahdollisten erillisten differential-varmuuskopioiden avulla.
+
 **Hyödyt ja haitat**:
 - Hyöty: Yksinkertainen hallita ja transaktiolokit eivät kasva hallitsemattomiksi.
 - Haitat: Et voi palauttaa tietokantaa tarkalleen tiettyyn ajankohtaan, koska transaktiolokit eivät ole käytettävissä.
@@ -355,7 +356,7 @@ GO
 ```
 #### 🛠 Palautusvaiheet – Point-in-Time Recovery
 ```sql
--- 1. Pudota hävitä tai riko tietokanta (simuloidaan tilanne jossa pitää palauttaa kokonaan)
+-- 1. Pudota, hävitä tai riko tietokanta (simuloidaan tilanne jossa pitää palauttaa kokonaan)
 USE master;
 GO
 ALTER DATABASE PITRDemoDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -411,7 +412,7 @@ Ymmärrä tarpeet:
 - Erovarmistus 4 tunnin välein (06:00, 10:00, 14:00, 18:00, 22:00)
 - Lokivarmistukset 5–10 minuutin välein
 
-**🔥 Miksi näin?**
+**Miksi näin?**
 - Täysi varmistus on raskas → tehdään silloin, kun käyttö on vähäisintä (yöllä).
 - diff-varmistukset ovat kevyempiä → nopeuttavat palautuksia ilman raskasta täyden varmistuksen käyttöä.
 - Lokivarmistukset mahdollistavat tarkkuuden, esim. palautuksen 09:23, eikä vain viimeiseen diff- tai full-varmistukseen.
@@ -422,7 +423,7 @@ Ymmärrä tarpeet:
 Toimintojen ajastamiseen käytetään SQL Server Agent:ia. Huomaa, että sen pitää olla käynnissa ja luultavasti joudut päivittämään käynnistysasetuksia (Services) asennusken jälkeen. Agentin pitää käynnistyä automaattisesti ja lisäksi tarkista minkä käyttäjän oikeuksilla se toimii. Yleensä tehdää erillinen palvelutunnus joka luvitetaan tietokantaan (Login ja User) ja sitä ei käytetä mihinkään muuhun tarkoitukseen. Tämän palvelutunnuksen salasana ei vanhene automaattisesti esimerkiksi kuukauden välein, vaan vaihtaminen tehdään hallitusti. Mitä tapahtuu, jos salasana vanhenee ja ajastuksien takana olevat skriptit eivät toimikkaan?
 
 
-**Jobit rakennetaan vaikka näin:** 
+**Jobit rakennetaan esimerkiksi näin:** 
 - yksi jobi täyteen varmistukseen, 
 - toinen erovarmistuksiin, 
 - kolmas lokivarmistuksiin.
@@ -438,7 +439,6 @@ BACKUP LOG MyDatabase
 TO DISK = 'D:\Backups\MyDatabase_LOG.trn'
 WITH INIT, NAME = '15 min Lokivarmistus';
 ```
-
 
 #### 🛡️ Parhaita käytäntöjä ajastukseen:
 - Valvo varmistustöiden onnistumisia (lähetä hälytys epäonnistumisista).
@@ -457,8 +457,7 @@ Varmistukset voi tehdä SQLCMD-sovelluksen avulla ja ajastaa Windowsin Task Sche
 sqlcmd -E -Q "backup database Formula1 to disk = 'c:\temp\backup\F1.bak' "
 Xcopy c:\temp\backup\F1.bak c:\temp\jemma\F1_%date:~0,3%.bak /Y /-I
 ```
-Ajastus Task Schedulerilla. Tämä on siis vaihtoehtoinen ja täysin toimiva tapa ottaa ajastettuja varmistuksia.
-
+Ajastus Task Schedulerilla. Tämä on siis vaihtoehtoinen ja täysin toimiva tapa ottaa ajastettuja varmistuksia. Task Scheduler on WIndowsin ajastuspalvelu, jonka avulla voidaan suorittaa erilaisia toimintoja, ajaa skriptejä ja käynnistää sovelluksia.
 
 <!-- 
 //TODO
@@ -520,11 +519,6 @@ Hyviä käytäntöjä ajastukseen
 Varmistaminen on helppoa — palauttaminen on taidetta.
 Harjoittele palautuksia kuin oikeassa katastrofitilanteessa.
 
-👨‍💻
-Haluatko vielä erikseen lyhyen esimerkin siitä, miten SQL Server Maintenance Plan Wizardissa nämä voisi luoda helposti klikkaamalla, ilman käsin tehtyjä jobeja?
-(Siis graafinen tapa varmistusten ajastamiseen.) 🚀
-
-
 
  -->
 
@@ -540,13 +534,13 @@ Haluatko vielä erikseen lyhyen esimerkin siitä, miten SQL Server Maintenance P
 - Yleinen huolto (käyttäjäystävällinen rajapinta)
 
 🧭 Vaiheittainen esimerkki: Täyden varmistuksen ajastus
-1. Avaa SSMS ja yhdistä SQL Server -instanssiisi.
+1. Avaa SSMS ja yhdistä SQL Server-instanssiin
 2. Navigoi Object Explorerista:<br>
 Management → Maintenance Plans → oikea klikkaus → "Maintenance Plan Wizard..." <br>
 
 3. Anna suunnitelmalle nimi
 - Esim. "Daily Full Backup"
-- tavittaessa kujoita kuvaus
+- Tarvittaessa kirjoita kuvaus
 - Valitse Single schedule for the entire plan.
 
 4. Aseta ajastusaika
@@ -574,18 +568,16 @@ Kun teet erikseen ero- ja lokivarmistuksia, valitset vastaavasti "Back Up Databa
 - Compress backup (jos käytössä SQL Server versiossa) ✔️
 
 8. Viimeistele
-- Wzard näyttää yhteenvedon.
-- Klikkaa Finish.
+- Wizard näyttää yhteenvedon
+- Klikkaa Finish
 
-👉 Nyt sinulla on automaattinen täysvarmistussuunnitelma, joka pyörii joka yö klo 02:00!
+👉 Nyt sinulla on automaattinen täysvarmistussuunnitelma, joka pyörii joka yö klo 02:00.
 
 ### 🎯 Maintenance Plan Wizard - hyödyt
 -Ei tarvitse käsin kirjoittaa BACKUP-komentoja.
 - Voi hallita monimutkaisempia aikatauluja helposti.
 - Selkeät logit: näet SSMS:n puolelta heti, onnistuivatko varmistukset.
 - Mahdollisuus laajentaa myöhemmin (esim. lisää ero- ja lokivarmistukset samaan suunnitelmaan).
-
-
 
 
 ### 🖥️ Ajastettu SQL-varmistus Windows Task Schedulerilla:
@@ -635,9 +627,9 @@ Selitykset:
 ```sql
 -S localhost -d master -E -i "C:\BackupScripts\FullBackup.sql"
 ```
-Tai jos käytät .bat-tiedostoa:
+Tai jos käytät .cmd-tiedostoa:
 ```sql
-Program/script: C:\BackupScripts\RunBackup.bat
+Program/script: C:\BackupScripts\RunBackup.cmd
 ```
 ✅ Näin Task Scheduler suorittaa varmistuksen automaattisesti oikeaan aikaan.
 
@@ -646,14 +638,12 @@ Program/script: C:\BackupScripts\RunBackup.bat
 - Polut (esim. backup-hakemisto) pitää olla olemassa, muuten varmistus epäonnistuu.
 
 🎯 Plussat ja miinukset
- + Ei vaadi SQL Server Agentia	
- + Hyvin kevyt ja joustava ratkaisu	
- + Helppo siirtää muihin järjestelmiin	
- - Virheiden hallinta heikompaa
++ Ei vaadi SQL Server Agent:ia	
++ Hyvin kevyt ja joustava ratkaisu	
++ Helppo siirtää muihin järjestelmiin	
+- Virheiden hallinta heikompaa
 - Ei graafista palautelokia
 - Komennot pitää ylläpitää itse
-
-
 
 
 ----
@@ -683,6 +673,7 @@ BACKUP DATABASE master
 TO DISK = 'D:\Backups\master_YYYYMMDD.bak'
 WITH INIT, FORMAT, NAME = 'Master Database Backup';
 ```
+
 Tärkeitä huomioita:
 - Sijainti: Valitse varmistustiedostolle paikka, joka on suojattu ja käytettävissä palautuksen aikana.
 - Nimeä tiedostot huolellisesti: Lisää mielellään päivämäärä (esim. master_20250428.bak) tiedostonimiin, jotta varmistusten erottaminen on helppoa.
@@ -711,10 +702,6 @@ WITH REPLACE;
 - Suunnittele varmistukset huolellisesti, jotta saat helposti palautettua SQL Serverin kokoonpanon tarvittaessa.
 - Päivitä ja testaa varmistussuunnitelmat aina, kun teet suuria kokoonpanomuutoksia.
 - Varmistusmasterin rooli on kriittinen ja sen varmistaminen voi pelastaa monta tilannetta.
-
-
-
-
 
 
 

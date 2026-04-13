@@ -23,7 +23,7 @@ Tämän hyvin perinteisen käyttötavan lisäksi SQL Serverissä voi luoda tilap
 | Pieni määrä rivejä, käytetään vain kerran   | ❌ Ehkä parempi taulumuuttuja tai CTE |
 | Tarvitset tiedon useille käyttäjille        | ❌ Käytä pysyvää taulua tai ✅ globaalia temp-taulua     |
 
-### tyypit
+### Tyypit
 Tilapäisiä tauluja on neljä tyyppiä:
 1. käyttäjäkohtainen (Local, #-etuliite nimessä)
 2. globaali (Global, näkyy kaikille käyttäjille, ##-etuliite nimessä)
@@ -95,8 +95,10 @@ JOIN Asiakkaat a ON o.asiakas_id = a.id;
 
 -- Siivous
 DROP TABLE #OstosYhteenveto;
+```
 
 ### sama CTE:n avulla
+
 ```sql
 WITH OstosYhteenveto AS (
     SELECT asiakas_id, SUM(ostot) AS Yhteensa
