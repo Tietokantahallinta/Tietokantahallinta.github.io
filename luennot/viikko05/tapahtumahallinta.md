@@ -1,7 +1,7 @@
 # Tapahtumahallinta
 
 Tietokantatapahtuma eli transaction. Tietokantaa käyttää samanaikaisesti monta käyttäjää (tai sovellusta) ja siksi tietokantapalvelimen pitää huolehtia samanaikaisista päivityksistä ja hakutoiminnoista. Yleensä kyselyt eivät aiheuta ongelmia samaan aikaan suoritettuna, mutta jos on datan muutoksia myös mukana, pitää tietää miten tietokantapalvelin käyttäytyy ja miten samanaikaisuutta voi hallita.
-Lukuoperaatioita voi olla samanaikaisesti monta hakemassa samaa dataa (taulun rivejä). Muutosoperaatiot (INSERT, UPDATE ja DELETE) tietokantapalvelin serialisoi eli laittaa komennot jonoon ja suorittaan niitä peräkkäin. Yhdellä ajanhetkellä vain yksi käyttäjä (yhden käyttäjän skripti) voi olla päivittämässä taulun sisältöä. Tämän toteutetaan lukkojen avulla ja päivityksissä käytetään rivilukkoja. Lukoista lisää hieman tuonnempana. Toisaalta tämä päivitys aiheutata seuraavan 'ongelman' eli mitä hakuoperaatio palauttaa jos haku kohdistuu päivitettävään riviin? Palauttaako haku sillä hetkellä olevan datan, jääko hakuoperaatio odottamaan päivityksen päättymistä, mistä se voi tietää milloin päivitys on valmis, jne... siis paljon kysymyksiä.
+Lukuoperaatioita voi olla samanaikaisesti monta hakemassa samaa dataa (taulun rivejä). Muutosoperaatiot (INSERT, UPDATE ja DELETE) tietokantapalvelin serialisoi eli laittaa komennot jonoon ja suorittaan niitä peräkkäin. Yhdellä ajanhetkellä vain yksi käyttäjä (yhden käyttäjän skripti) voi olla päivittämässä taulun sisältöä. Tämän toteutetaan lukkojen avulla ja päivityksissä käytetään rivilukkoja. Lukoista lisää hieman tuonnempana. Toisaalta tämä päivitys aiheuttaa seuraavan 'ongelman' eli mitä hakuoperaatio palauttaa, jos haku kohdistuu päivitettävään riviin? Palauttaako haku sillä hetkellä olevan datan, jääko hakuoperaatio odottamaan päivityksen päättymistä, mistä se voi tietää milloin päivitys on valmis, jne... siis paljon kysymyksiä.
 
 Samanaikainen käsittely siis vaatii sääntöjä, muutoin kukaan ei tiedä missä tilanteessa data on. Tapahtumahallinta (transactions) tietokantapalvelimessa huolehtii datan pysymisestä eheänä. Kaikki toiminnot tehdään tapahtuman sisällä (transaction). Tapahtuma on atomaarinen kokonaisuus, joka suoritetaan kokonaan (COMMIT) tai ei ollenkaan (ROLLBACK). Mikään välitila ei ole mahdollinen, joka tarkoittaa että tapahtuma joko perutaan ja palataan edelliseen tilaan tai vahvistetaan ja tietokanta siirtyy seuraavaan eheään tilaan (consistent state).
 
@@ -17,16 +17,16 @@ Kun implisiittiset tapahtumat on käytössä:
 - Tapahtuma pitää päättää COMMIT tai ROLLBACK TRANSACTION komentoon
 - Ei siis ole oletusarvoisesti päällä
 - Yleensä sessiokohtainen asetus (SET IMPLICIT_TRANSACTIONS ON)
-- Voidaan asettaa myös instanssiin päälle eli tietokantapalvelintasolle ==> Palvelimen tasolla voidaan User Options –konfigurointiparametrille asettaa IMPLICIT_TRANSACTIONS-optio päälle, jolloin se koskee kaikkia käyttäjäyhteyksiä.
-- useimmissa muissa tietokantapalveimissa tämä on oletustila tapahtumilla
+- Voidaan asettaa myös instanssiin päälle eli tietokantapalvelintasolle ==> Palvelimen tasolla voidaan User Options–konfigurointiparametrille asettaa IMPLICIT_TRANSACTIONS-optio päälle, jolloin se koskee kaikkia käyttäjäyhteyksiä
+- Useimmissa muissa tietokantapalvelin-tuotteissa tämä on tapahtumien oletustila
 
-Tapahtuma aloitetaan BEGIN TRAN[SACTION]-komennolla ja päätetään COMMIT- tai ROLLBACK-komennolla.
+Tapahtuma aloitetaan **BEGIN TRAN[SACTION]**-komennolla ja päätetään **COMMIT**- tai **ROLLBACK**-komennolla.
 
 **COMMIT**
 - Jos palvelin on kyennyt suorittamaan annetun komennon virheettömästi, se on valmis vahvistamaan (commit) muutetun tilan.
 - Oletuksena skriptissä palvelin tekee COMMIT:in itse, jos tapahtuma on aloitettu, pitää COMMIT olla eksplisiittisesti skriptissä mukana.
 - ANSI SQL-92: COMMIT;
-- TSQL: COMMIT TRAN[SACTION]; tai nykyään toimii myös standardin mukainen COMMMIT;
+- TSQL: COMMIT TRAN[SACTION]; lisäksi nykyään toimii myös standardin mukainen COMMIT; ilman TRANEACTiON-osaa
 
 **ROLLBACK**
 - Jos palvelin ei kykene suorittamaan komentoa loppuun, se palaa komennon alkuhetken tilaan (automatic rollback)
@@ -98,8 +98,8 @@ SET TRANSACTION ISOLATION LEVEL
     - Read_committed_snapshot tarkoittaa tarkoittaa oletuslukitustasolla (ei tarvita sovellusmuutoksia) vanhan kommitoidun datan lukua
     - Allow_Snapshot_isolation vaatii Snapshot-lukitustason käyttöä ja kaikki data nähdään tapahtuman alkuhetken mukaisessa ehyessä tilassa
 
-ALTER DATABASE AdventureWorks SET ALLOW_SNAPSHOT_ISOLATION ON;
--- tai
+ALTER DATABASE AdventureWorks SET ALLOW_SNAPSHOT_ISOLATION ON;<br>
+-- tai<br>
 ALTER DATABASE AdventureWorks SET READ_COMMITTED_SNAPSHOT ON;
 
 

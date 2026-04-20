@@ -1,6 +1,6 @@
 # Tiedon suojaaminen
 
-Data on syytä suojata käyttöoikeuksien hallinnalla ja muilla tietoturvaan liittyvillä toimilla, esimerkiksi palomuuri- ja muut verkkoasetukset. Näiden lisäksi tieto voidaan sala kryptaamalla. Tiedon suojaamiseen kryptausta käyttämällä löytyy valmiina SQL Serverisä neljä erilaista tapaa:
+Data on syytä suojata käyttöoikeuksien hallinnalla ja muilla tietoturvaan liittyvillä toimilla, esimerkiksi palomuuri- ja muut verkkoasetukset. Näiden lisäksi tieto voidaan sala kryptaamalla. Tiedon suojaamiseen kryptausta käyttämällä löytyy valmiina SQL Serverissä neljä erilaista tapaa:
 1. Transparent Data Encryption (TDE)
 2. Column-Level Encryption (CLE)
 3. Always Encrypted
@@ -8,7 +8,7 @@ Data on syytä suojata käyttöoikeuksien hallinnalla ja muilla tietoturvaan lii
 
 
 ## TDE
-Näillä kaikilla on erilaisia ominaisuuksia ja käyttötarkoituksia. Aloitetaan ensimmäisestä (**TDE**), jolla suojataan tietokantatiedostot (sekä data- että lokitiedostot) sekä varmuuskopiot. Jos TDE ei ole käytössä ja tietokantatiedostot vuotavat jotenkin ulkopuoliselle taholle, pystyy eri työkaluilla lukemaan tietokantatiedoston sisältä kaiken datan (DEMO). Jotta tämä riski vältetään, voidaan käyttää TDE:tä. EU:ssa käytössä oleva GDPR taitaa jopa määrätä että tietokantatiedostot on kryptattava.
+Näillä kaikilla on erilaisia ominaisuuksia ja käyttötarkoituksia. Aloitetaan ensimmäisestä (**TDE**), jolla suojataan tietokantatiedostot (sekä data- että lokitiedostot) sekä varmuuskopiot. Jos TDE ei ole käytössä ja tietokantatiedostot vuotavat jotenkin ulkopuoliselle taholle, pystyy eri työkaluilla lukemaan tietokantatiedoston sisältä kaiken datan (DEMO). Jotta tämä riski vältetään, voidaan käyttää TDE:tä. EU:ssa käytössä oleva GDPR taitaa jopa määrätä, että tietokantatiedostot on kryptattava.
 Silloin kun tietokanta on käytössä, pitää SQL Server tiedostot lukittuna ja niitä ei pääse lukemaan ohi tietokantapalvelimen. Jos palvelimen ajaa alas, on tietokanta luettavissa eri työkaluilla. Lisää tietoa [TDE:stä](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver16) löytyy Learn-sivustolta.
 Lyhyesti vaiheet miten TDE-suojaus tapahtuu: 
 

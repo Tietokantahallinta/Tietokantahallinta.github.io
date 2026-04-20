@@ -3,7 +3,7 @@
 Yllättävän usein pitää dataa siirtää toiseen tietokantaan, sovellukseen, API-rajapintaan jne., tai omaan tietokantaan jostain muusta järjestelmästä. Tässä ei käsitellä ohjelmallisia ratkaisuja, vaan pohditaan hieman miten dataa voidaan siirtää esimerkiksi CSV-tiedostojen avulla SQL Serveriin (import) tai sieltä pois (export). Toki on muitakin siirtoformaatteja, esim. XML. 
 
 ### Serverin Import & Export -mahdollisuudet
-🧰 1. SQL Server Import and Export Wizard (graafinen työkalu)
+1. SQL Server Import and Export Wizard (graafinen työkalu)
 Käynnistyy SSMS:stä (hiiren oikealla tietokannan päällä → Tasks → Import/Export Data). Siirtomuotoina tai kohteina:
 - Excel, CSV
 - Toinen SQL Server
@@ -14,18 +14,19 @@ Käynnistyy SSMS:stä (hiiren oikealla tietokannan päällä → Tasks → Impor
 ✅ Helppo käyttää, hyvä ad-hoc-siirtoihin
 ❌ Vähemmän kontrollia, ei toistuviin/monimutkaisiin prosesseihin
 
-📦 2. SQL Server Integration Services (SSIS)
+2. SQL Server Integration Services (SSIS)
 Microsoftin ETL-työkalu datan siirtämiseen, muuntamiseen ja lataamiseen
 - Tukee laajasti formaatteja ja ulkoisia järjestelmiä
 - Toimii sekä SQL Server Management Studion että Visual Studion kautta
 - Vaatii Visual Studion asennuksen ja tarvittavat osat (Data storage and processing). Community Edition on ilmainen ja riittää SSIS-projektien tekemiseen. Visua Studio on eri tuote kuin VS Code!
 
-✅ Hyvin tehokas ja automatisoitavissa
-✅ Tukee virheenkäsittelyä, ehtoja, muunnoksia
-❌ Vaatii lisäasennuksia ja osaamista
+✅ Hyvin tehokas ja automatisoitavissa<br>
+✅ Tukee virheenkäsittelyä, ehtoja, muunnoksia<br>
+❌ Vaatii lisäasennuksia ja osaamista<br>
 
-🧮 3. T-SQL (BULK INSERT, OPENROWSET, BCP)
+3. T-SQL (BULK INSERT, OPENROWSET, BCP)
 🔹 BULK INSERT – Tiedoston tuonti SQL-tauluun
+
 ```sql
 BULK INSERT dbo.Tuotteet
 FROM 'C:\data\tuotteet.csv'
@@ -35,7 +36,9 @@ WITH (
     FIRSTROW = 2
 );
 ```
+
 🔹 OPENROWSET – Lue tiedosto tai ulkoinen lähde suoraan
+
 ```sql
 SELECT *
 FROM OPENROWSET(
@@ -44,31 +47,34 @@ FROM OPENROWSET(
     FIRSTROW = 2
 ) AS Tuotteet;
 ```
+
 🔹 bcp – Komentorivipohjainen työkalu (Bulk Copy Program)
+
 ```bash
 bcp Tietokanta.dbo.Tuotteet out tuotteet.csv -c -t, -S serveri -T
 ```
 
-✅ Nopeita ja hyviä automatisointiin
+✅ Nopeita ja hyviä automatisointiin<br>
 ❌ Vaativat enemmän käsityötä ja virheidenhallintaa
 
-🌐 4. Linked Servers
+4. Linked Servers
 Mahdollistaa kyselyt muihin SQL Servereihin tai muihin järjestelmiin suoraan T-SQL:llä
+
 ```sql
 SELECT *
 FROM [ToinenPalvelin].[Tietokanta].[dbo].[Asiakkaat];
 ```
-✅ Soveltuu jatkuvaan integraatioon
+✅ Soveltuu jatkuvaan integraatioon<br>
 ❌ Ylläpito ja suorituskyky voivat olla haasteita
 
-☁️ 5. Azure Data Factory (pilviratkaisu)
+5. Azure Data Factory (pilviratkaisu)
 Soveltuu erityisesti jos käytät Azure SQL, Blob Storagea tai muita pilvipalveluita
 - Tukee satoja eri lähteitä: Google BigQuery, Amazon S3, SAP, Salesforce jne.
 
-✅ Skaalautuva ja moderni
+✅ Skaalautuva ja moderni<br>
 ❌ Vaatii Azure-ympäristön ja erillistä konfiguraatiota
 
-📝 5. Muita keinoja
+5. Muita keinoja
 - ohjelmalliset ratkaisut tai kolmannen osapuolen sovellukset
 
 ## ETL
@@ -154,7 +160,7 @@ SQL Server Agent on SQL Serverin oma ajoitusmoottori, jolla voit ajastaa SSIS-pa
 
 4. Schedule-välilehti, luo uusi ajoitus, esim.
 - Daily, Occurs once at 2:00 AM
-5. Tallenna, jobi on valmis ja ajetaan automaattisesti.
+5. Tallenna, job on valmis ja ajetaan automaattisesti.
 
 
 
@@ -214,8 +220,8 @@ Siirry Schedules-välilehdelle → New
  
 Tallenna Job ja kokeile suorittaa se heti ilman ajastusta testitarkoituksessa.
 
-🧩 Error handling ja logitus (lisävinkkejä)
-Jobin History-välilehdellä näet onnistumisen/virheet. Voit ohjata virheet >> logi.txt komentorivillä varsin helposti:
+🧩 Error handling ja logs (lisävinkkejä)<br>
+Job:in History-välilehdellä näet onnistumisen/virheet. Voit ohjata virheet >> log.txt komentorivillä varsin helposti:
 
 ```cmd
 bcp dbo.Tuotteet in "C:\Data\tuotteet.csv" -S .\SQLEXPRESS -U käyttäjä -P salasana -c -t, -r\n -d Tietokanta >> C:\Logs\bcp_log.txt 

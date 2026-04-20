@@ -116,6 +116,7 @@ Esimerkki vielä vaikeammasta tilanteesta, kuten sarakkeen jakamisesta kahdeksi 
 Taulussa Henkilot on sarake Nimi (esim. "Matti Meikäläinen") tyyppiä VARCHAR(100). Haluamme jakaa tämän kahdeksi sarakkeeksi:
 - Etunimi
 - Sukunimi
+
 Lisähaasteet:
 - Taulussa on jo paljon dataa.
 - Sarake Nimi on käytössä useissa näkymissä ja raporteissa.
@@ -164,6 +165,13 @@ ALTER TABLE dbo.Henkilot
 - Tämä jako toimii vain yksinkertaisissa nimissä. Jos haluat käsitellä moniosaisia nimiä (esim. "Jean von Hellens", "Teppo Matti Tuppurainen"), kannattaa käyttää kehittyneempää parsintaa tai jopa erillistä ETL-prosessia. ETL (Extract, Transform, Load) prosessissa siirretään ensin data johonkin toiseen järjestelmään tai tietokantaan, tehdään tarvittavat muunnokset/korjaukset ja sitten ladataan päivitetty data takaisin alkuperäiseen tietokantaan. Tämän voi tehdä monella erilaisella tavalla, ja hyvin luultavasti vaatii ohjelmointia.
 - Jos Nimi on käytössä indeksoituna sarakkeena, muutos voi vaikuttaa suorituskykyyn.
 - Jos järjestelmässä on audit-trail tai integraatioita muihin järjestelmiin, niiden yhteensopivuus pitää varmistaa.
+
+Jos oikeasti jossain tietokannassa on ollut Nimi-sarake, johon on talletettu etunimi/sukunimi-yhdistelmiä, ongelmaksi muodostuu mys se, että varmuudella löytyy kirjoitusmuotoja:
+- Etunimi Sukunimi
+- Sukunimi Etunimi
+- Sukunimi, Etunimi
+- etunimi sukunimi
+- ja lisäksi erilaiset muut kirjainkokokombinaatiot
 
 
 **Esimerkki taulun jakamisesta kahteen:**
@@ -233,6 +241,8 @@ JOIN Yhteystiedot y ON h.HenkiloID = y.HenkiloID;
 - Voit käyttää ON DELETE CASCADE, jos haluat, että Yhteystiedot poistuvat automaattisesti henkilön poiston yhteydessä.
 - Jos käytetään sovelluksia, muista päivittää kaikki paikat, joissa vanha rakenne oli käytössä.
 
+Edelliseen esimerkkiin liittyvä kysymys: miten toimitaan jos henkilöllä on mahdollisesti useampia sähköpostiosoitteita? 
+
 ## Synonyymit
 
 [Synonyymit](https://learn.microsoft.com/en-us/sql/relational-databases/synonyms/synonyms-database-engine?view=sql-server-ver16) ovat huonommin tunnettu piirre. Synonyymeistä voi kuitenkin olla paljon apua tietokannan muutostenhallinnassa. Synonyymi on alias jollekin SQL-objektille (esim. taulu, näkymä, proseduuri), jonka avulla voit viitata siihen toisella nimellä.
@@ -282,7 +292,8 @@ Sovellus voi käyttää synonyymejä yhtenäisillä nimillä, vaikka fyysiset ni
 - Et voi luoda synonyymejä temp-tauluihin (#- tai ##-alkuisiin tauluihin).
 
 🧪 Demo: Taulun siirto toiseen tietokantaan synonyymillä
-🔹 Lähtötilanne
+
+Lähtötilanne<br>
 Taulu Asiakkaat on tietokannassa VanhaDB ja haluat siirtää sen UusiDB-tietokantaan.
 
 Sovelluskoodi käyttää edelleen:
@@ -292,8 +303,8 @@ SELECT * FROM dbo.Asiakkaat;
 
 ✅ Vaiheittainen demo
 1. Siirrä taulu uuteen tietokantaan
-```sql
 
+```sql
 -- Luo uusi tietokanta (jos ei ole)
 CREATE DATABASE UusiDB;
 GO
@@ -348,7 +359,8 @@ Synonyymit ovat loistava tapa:
 - Parempi hallinta isoille tietomäärille, esim. miljoonia rivejä sisältävä taulu on paljon helpompi hallita, kun se on loogisesti jaettu.
 
 🔧 Miten se toimii teknisesti?
-🔹 1. Partition Function
+
+1. Partition Function
 Määrittää, miten arvojen perusteella data jaetaan partitioihin. Esim.:
 
 ```sql
@@ -361,15 +373,18 @@ Tämä luo 3 partiota:
 - Partitio 2: kaikki = 2023
 - Partitio 3: kaikki > 2023
 
-🔹 2. Partition Scheme
+2. Partition Scheme
+
 Määrittää, mihin fyysisiin tiedostoryhmiin partitiot sijoitetaan (tai kaikki samaan, jos ei tarvita erillistä levyjakoa).
+
 ```sql
 CREATE PARTITION SCHEME ps_Vuosi
     AS PARTITION pf_Vuosi
     ALL TO ([PRIMARY]);
 ```
 
-🔹 3. Taulun luominen käyttäen partition schemaa
+3. Taulun luominen käyttäen partition schemaa
+
 ```sql
 CREATE TABLE MyData (
     Vuosi INT,
@@ -378,13 +393,15 @@ CREATE TABLE MyData (
 ON ps_Vuosi(Vuosi);  -- Taulu jaetaan Vuosi-sarakkeen mukaan
 ```
 
-📉 Esimerkki käytöstä:
+**Esimerkki käytöstä:**
+
 Jos sinulla on lokitaulu Tapahtumat, jossa on miljoonia rivejä, voit jakaa sen partitoimalla sarakkeen *TapahtumaPvm* mukaan kuukausittain.
 Tällöin kysely:
+
 ```sql
 SELECT * 
 FROM Tapahtumat
-WHERE TapahtumaPvm >= '2025-04-01' AND TapahtumaPvm < '2025-05-01'
+WHERE TapahtumaPvm >= '2026-04-01' AND TapahtumaPvm < '2026-05-01'
 ```
 lukee vain yhden partition, ei koko taulua → on siis nopeampi verrattuna partitioimattomaan tauluun.
 
