@@ -297,6 +297,7 @@ Lähtötilanne<br>
 Taulu Asiakkaat on tietokannassa VanhaDB ja haluat siirtää sen UusiDB-tietokantaan.
 
 Sovelluskoodi käyttää edelleen:
+
 ```sql
 SELECT * FROM dbo.Asiakkaat;
 ```
@@ -324,7 +325,9 @@ CREATE TABLE dbo.Asiakkaat (
 INSERT INTO dbo.Asiakkaat (AsiakasID, Nimi)
 VALUES (1, 'Maija Mallikas'), (2, 'Kalle Käyttäjä');
 ```
+
 2. Vanha tietokanta: luo synonyymi
+
 ```sql
 -- Palaa VanhaDB:hen
 USE VanhaDB;
@@ -339,7 +342,8 @@ CREATE SYNONYM dbo.Asiakkaat FOR UusiDB.dbo.Asiakkaat;
 -- Tämä toimii edelleen kuten ennen, mutta data tulee toisesta tietokannasta
 SELECT * FROM dbo.Asiakkaat;
 ```
-🔍 Sovelluksen tai raportin ei tarvitse tietää, että taulu on siirretty toiseen tietokantaan!
+
+Sovelluksen tai raportin ei tarvitse tietää, että taulu on siirretty toiseen tietokantaan!
 
 Synonyymi on kätevä keino, kun halutaan pitää yhteensopivuus rakenteita muutettaessa. Se toimii ikään kuin välityspisteenä, jolla voidaan välttää koodin rikkominen kesken muutoksen.
 Synonyymit ovat loistava tapa:
