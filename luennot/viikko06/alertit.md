@@ -20,6 +20,7 @@
 
 
 3. 🛠️ **Työkalut ja välineet SQL Serverin seurantaan**
+
 🔹 SQL Server Management Studio (SSMS)
 - Activity Monitor (Live overview)
 - Performance Dashboard Reports (sisäänrakennetut)
@@ -29,7 +30,7 @@
 
 🔹 SQL Server Profiler 
 - Tarkka mutta raskas 
-- sopii mainiosti tiettyihin tilanteisiin
+- sopii mainiosti joihinkin tilanteisiin
 - toiminnan seuranta, trace:n voi tallentaa tiedostoon (tai tietokantaan)
 
 🔹 Performance Monitor (Windowsin oma)
@@ -37,16 +38,17 @@
 
 🔹 Extended Events (suositeltava korvike Profilerille)
 
-🔹 Third-party / ulkoiset työkalut (ei välttämätön, mutta voit mainita)
+🔹 Third-party / ulkoiset työkalut 
 - Redgate SQL Monitor, SolarWinds, Zabbix, Nagios
 
 4. 🚨 **SQL Server Agent Alerts:**
 
-- Seurata virhekoodeja (esim. 823, 824, 825 → levyongelmat)
-- Luoda hälytyksiä suorituskyvystä
-- Asettaa operaattoreita, joille lähetetään sähköposti/SMS
+- Virhekoodien seuranta (esim. 823, 824, 825 → levyongelmat)
+- Häälytykset suorituskyvystä
+- Voi asettaa operaattoreita, joille lähetetään sähköposti/SMS
 
 🧩 Esimerkki: Hälytys, jos Transaction Log täynnä (Error 9002)
+
 ```sql
 USE msdb;
 EXEC msdb.dbo.sp_add_alert
@@ -67,6 +69,7 @@ EXEC msdb.dbo.sp_add_alert
 ```
 
 ➕ Lisäksi: määritä operaattori
+
 ```sql
 EXEC msdb.dbo.sp_add_operator  
     @name = N'DBA',  
@@ -75,16 +78,19 @@ EXEC msdb.dbo.sp_add_operator
 ```
 
 5. 📈 **Automaattinen valvonta – mitä voi ajastaa?**
+
 - Vapaata levytilaa mittaava skripti
 - "Kaatuneet" Agent-työt
 - Tarkistus: milloin viimeksi varmistus otettu?
 - Tietokantojen tila (sys.databases – ovatko ONLINE, SUSPECT, RECOVERY_PENDING?)
 
 6. ✉️ **Hälytykset sähköpostitse (Database Mail)**
+
 - Database Mail pitää ottaa käyttöön ja konfiguroida, SQL Server Agent käyttää sitä lähettääkseen sähköposteja operaattoreille
 - SMTP-konfiguraation voi tehdä helposti SSMS:ssä
 
 7. **🧪 Hyviä käytäntöjä**
+
 - Älä tee jatkuvaa seurantaa tuotantoon ilman suodatusta (voi hidastaa palvelinta)
 - Käytä Extended Events Profilerin sijaan
 - Seuraa trenditietoa – ei vain yksittäisiä piikkejä
@@ -103,12 +109,16 @@ EXEC msdb.dbo.sp_add_operator
 
 
 ### 🛠️ Esimerkki: Hälytys, kun SQL Agent Job epäonnistuu
+
 SQL Serverissä voit tehdä hälytyksen, joka lähettää sähköpostin aina, kun Agent Job epäonnistuu. 
+
 Tarvitset:
+
 - Käytössä olevan Database Mail -asetuksen ja määritellyn Operatorin
 - Agent Jobille määritellyn notifikaation
 
 🔹 A. Luo operaattori (DBA, sähköpostiosoite)
+
 ```sql
 USE msdb;
 EXEC msdb.dbo.sp_add_operator  
@@ -132,6 +142,7 @@ EXEC msdb.dbo.sp_update_job
 🔁 Tee tuo jokaiselle tärkeälle jobille, jonka epäonnistumisesta haluat ilmoituksen.
 
 ### 💾 2. SQL-kysely levytilan seurantaan
+
 Tämä T-SQL-komento näyttää vapaata levytilaa (MB) kaikilla asemilla, joihin SQL Serverillä on pääsy:
 
 ```sql
@@ -139,6 +150,7 @@ EXEC xp_fixeddrives;
 ```
 
 🔹 Jos haluat modernimman version, käytä sys.dm_os_volume_stats (versiosta SQL Server 2008 R2 SP1 alkaen):
+
 ```sql
 SELECT
     vs.volume_mount_point AS [Drive],
@@ -178,7 +190,7 @@ BEGIN
     DECLARE @threshold DECIMAL(5,2) = 10.0;
     DECLARE @alertMessage NVARCHAR(MAX) = '';
     
-    ;WITH VolumeInfo AS (
+    WITH VolumeInfo AS (
         SELECT
             vs.volume_mount_point AS Drive,
             vs.logical_volume_name AS Label,
@@ -208,8 +220,10 @@ END;
 ```
 
 📅 Vaihe 2: Ajastus SQL Agent Jobilla
+
 1. Luo uusi SQL Agent Job nimeltä **Check Disk Space**
 2. Lisää askel:
+
 - Tyyppi: Transact-SQL script
 - Komento: EXEC dbo.CheckDiskSpaceAndAlert;
 - Tietokanta: msdb
@@ -218,6 +232,7 @@ END;
 4. (Valinnainen) Lisää sähköposti-ilmoitus, jos jobi epäonnistuu
 
 ✅ Hyödyt
+
 - Ehkäisee tilannteen, jossa varmistus tai tietokantaoperaatio epäonnistuu täyden levyn vuoksi
 - Täysin automatisoitu ja sähköposti hälyttää nopeasti
 - Esimerkki proaktiivisesta seurannasta tuotantoympäristössä
