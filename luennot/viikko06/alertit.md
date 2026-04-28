@@ -1,12 +1,12 @@
 # Hälytykset ja seuranta
 
-1. 📌**Miksi seuranta ja hälytykset ovat tärkeitä?**
+**1. 📌 Miksi seuranta ja hälytykset ovat tärkeitä?**
 - Havaitset ongelmat ajoissa (ennen kuin käyttäjät huomaavat)
 - Ehdit reagoida esim. levytilan loppumiseen, suorituskykyongelmiin tai virheisiin
 - Auttaa jatkuvassa ylläpidossa ja optimoinnissa
 - Vähentää seisokkeja ja tietoturvariskejä
 
-2. 🔍 **Seurattavia asioita SQL Serverissä**
+**2. 🔍 Seurattavia asioita SQL Serverissä**
 
 | Mitä kannattaa seurata?           | Miksi?                                       |
 |-----------------------------------|----------------------------------------------|
@@ -19,7 +19,7 @@
 | Agent Job -epäonnistumiset        | Automaatiovirheiden havaitseminen            |
 
 
-3. 🛠️ **Työkalut ja välineet SQL Serverin seurantaan**
+**3. 🛠️ Työkalut ja välineet SQL Serverin seurantaan**
 
 🔹 SQL Server Management Studio (SSMS)
 - Activity Monitor (Live overview)
@@ -41,7 +41,7 @@
 🔹 Third-party / ulkoiset työkalut 
 - Redgate SQL Monitor, SolarWinds, Zabbix, Nagios
 
-4. 🚨 **SQL Server Agent Alerts:**
+**4. 🚨 SQL Server Agent Alerts:**
 
 - Virhekoodien seuranta (esim. 823, 824, 825 → levyongelmat)
 - Häälytykset suorituskyvystä
@@ -77,19 +77,19 @@ EXEC msdb.dbo.sp_add_operator
     @email_address = N'dba@example.com';
 ```
 
-5. 📈 **Automaattinen valvonta – mitä voi ajastaa?**
+**5. 📈 Automaattinen valvonta – mitä voi ajastaa?**
 
 - Vapaata levytilaa mittaava skripti
 - "Kaatuneet" Agent-työt
 - Tarkistus: milloin viimeksi varmistus otettu?
 - Tietokantojen tila (sys.databases – ovatko ONLINE, SUSPECT, RECOVERY_PENDING?)
 
-6. ✉️ **Hälytykset sähköpostitse (Database Mail)**
+**6. ✉️ Hälytykset sähköpostitse (Database Mail)**
 
 - Database Mail pitää ottaa käyttöön ja konfiguroida, SQL Server Agent käyttää sitä lähettääkseen sähköposteja operaattoreille
 - SMTP-konfiguraation voi tehdä helposti SSMS:ssä
 
-7. **🧪 Hyviä käytäntöjä**
+**7. 🧪 Hyviä käytäntöjä**
 
 - Älä tee jatkuvaa seurantaa tuotantoon ilman suodatusta (voi hidastaa palvelinta)
 - Käytä Extended Events Profilerin sijaan
@@ -141,7 +141,7 @@ EXEC msdb.dbo.sp_update_job
 
 🔁 Tee tuo jokaiselle tärkeälle jobille, jonka epäonnistumisesta haluat ilmoituksen.
 
-### 💾 2. SQL-kysely levytilan seurantaan
+### 💾 SQL-kysely levytilan seurantaan
 
 Tämä T-SQL-komento näyttää vapaata levytilaa (MB) kaikilla asemilla, joihin SQL Serverillä on pääsy:
 
@@ -219,7 +219,7 @@ BEGIN
 END;
 ```
 
-📅 Vaihe 2: Ajastus SQL Agent Jobilla
+### 📅 Vaihe 2: Ajastus SQL Agent Jobilla
 
 1. Luo uusi SQL Agent Job nimeltä **Check Disk Space**
 2. Lisää askel:

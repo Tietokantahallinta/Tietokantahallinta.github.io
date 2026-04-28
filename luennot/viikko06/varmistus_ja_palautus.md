@@ -107,7 +107,7 @@ Recovery model on tärkeä osa SQL Serverin varmuuskopiointistrategiaa, sillä s
 
 SQL Serverissä on kolme pääasiallista recovery modelia: Simple, Full ja Bulk-Logged. Ne määrittävät, kuinka SQL Server käsittelee transaktiotietoja ja kuinka varmuuskopiot toimivat.
 
-1. Simple Recovery Model
+#### 1. Simple Recovery Model
 - SQL Server tallentaa vain sen hetkiset tiedot ja ei pidä kirjaa transaktioista pysyvästi. Transaktiolokit (logit) eivät kasva jatkuvasti, vaan ne "kierrätetään" eli vanhat transaktiotiedot poistetaan, kun varmuuskopiot otetaan.
 - Tämä tarkoittaa, että vain täydelliset varmuuskopiot (FULL) ovat käytettävissä palautukseen, eikä transaktiolokin varmuuskopioita voi käyttää. Palauttaminen tapahtuu viimeisimmän täydellisen varmuuskopion ja mahdollisten erillisten differential-varmuuskopioiden avulla.
 
@@ -117,7 +117,7 @@ SQL Serverissä on kolme pääasiallista recovery modelia: Simple, Full ja Bulk-
 
 Sopii parhaitensovelluksiin, joissa ei ole kriittistä tarvetta palauttaa tietoja tarkalleen tiettyyn hetkeen (esim. kehitysympäristöt tai pienet tietokannat, joissa tiedot eivät ole kriittisiä).
 
-2. Full Recovery Model
+#### 2. Full Recovery Model
 - SQL Server tallentaa kaikki transaktiot täydellisesti ja säilyttää ne lokitiedostoissa (transaction log).
 - Tällä mallilla voit tehdä täydellisiä varmuuskopioita (FULL) sekä transaktiolokin varmuuskopioita (LOG). Tämä mahdollistaa tietokannan palauttamisen tarkalleen haluttuun hetkeen, kunhan olet ottanut varmuuskopiot ajoittain.
 - Tällöin, jos tietokanta menee rikki, voit palauttaa sen täydellisesti varmuuskopioista ja mahdollisesti myös transaktiolokeista, jolloin menetetyt tiedot voidaan minimoida.
@@ -128,7 +128,7 @@ Sopii parhaitensovelluksiin, joissa ei ole kriittistä tarvetta palauttaa tietoj
 
 Sopii parhaiten mihin tahansa ympäristöön, jossa tietojen eheys ja saatavuus ovat kriittisiä ja tietokannan tietoja on ylläpidettävä tarkasti.
 
-3. Bulk-Logged Recovery Model
+#### 3. Bulk-Logged Recovery Model
 - Bulk-Logged recovery model on eräänlainen välimuoto Full ja Simple mallien välillä.
 - Transaktiolokit tallennetaan normaalisti, mutta tietyt suuret tiedonmuokkaukset, kuten bulk-insertit (esim. suurten tietomäärien lataaminen tauluun), tallennetaan lokiin vähemmän yksityiskohtaisesti.
 - Tämä voi johtaa siihen, että tiettyjä tietokannan toimenpiteitä ei voi palauttaa niin tarkasti kuin Full-recovery modelissa. Varmuuskopioiden ottaminen toimii samalla tavalla kuin Full-mallissa, mutta bulk-lataukset eivät ole täysin todenmukaisia transaktiolokeissa.
@@ -269,6 +269,8 @@ WITH RECOVERY;
 ## Point-in-Time Recovery (PITR)
 
 Point-in-Time Recovery tarkoittaa tietokannan palauttamista johonkin tarkkaan ajankohtaan menneisyydessä — ei vain viimeisimpään varmistukseen, vaan esimerkiksi sekuntien tarkkuudella ennen virheellistä tapahtumaa.
+
+![PITR](PointInTimeRecovery.png)
 
 ### Miksi PITR on tärkeä?
 - Jos joku tekee virheen (esim. vahingossa poistaa tauluja tai päivittää vääriä tietoja), voit palauttaa tietokannan hetkeen juuri ennen virhettä.
@@ -420,7 +422,7 @@ Ymmärrä tarpeet:
 
 ## Ajastaminen SQL Serverissä
 
-Toimintojen ajastamiseen käytetään SQL Server Agent:ia. Huomaa, että sen pitää olla käynnissa ja luultavasti joudut päivittämään käynnistysasetuksia (Services) asennusken jälkeen. Agentin pitää käynnistyä automaattisesti ja lisäksi tarkista minkä käyttäjän oikeuksilla se toimii. Yleensä tehdää erillinen palvelutunnus joka luvitetaan tietokantaan (Login ja User) ja sitä ei käytetä mihinkään muuhun tarkoitukseen. Tämän palvelutunnuksen salasana ei vanhene automaattisesti esimerkiksi kuukauden välein, vaan vaihtaminen tehdään hallitusti. Mitä tapahtuu, jos salasana vanhenee ja ajastuksien takana olevat skriptit eivät toimikkaan?
+Toimintojen ajastamiseen käytetään SQL Server Agent:ia. Huomaa, että sen pitää olla käynnissa ja luultavasti joudut päivittämään käynnistysasetuksia (Services) asennuksen jälkeen. Agentin pitää käynnistyä automaattisesti ja lisäksi tarkista minkä käyttäjän oikeuksilla se toimii. Yleensä tehdään erillinen palvelutunnus, joka luvitetaan tietokantaan (Login ja User) ja sitä ei käytetä mihinkään muuhun tarkoitukseen. Tämän palvelutunnuksen salasana ei saa vanhentua automaattisesti esimerkiksi kuukauden välein, vaan vaihtaminen tehdään hallitusti. Mitä tapahtuu, jos salasana vanhenee ja ajastuksien takana olevat skriptit eivät toimikkaan? 
 
 
 **Jobit rakennetaan esimerkiksi näin:** 
@@ -453,10 +455,12 @@ WITH INIT, NAME = '15 min Lokivarmistus';
 
 ## Varmistukset SQL Serverin ulkopuolelta
 Varmistukset voi tehdä SQLCMD-sovelluksen avulla ja ajastaa Windowsin Task Schedulerilla. Tarvitaan ensin cmd-tiedosto (tai bat) joka sisältää varmistuksen ottamisen. Tässä esimerkissä otetaan varmistuksen joka päivä ja kierrätetään varmistustiedostoa viikon kuluttua:
+
 ```code
 sqlcmd -E -Q "backup database Formula1 to disk = 'c:\temp\backup\F1.bak' "
 Xcopy c:\temp\backup\F1.bak c:\temp\jemma\F1_%date:~0,3%.bak /Y /-I
 ```
+
 Ajastus Task Schedulerilla. Tämä on siis vaihtoehtoinen ja täysin toimiva tapa ottaa ajastettuja varmistuksia. Task Scheduler on WIndowsin ajastuspalvelu, jonka avulla voidaan suorittaa erilaisia toimintoja, ajaa skriptejä ja käynnistää sovelluksia.
 
 <!-- 
