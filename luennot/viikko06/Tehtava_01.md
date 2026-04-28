@@ -1,7 +1,7 @@
 # Tehtävä 01:
 
-Tehtävässä käytettävä tietokanta löytyy [osoitteesta](https://drive.google.com/file/d/1MYXUdgR0vz_YPBeHOA-oS0Uo-gPAFZe_/view?usp=drive_link). 
-Kyseessä on erän SQL Serverin virallisista demotietokannoista.
+Tehtävässä käytettävä tietokanta löytyy kurssin Teamsista Jaetut-kohdasta eli hakemistoista. Tietokanta on nimeltään AdventureWorks2012 ja tiedosto on AdventureWorks2012_Data.mdf. 
+Kyseessä on eräs SQL Serverin virallisista demotietokannoista.
 
 1. Lataa tiedosto, kopioi se sopivaan paikkaan ja ota tietokanta käyttöön. Tiedostopäätteen perusteella pystyt päättelemään miten saat sen tehtyä (restore vai attach). Toiminnon voi tehdä joko SSMS:n käyttöliittymän kautta tai TSQL-komennolla.
 
