@@ -10,7 +10,7 @@ FROM Production.Product
 WHERE Color = 'Red';
 ```
 
-Tämä haku käyttää saraketta Color, mutta siinä ei ole oletuksena indeksiä → SQL Server voi tehdä tauluskannauksen.
+Tämä haku käyttää saraketta Color, mutta siinä ei ole oletuksena indeksiä → SQL Server voi tehdä taulun skannauksen.
 
 🔹 2. Tarkista, ehdottaako SQL Server uutta indeksiä
 
@@ -23,6 +23,7 @@ JOIN sys.dm_db_missing_index_group_stats AS migs
     ON migs.group_handle = mig.index_group_handle
 ORDER BY migs.avg_total_user_cost * migs.avg_user_impact DESC;
 ```
+
 Tämä DMV kertoo, mille sarakkeille SQL Server suosittelisi indeksejä perustuen aiempiin kyselyihin.
 
 🔹 3. Luo indeksi ehdotuksen perusteella
@@ -31,6 +32,7 @@ Tämä DMV kertoo, mille sarakkeille SQL Server suosittelisi indeksejä perustue
 CREATE NONCLUSTERED INDEX IX_Product_Color
 ON Production.Product (Color);
 ```
+
 🔹 4. indeksi ja include (covering index) esimerkki
 
 ```sql
@@ -41,6 +43,7 @@ INCLUDE (ProductID, Name);
 🔍 Tämä katettu indeksi voi palvella kyselyä ilman että tarvitsee hakea rivejä taulusta erikseen – nopeampi suoritus.
 
 🔹 5. Testaa suoritussuunnitelmalla
+
 ```sql
 SET STATISTICS IO ON;
 SET STATISTICS TIME ON;
@@ -49,6 +52,7 @@ SELECT ProductID, Name, Color
 FROM Production.Product
 WHERE Color = 'Red';
 ```
+
 Näet suoritussuunnitelmassa ja tilastoissa, miten indeksi vaikuttaa (hakustrategia muuttuu, I/O vähenee).
 
 **Kysymys**:

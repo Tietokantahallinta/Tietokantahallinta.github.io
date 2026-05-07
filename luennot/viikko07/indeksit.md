@@ -27,7 +27,7 @@ IAM-sivun tehtävänä on pitää kirjaa, mitkä extentit (fyysiset alueet levyl
 Kun SQL Server tarvitsee lukea tietoa (suorittaa hakua tai etsii päivitettäviä rivejä), se voi käyttää IAM-sivuja selvittääkseen nopeasti, missä kohdin levyä kyseisen taulun tai indeksin tiedot sijaitsevat ilman, että sen tarvitsee lukea koko tietokantatiedostoa läpi. IAM on siis eräänlainen hakemisto tietokannan sisällä, joka SQL Server käyttää hyväkseen hakiessaan tietoja levyltä. 
 
 ## Indeksi
-Ilman indeksejä rivien haku pitää tehdä ns. Table Scan-toiminnolla eli selata kaikki rivit läpi. Taulun rivit löytyy IAM.n avulla. Indeksointi nopeuttaa haun kohteena olevien rivien löytymistä. Jos taulussa on vain vähän rivejä (kymmeniä tai satoja), on Table Scan tehokas tapa etsiä dataa. Useimmiten rivejä on kuitenkin paljon enemmän, jolloin jos haetaan where-ehdolla jotain tiettyjä rivejä, olisi hyvä löytää oikeat rivit mahdollisimman vähillä tiedosto-IO -toiminnoilla. Levykäsittely on hidasta verrattuna datan käsittelyyn keskusmuistissa.
+Ilman indeksejä rivien haku pitää tehdä ns. Table Scan-toiminnolla eli selata kaikki rivit läpi. Taulun rivit löytyy IAM:n avulla. Indeksointi nopeuttaa haun kohteena olevien rivien löytymistä. Jos taulussa on vain vähän rivejä (kymmeniä tai satoja), on Table Scan tehokas tapa etsiä dataa. Useimmiten rivejä on kuitenkin paljon enemmän, jolloin jos haetaan where-ehdolla jotain tiettyjä rivejä, olisi hyvä löytää oikeat rivit mahdollisimman vähillä tiedosto-IO -toiminnoilla. Levykäsittely on hidasta verrattuna datan käsittelyyn keskusmuistissa.
 
 Indeksit on toteutettu B-puu rakenteen avulla, josta löytyy joko rivin sisältämä sivu tai suoraan rivin positio. Indeksi tavoitteena on minimoida datan hakemiseen käytettävä aika ja levykäsittely. Indeksi siis parantaa suorituskykyä, mutta ei kaikissa tilanteissa. Indeksejä on myös ylläpidettävä (päivitettävä) aina kun taulun sisältö muuttuu indekseihin kuuluvien sarakkeiden osalta. Kaikki INSERT, UPDATE ja DELETE -toiminnot yleensä aiheuttavat indeksin B-puun päityksiä. Indeksille joutuu allokoimaan lisää sivuja tietokannasta ja tekemään ns. splittauksia eli B-puun sivuja jaetaan useampaan osaan. Kaikki indeksin muutokset vaativat siis prosessoriaikaa ja levy-IO toimintoja. Siksi pitää miettiä tarkkaan mitä kannattaa indeksoida suhteessa datan käsittelytapaan ja -logiikkaan. OLTP tietokannassa optimaalinen indeksointi on varmasti erilainen kuin OLAP-tietokannassa, jossa pääsääntöisesti tulee lukuoperaatoita kun OLTP:ssä tulee paljon päivitystoimintoja.
 
@@ -68,7 +68,7 @@ SELECT OsastoID, COUNT(*) FROM Työntekijät GROUP BY OsastoID;
 ### ❌ Indeksointi ei ole suositeltavaa:
 - Sarakkeet, joissa on vain muutama mahdollinen arvo (esim. Sukupuoli, OnkoAktiivinen), siis huono selektiivisyys
 - Sarakkeet, joita päivitetään usein
-- Liian monta indeksiä per taulu — jokainen INSERT, UPDATE, DELETE vaikuttaa myös indekseihin
+- Liian monta indeksiä per taulu — jokainen INSERT, UPDATE, DELETE vaikuttaa myös indekseihin, niitä pitää päivittää
 
 
 
@@ -76,7 +76,7 @@ SELECT OsastoID, COUNT(*) FROM Työntekijät GROUP BY OsastoID;
 
 ## SQL Serverin indeksit
 
-Pääjako SQL Serverin indekseissä on clustered ja non-clustered -indeksit, Näistä löytyy tiivis esitys [täältä](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16).
+Pääjako SQL Serverin indekseissä on clustered ja non-clustered -indeksit. Näistä löytyy tiivis esitys [täältä](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16).
 Todellisuudessa SQL Server tukee ja käyttää montaa erilaista [indeksityyppiä](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/indexes?view=sql-server-ver16). Näitä kaikkia ei käydä läpi tällä kurssilla, keskitytään ensi pääasiaan jotka on pakko tietää ja tuntea tietokantojen optimoinnissa ja hallinnassa.
 
 ### Indeksit taulun luonnissa
@@ -91,7 +91,7 @@ CREATE TABLE Esimerkki (
 sp_help Esimerkki;
 ```
 
-Jos jostain syystä halutaan 'normaali'-indeksi clusteroidun tilalle, voidaan indeksi poistaa ja luoda uudelleen tai sitten luonnin yhdeydessä määritetään indeksin tyyppi:
+Jos jostain syystä halutaan 'normaali'-indeksi clusteroidun tilalle, voidaan indeksi poistaa ja luoda uudelleen tai sitten luonnin yhdeydessä määritetään suoraan indeksin tyyppi:
 ```sql
 CREATE TABLE Esimerkki (
     ID INT NOT NULL,
@@ -100,14 +100,14 @@ CREATE TABLE Esimerkki (
 );
 ```
 
-Clustered-indeksejä voi olla vain yksi per taulu. Tämä johtuu siitä, että tässä indeksissä rivit ovat fyysisesti oikeassa järjestyksessä sivun sisällä indeksin sarakkeen perusteella. Indeksipuun rakenne on matalampi kuin normaalissa indeksissä. Clustered-indeksin voi tehdä minkä tahansa sarakke(id)en perusteella, oletuksena avain on kuitenkin keskimäärin varsin hyvä.
+Clustered-indeksejä voi olla vain yksi per taulu. Tämä johtuu siitä, että tässä indeksissä rivit ovat fyysisesti oikeassa järjestyksessä sivun sisällä indeksisarakkeen perusteella. Indeksipuun rakenne on matalampi kuin normaalissa indeksissä. Clustered-indeksin voi tehdä minkä tahansa sarakke(id)en perusteella, oletuksena pääavain on kuitenkin keskimäärin varsin hyvä.
 
 [Kaavio](https://medium.com/@lorenzouriel/everything-you-need-to-know-about-index-in-sql-server-b142787f1d98) miltä indeksirakenne näyttää ja miten se toimii.
 
 
 ## Indeksin luonti
 
-Indeksi luontikomento on perusmuodossa aika yksinkertainen:
+Indeksin luontikomento on perusmuodossa aika yksinkertainen:
 ```sql
 CREATE [ UNIQUE ] [ CLUSTERED | NONCLUSTERED ] INDEX index_name
     ON <object> ( column [ ASC | DESC ] [ ,...n ] )
@@ -185,7 +185,7 @@ SELECT Name, ListPrice
 
 ## Splittaus ja Fillfactor
 
-SQL Server tallentaa indeksejä 8 kilotavun sivuihin (pages) samoin kuin tietkannan taulujen rivejä. Kun indeksi on järjestetty (esim. B+-puuna) ja uusi rivi pitäisi lisätä väliin, mutta indeksisivulla ei ole tilaa, tapahtuu splittaus:
+SQL Server tallentaa indeksejä 8 kilotavun sivuihin (pages) samoin kuin tietokannan taulujen rivejä. Kun indeksi on järjestetty (esim. B+-puurakenteena) ja uusi rivi pitäisi lisätä väliin, mutta indeksisivulla ei ole tilaa, tapahtuu splittaus:
 - Alkuperäinen sivu jaetaan kahtia.
 - Noin puolet tiedoista siirtyy uudelle sivulle.
 - Uusi rivi lisätään oikeaan paikkaan.
@@ -232,7 +232,7 @@ Mitä käytännössä tapahtuu?
 | Page Split | Sivu täyttyy, jaetaan kahteen osaan lisäyksen vuoksi                     |
 | Fillfactor | Kuinka täyteen sivu alun perin täytetään (jotta vältettäisiin splittaus) |
 
-Lisää asiaa indeksien toiminnasta ja fragmentoinnista löytyy täältä: https://www.sqlservercentral.com/articles/understanding-curd-operations-on-tables-with-b-tree-indexes-page-splits-and-fragmentation
+Lisää asiaa indeksien toiminnasta ja fragmentoinnista löytyy [täältä](https://www.sqlservercentral.com/articles/understanding-curd-operations-on-tables-with-b-tree-indexes-page-splits-and-fragmentation).
 
 ## Indeksien huolto
 
@@ -292,7 +292,7 @@ REBUILD WITH (FILLFACTOR = 90, ONLINE = ON);
 ```
 - Suositellaan fragmentaation ollessa yli 30 %
 - Luo indeksin täysin uudelleen
-- *ONLINE = ON* sallii käytön samalla (vain Enterprise / myöhemmät versiot)
+- *ONLINE = ON* sallii käytön samalla (vain Enterprise / uusimmat versiot)
 
 **Kaikki indeksit yhdellä komennolla**
 ```sql
@@ -303,14 +303,14 @@ ALTER INDEX ALL ON Tuotteet REBUILD;
 ALTER INDEX ALL ON Tuotteet REORGANIZE;
 ```
 
-**📅 Milloin huoltaa?**
+**📅 Milloin pitää tai kannattaa huoltaa?**
 - Säännöllinen ajastus (esim. yöaikaan, viikoittain)
 - ETL- tai massapäivitysten jälkeen
 - Suorituskykyongelmia tutkiessa
 - Fragmentaation ylittäessä 5 % tai 30 % rajan
 
 **🎓 Vinkki: Automaattinen huolto**
-Voit automatisoida indeksien huollon SQL Server Agent -jobin tai huoltosuunnitelmien avulla. Kehittyneempi vaihtoehto on käyttää dynaamista skriptiä, joka valitsee REORGANIZE tai REBUILD automaattisesti fragmentaation perusteella.
+Voit automatisoida indeksien huollon SQL Server Agent -jobin tai huoltosuunnitelmien avulla. Toinen vaihtoehto on käyttää dynaamista skriptiä, joka valitsee REORGANIZE tai REBUILD automaattisesti fragmentaation perusteella.
 
 -----
 
