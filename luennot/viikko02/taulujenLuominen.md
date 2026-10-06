@@ -49,11 +49,11 @@ CREATE TABLE Demo(
     ...
 )
 ```
-Tämän jälkeen ei pääavaimeen pysty asettamaan itse arvoa ellei identity-asetusta käännetä pois päältä komennolla:
+Tämän jälkeen ei pääavaimeen pysty asettamaan itse arvoa, ellei identity-asetusta käännetä pois päältä komennolla:
 ```SQL
 SET IDENTITY_INSERT Demo ON;
 ```
-Vastaavasti automaattiavainnus saadaan takaisin OFF-asetuksella. Joskus voi tulla tilanteita, missä halutaan skriptissä määritellä avaimen arvo myös IDENTITY-avaimiin ja silloin edellä mainittu tapa on toimiva keino ongelman ratkaisemiseen.
+Vastaavasti automaattiavainnus saadaan takaisin pääkke OFF-asetuksella. Joskus voi tulla tilanteita, missä halutaan skriptissä määritellä avaimen arvo myös IDENTITY-avaimiin ja silloin edellä mainittu tapa on toimiva keino ongelman ratkaisemiseen.
 
 Sekvenssigeneraattori on objekti, joka ei liity yksittäiseen tauluun, vaan niiden avulla voi generoida mihin tahansa käyttöön kokonaislukuja.
 
@@ -75,7 +75,7 @@ INSERT INTO Testi(ID, Nimi) values(999, 'Mustanaamio');
 select * from Testi;
 ```
 
-Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. Triggeriä voidaan myös käyttää avaimen generointiin ja silloin saadaan ohjelmalogiikka mukaan joten automaattinen merkkijono-tyyppinen avainkin on mahdollinen.
+Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. Triggeriä voidaan myös käyttää avaimen generointiin ja silloin saadaan ohjelmalogiikka mukaan, joten automaattinen merkkijono-tyyppinen avainkin on mahdollinen.
 
 
 ### Tietotyypit
@@ -228,6 +228,14 @@ SELECT * FROM t2;
 
 ### Clustered Index ja primary key
 Taulun luonnin yhteydessä muodostuu automaattisesti klusteroitu indeksi (Clustered index). Indeksi on mahdollista poistaa ja tehdä uudelleen vaikka jonkin muun sarakkeen perustella, jos hakuja tehdään tauluun paljon jonkin muun kuin avainsarakkeen perusteella. Useimmiten oletusindeksointi on kuitenkin hyvä ja toimiva. Indekseistä lisää asiaa myöhemmin kurssin aikana.
+
+
+<!--TODO: Lisää asiaa mm.: 
+-- timestamp ja rowversion
+-- optimistinen lukitus ja edelliset tietotyypit
+-- guid ja se generointi avaimena tai muuten uniikkina
+-- - jne
+-->
 
 
 <!-- ## Muut taulutyypit
