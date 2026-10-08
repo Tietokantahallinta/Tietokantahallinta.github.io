@@ -123,12 +123,12 @@ INSERT INTO Tila(data) VALUES('alkuarvo');
 SELECT * FROM Tila;
 --TULOS: 
 --TilaID	data		versio
---1			alkuarvo	0x000000000000C352
+--1		alkuarvo	0x000000000000C352
 UPDATE Tila SET data = 'muutettu';
 SELECT * FROM Tila;
 --TULOS: 
 --TilaID	data		versio
---1			alkuarvo	0x000000000000C353
+--1		alkuarvo	0x000000000000C353
 ```
 
 **Laskennallinen sarake**
