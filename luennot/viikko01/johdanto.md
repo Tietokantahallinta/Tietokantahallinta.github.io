@@ -6,8 +6,8 @@ SQL-kieli kehittyi ja oli toteutettuna kaupallisissa tuotteissa paljon ennen kui
 
 DBA tulee lyhenteenä sanoista Database Administrator. Se on henkilö tai rooli, joka vastaa tietokannan (myös tietokantapalvelimen) hallinnoinnista tietokannan elinkaaren aikana, työnkuvan on siis Database Administration. Tällä kurssilla tutustutaan tyypillisimpiin DBA:n tehtäviin.
 
-#### Tietokannan elikaari
-Tietokanta luodaan jonkin tarpeen mukaan datan talletuksen ja käsittelyyn. Tällä kurssilla keskitytään vain OLTP-tietokantoihin ei OLAP-kantoihin jotka ovat enemmän raportointia varten.
+#### Tietokannan elinkaari
+Tietokanta luodaan jonkin tarpeen mukaan datan tallennukseen ja käsittelyyn. Tällä kurssilla keskitytään vain OLTP-tietokantoihin, ei OLAP-kantoihin jotka ovat enemmän raportointia varten.
 
 Elinkaareen liittyviä vaiheita ja asioita:
 

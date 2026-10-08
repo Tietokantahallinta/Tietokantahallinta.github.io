@@ -28,7 +28,7 @@ CREATE TABLE Tuote (
 ```
 
 ### Avaimet
-taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan neljällä eri tavalla: IDENTITY, SEQUENCE, TRIGGER ja Scalar Function.  
+taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan neljällä eri tavalla: IDENTITY, SEQUENCE, TRIGGER ja Scalar Function. Lisäksi avaimena voi käyttää tietotyyppiä UNIQUEIDENTIFIER ja tälle arvon generointi tehdään esimerkiksi NEWID()-funktiolla. 
 
 Jos avain muodostuu useammasta sarakkeesta, pitää PRIMARY KEY-määritys tehdä vasta sarakkeiden jälkeen.
 
@@ -61,7 +61,7 @@ Sekvenssigeneraattori on objekti, joka ei liity yksittäiseen tauluun, vaan niid
 CREATE SEQUENCE DemoGeneraattori START WITH 1000 INCREMENT BY 1;
 SELECT NEXT VALUE FOR DemoGeneraattori; -- Tällä saa seuraavan numeron 
 
-create table Testi (
+CREATE TABLE Testi (
       ID INT PRIMARY KEY DEFAULT(NEXT VALUE FOR DemoGeneraattori),
       Nimi nvarchar(100)
 );
@@ -72,10 +72,26 @@ INSERT INTO Testi(Nimi) values('Jaska Jokunen');
 -- oletuksen ohitus, voi määrittää avaimen arvon helposti INSERTissä
 INSERT INTO Testi(ID, Nimi) values(999, 'Mustanaamio');
 
-select * from Testi;
+SELECT * FROM Testi;
 ```
 
-Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. Triggeriä voidaan myös käyttää avaimen generointiin ja silloin saadaan ohjelmalogiikka mukaan, joten automaattinen merkkijono-tyyppinen avainkin on mahdollinen.
+Scalar Function:lla voisi myös generoida avaimen, mutta ei ole yleisesti käytössä oleva tapa. Funktioille löytyy paljon muita parempia käyttökohteita. Triggeriä voidaan myös käyttää avaimen generointiin ja silloin saadaan ohjelmalogiikka mukaan, joten automaattinen merkkijono-tyyppinen avainkin on mahdollinen. Funktion avulla voi tehdä myös avaimia, jotka ovat muuta tietotyyppiä kuin INT, esimerkiksi CHAR-tyypille onnistuu generointi.
+
+Varmasti yksilöllisen avaimen saa tauluun käyttämällä UNIQUEIDENTIFIER-tyyppiä:
+
+```SQL
+CREATE TABLE Aineisto(
+	AineistoID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+	Data NVARCHAR(MAX)
+);
+
+INSERT INTO Aineisto(Data) values('Ensimmäinen aineisto');
+INSERT INTO Aineisto(Data) values('Toinen aineisto');
+SELECT * FROM Aineisto;
+```
+
+NEWID()-funktiolla voidaan kysyä GUID-arvoja jotka ovat 16-tavua pitkiä numerosarjoja, generoinnissa on mukana verkkokortin MAC-osoite, joka on varmasti yksilöllinen kaikissa laitteissa. On myös toinen funktio NEWSEQUENTIALID(), joka tuottaa perälläisiä arvoja.
+Tämä avainnustekniikka on SQL-kyselyiden kannalta kaikkea muuta kuin käyttäjäystävällinen jos avain pitää kirjoittaa SQL-lauseeseen. Siksi se on käytössä vain kun muita kunnollisia vaihtoehtoja ei ole. 
 
 
 ### Tietotyypit
@@ -95,6 +111,25 @@ Muutama huomio näistä:
 - merkkijonot talletetaan yhdellä ('esimerkki') tai kahdella tavulla (N'esimerkki', unicode) ja tuki UTF-8 merkistölle löytyy myös
 - sarake voi olla Computed-tyyppinen jolloin sarakkeen tyyppi perustuu laskentakaavaan
 - collate, tekstisarakkeiden merkistö/lajittelujärjestyksen määrittely sekä hakutoiminto, onko eroa isoilla ja pienillä kirjaimilla
+- TIMESTAMP (vanha nimi, älä käytä) ja ROWVERSION (sama kuin TIMESTAMP, mutta kuvaavampi nimi). UPDATE-lause päivittää automaattisesti rowversion-saraketta. Käytetään yleensä optimistisen lukituksen toteuttamiseen.
+
+```SQL
+CREATE TABLE Tila(
+	TilaID INT PRIMARY KEY IDENTITY,
+	data VARCHAR(20),
+	versio ROWVERSION
+);
+INSERT INTO Tila(data) VALUES('alkuarvo');
+SELECT * FROM Tila;
+--TULOS: 
+--TilaID	data		versio
+--1			alkuarvo	0x000000000000C352
+UPDATE Tila SET data = 'muutettu';
+SELECT * FROM Tila;
+--TULOS: 
+--TilaID	data		versio
+--1			alkuarvo	0x000000000000C353
+```
 
 **Laskennallinen sarake**
 Sarakkeen arvo voi perustua rivin muihin sarakkeisiin eli olla laskennallinen (Computed column). Tämä johtaa tarkasti ottaen normalisoimattomaan tauluun, mutta ei ole ongelma, vaan joissain tilanteissa oikeasti helpottava ja järkevä ominaisuus. Vaihtoehtoinen tapa on tehdä trigger, joka laskee sarakkeen sisällön muiden sarakkeiden perusteella.

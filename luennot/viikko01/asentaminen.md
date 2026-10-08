@@ -35,7 +35,7 @@ SQL Server tietokantainstanssi pystyy käsittelemään montaa tietokantaa, siksi
 
 SQL Server, kuten muutkin tietokantapalvelimet, on taustaprosessi, jolla ei ole käyttöliittymää. Sitä hallinnoidaan Services-toiminnon kautta (Palvelut, suomenkielisessä versiossa): käynnistys, sammutus, millä tunnuksella suoritetaan jne. 
 
-Asennuksen jälkeen käynnistä Services (⊞ ja kirjoita Services), etsi SQL Server (MSSQLSERVER). Sarakkeilta löydät tilan (Status), käynnistystavan (Startup type) sekä käyttäjän, jonka oikeuksilla palvelin toimii (Log On As). Napauta riviä hiiren oikeanpuoleisella painikkeella ==> käynnistytoiminnot ja ominaisuudet (Properties). Valitse Properties (tai ominaisuudet) ja tutustu avautuvan ikkunan välilehdillä oleviin asetuksiin.
+Asennuksen jälkeen käynnistä Services (⊞ ja kirjoita Services), etsi SQL Server (MSSQLSERVER). Sarakkeilta löydät tilan (Status), käynnistystavan (Startup type) sekä käyttäjän, jonka oikeuksilla palvelin toimii (Log On As). Napauta riviä hiiren oikeanpuoleisella painikkeella ==> käynnistystoiminnot ja ominaisuudet (Properties). Valitse Properties (tai ominaisuudet) ja tutustu avautuvan ikkunan välilehdillä oleviin asetuksiin.
 
 Tietokantapalvelimen ohella asentuu myös muita sovelluksia, esimerkiksi *SQL Server Profiler*, johon tutustutaan kurssin aikana sekä **SQL Server Configuration Manager**.
 
@@ -50,7 +50,7 @@ SQLCMD -?
 ```
 Saat listan komentoriviparametetreistä, joilla komentoa ohjataan. Jos (kun) tarvitset ajaa SQL-komentoja tietokantapalvelimelle ilman SSMS:n käyttöä, esimerkiksi jos ajastat toimintoja, on SQLCMD enemmän kuin tärkeä sovellus. Opettele SQLCMD:n peruskäyttö.
 
-**OSQL** on vastaava sovellus, mutta tehty hieman vanhemmalla tekniikalla ja tietokantaan kytkeytymiskirjastoilla. Saa käyttöö, mutta suosituksena on SQLCMD. Jossain saatat vielä törmätä sovellukseen isql, sekin vastaa SQLCMD:tä, mutta pohjautuu erittäin vanhaan tekniikkaan, eikä edes asennu SQL Serverin mukana enää nykyään.
+**OSQL** on vastaava sovellus, mutta tehty hieman vanhemmalla tekniikalla ja tietokantaan kytkeytymiskirjastoilla. Saa käyttää, mutta suosituksena on SQLCMD. Jossain saatat vielä törmätä sovellukseen isql, sekin vastaa SQLCMD:tä, mutta pohjautuu erittäin vanhaan tekniikkaan, eikä edes asennu SQL Serverin mukana enää nykyään.
 
 ## Tietokantapalvelimen asetukset
 Nyt SQL Server ja hallintatyökalut on asennettu, voidaan siis tutkia mitä asetuksia on säädettävissä.
