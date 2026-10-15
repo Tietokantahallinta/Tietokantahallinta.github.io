@@ -1,4 +1,4 @@
-# Vko 01
+# Viikko 1
 # Tavoitteet:
 
 - Tietokantojen merkitys ja käyttökohteet 

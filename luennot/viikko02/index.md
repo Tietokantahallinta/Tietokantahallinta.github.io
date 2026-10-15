@@ -1,4 +1,4 @@
-# Vko 02
+# Viikko 2
 # Tavoitteet:
 
 - Taulujen luonti, avaimet (primary ja foreign key)

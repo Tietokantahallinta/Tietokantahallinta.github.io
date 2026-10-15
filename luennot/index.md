@@ -4,11 +4,11 @@ Tervetuloa kurssille.
 
 Sisältö:  
 
-[Viikko 01](./viikko01/index.md)    
+[Viikko 1](./viikko01/index.md)    
 
-[Viikko 02](./viikko02/index.md)    
+[Viikko 2](./viikko02/index.md)    
 
-[Viikko 03](./viikko03/index.md)  
+[Viikko 3](./viikko03/index.md)  
 
 Viikko 04  
 

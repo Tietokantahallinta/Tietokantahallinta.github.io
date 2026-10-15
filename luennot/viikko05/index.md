@@ -1,4 +1,4 @@
-# Vko 05
+# Viikko 5
 # Tavoitteet:
 
 - tietokantarakenteiden muuttaminen, ALTER TABLE

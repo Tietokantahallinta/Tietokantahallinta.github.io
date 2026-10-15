@@ -1,4 +1,4 @@
-# Vko 08
+# Viikko 0
 # Koe
 
 - Katso aikataulu Moodlesta.

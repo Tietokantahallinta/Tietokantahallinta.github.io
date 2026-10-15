@@ -1,4 +1,4 @@
-# Vko 04
+# Viikko 4
 # Tavoitteet:
 
 - TempDB ja tilapäiset rakenteet

@@ -1,4 +1,4 @@
-# Vko 06
+# Viikko 6
 # Tavoitteet:
 
 - Varmistukset ja palauttaminen

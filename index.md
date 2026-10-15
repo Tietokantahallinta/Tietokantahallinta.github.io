@@ -1,6 +1,6 @@
 # Tietokantahallinta (dba)
 
-[ Tervetuloa ](./index.md) &nbsp;&nbsp; [Viikko 01](./luennot/viikko01/index.md) &nbsp;&nbsp; [Viikko 02](./luennot/viikko02/index.md) &nbsp;&nbsp; [Viikko 03](./luennot/viikko03/index.md) &nbsp;&nbsp; [Viikko 04](./luennot/viikko04/index.md) &nbsp;&nbsp; [Viikko 05](./luennot/viikko05/index.md) &nbsp;&nbsp; [Viikko 06](./luennot/viikko06/index.md) &nbsp;&nbsp; [Viikko 07](./luennot/viikko07/index.md) &nbsp;&nbsp; [Viikko 08](./luennot/viikko08/index.md) 
+[ Tervetuloa ](./index.md) &nbsp;&nbsp; [Viikko 1](./luennot/viikko01/index.md) &nbsp;&nbsp; [Viikko 2](./luennot/viikko02/index.md) &nbsp;&nbsp; [Viikko 3](./luennot/viikko03/index.md) &nbsp;&nbsp; [Viikko 4](./luennot/viikko04/index.md) &nbsp;&nbsp; [Viikko 5](./luennot/viikko05/index.md) &nbsp;&nbsp; [Viikko 6](./luennot/viikko06/index.md) &nbsp;&nbsp; [Viikko 7](./luennot/viikko07/index.md) &nbsp;&nbsp; [Viikko 8](./luennot/viikko08/index.md) 
 
 Tervetuloa kurssille.
 

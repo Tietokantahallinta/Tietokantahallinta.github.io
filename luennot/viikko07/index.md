@@ -1,4 +1,4 @@
-# Vko 07
+# Viikko 7
 # Tavoitteet:
 
 - indeksit, klusteroitu indeksi ja 'tavallinen' indeksi (toisioindeksi)

@@ -1,4 +1,4 @@
-# Vko 03
+# Viikko 3
 # Tavoitteet:
 
 - skriptitiedostot ja niiden ajaminen
