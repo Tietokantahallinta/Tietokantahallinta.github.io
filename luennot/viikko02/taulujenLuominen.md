@@ -28,7 +28,7 @@ CREATE TABLE Tuote (
 ```
 
 ### Avaimet
-taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan neljällä eri tavalla: IDENTITY, SEQUENCE, TRIGGER ja Scalar Function. Lisäksi avaimena voi käyttää tietotyyppiä UNIQUEIDENTIFIER ja tälle arvon generointi tehdään esimerkiksi NEWID()-funktiolla. 
+Taulussa on oleva pääavain (primary key). Pääavain voi muodostua useammasta sarakkeesta ja sarakke(id)en tietotyyppi saa olla mitä tahansa. Nykyään yleensä käytetään avaimia, joilla ei ole muuta sisältöä kuin toimia yksilöllisenä arvona avaimena. Tyypillisin avaimen tietotyyppi on INT joka voidaan generoida automaattisesti kahdella, tai oikeastaan neljällä eri tavalla: IDENTITY, SEQUENCE, TRIGGER ja Scalar Function. Lisäksi avaimena voi käyttää tietotyyppiä UNIQUEIDENTIFIER ja tälle arvon generointi tehdään esimerkiksi NEWID()-funktiolla. 
 
 Jos avain muodostuu useammasta sarakkeesta, pitää PRIMARY KEY-määritys tehdä vasta sarakkeiden jälkeen.
 
@@ -53,7 +53,7 @@ Tämän jälkeen ei pääavaimeen pysty asettamaan itse arvoa, ellei identity-as
 ```SQL
 SET IDENTITY_INSERT Demo ON;
 ```
-Vastaavasti automaattiavainnus saadaan takaisin pääkke OFF-asetuksella. Joskus voi tulla tilanteita, missä halutaan skriptissä määritellä avaimen arvo myös IDENTITY-avaimiin ja silloin edellä mainittu tapa on toimiva keino ongelman ratkaisemiseen.
+Vastaavasti automaattiavainnus saadaan takaisin päälle OFF-asetuksella. Joskus voi tulla tilanteita, missä halutaan skriptissä määritellä avaimen arvo myös IDENTITY-avaimiin ja silloin edellä mainittu tapa on toimiva keino ongelman ratkaisemiseen. Tyypillisesti tämä tilanne tuleem kun siirretään tietokan taulusta tai tietokannasta toiseen.
 
 Sekvenssigeneraattori on objekti, joka ei liity yksittäiseen tauluun, vaan niiden avulla voi generoida mihin tahansa käyttöön kokonaislukuja.
 
@@ -95,9 +95,9 @@ Tämä avainnustekniikka on SQL-kyselyiden kannalta kaikkea muuta kuin käyttäj
 
 
 ### Tietotyypit
-- sarakkeiden tietotyypit
-Taulun sarakkeille määritellään tietotyypit. SQL standardi määrittää tyypit, mutta käytännössä aika käytetään palvelimen omia tietotyyppejä. Luettelo SQL Serverin [ tietotyypeistä ](https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16) on aika kattava.
+Taulun sarakkeille määritellään tietotyypit. SQL standardi määrittää tyypit, mutta käytännössä aina käytetään palvelimen omia tietotyyppejä. Luettelo SQL Serverin [ tietotyypeistä ](https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16) on aika kattava.
 Karkea jako menee näin:
+
 - Exact numerics
 - Approximate numerics
 - Date and time
@@ -247,7 +247,7 @@ ALTER TABLE Tuotekuvaus DROP COLUMN Varastotuote;
 ALTER TABLE Tuotekuvaus ALTER COLUMN Kuvaus NVARCHAR(1000);
 ```
 
-Tietotyypin muunnoksessa on huomioitava olemassa oleva data. Tyyppi voi vaihtua, jos konversio on mahdollista. Tyypillisesti kuitenkin muutetaan numeerinen tyyppi toiseen tai lisätään tekstisarakkeen pituutta (harvoin lyhennetään).
+Tietotyypin muunnoksessa on huomioitava olemassa oleva data. Tyyppi voi vaihtua, jos konversio on mahdollista. Tyypillisesti kuitenkin muutetaan numeerinen tyyppi toiseen numeeriseen tyyppiin tai lisätään tekstisarakkeen pituutta (harvoin lyhennetään).
 
 ```SQL
 CREATE TABLE t2(
@@ -262,7 +262,7 @@ SELECT * FROM t2;
 ```
 
 ### Clustered Index ja primary key
-Taulun luonnin yhteydessä muodostuu automaattisesti klusteroitu indeksi (Clustered index). Indeksi on mahdollista poistaa ja tehdä uudelleen vaikka jonkin muun sarakkeen perustella, jos hakuja tehdään tauluun paljon jonkin muun kuin avainsarakkeen perusteella. Useimmiten oletusindeksointi on kuitenkin hyvä ja toimiva. Indekseistä lisää asiaa myöhemmin kurssin aikana.
+Taulun luonnin yhteydessä muodostuu automaattisesti klusteroitu indeksi (Clustered index). Indeksi on mahdollista poistaa ja tehdä uudelleen vaikka jonkin muun sarakkeen perustella, jos hakuja tehdään tauluun paljon muun kuin avainsarakkeen perusteella. Useimmiten oletusindeksointi on kuitenkin hyvä ja toimiva. Indekseistä lisää asiaa myöhemmin kurssin aikana.
 
 
 <!--TODO: Lisää asiaa mm.: 
