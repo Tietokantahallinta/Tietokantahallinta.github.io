@@ -16,10 +16,10 @@ CREATE LOGIN Nakke
 WITH PASSWORD = ’P@ssw0rD?’,
 DEFAULT_DATABASE = Takkula,
 CHECK_EXPIRATION = ON, -- (oletus: off)
-CHECK_POLICY = ON – (oletus: on)
+CHECK_POLICY = ON      -– (oletus: on)
 ```
 
-Ensimmäisellä kerralla on helpointa tehdä logintunnus SSMS:n käyttöliittymän kautta. New Login -ikkunassa ensimäisellä välilehdellä on tunnukseen liittyvät perusmäärittelyt ja User Mappings -lälilehdellä on asetukset käyttäjänimeen (user) sekä oletus schemaan. **DEMO** Tietokannan käyttäjä voidaan tehdä siis käyttöliittymän kautta samalla kun tehdään login-tunnus.
+Ensimmäisellä kerralla on helpointa tehdä logintunnus SSMS:n käyttöliittymän kautta. New Login -ikkunassa ensimäisellä välilehdellä on tunnukseen liittyvät perusmäärittelyt ja User Mappings -välilehdellä on asetukset käyttäjänimeen (user) sekä oletusschemaan. **DEMO** Tietokannan käyttäjä voidaan tehdä siis käyttöliittymän kautta samalla kun tehdään login-tunnus.
 
 TSQL-komento käyttäjän (user) tekemiseen on seuraava ja tunnus pitää liittää johonkin login-tunnukseen.
 
@@ -68,11 +68,11 @@ GRANT SELECT ON SCHEMA::Tuotanto TO Aku;
 
 -- Aku:
 select * from Tuotanto.Varasto;
--- Matti: (katso aikaisempi käyttäjän luontokomento)
+-- Matti: (katso aikaisempi käyttäjän luontikomento)
 select * from Varasto;
 ```
 
-Ettei kokonaan unohdu, mainittakoon että objekteille voi määritellä synonyymejä. Synonyymi on eri asia kuin taulun aliasnimi kyselyissä.
+Ettei kokonaan unohdu, mainittakoon vielä että objekteille voi määritellä synonyymejä. Synonyymi on eri asia kuin taulun aliasnimi kyselyissä.
 Kun jollekin tietokantaobjektille määritellään synonyymi, voi objetiin viitata joko alkuperäisellä nimellä tai synonyymillä. Synonyymin avulla objekti voidaan siirtää vaikka skemasta toiseen jos käytetään kyselyissä synonyymiä.
 
 ```sql 
