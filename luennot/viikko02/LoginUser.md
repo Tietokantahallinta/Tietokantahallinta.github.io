@@ -13,10 +13,10 @@ WITH DEFAULT_DATABASE = Takkula
 
 -- SQL Server -login esimerkki
 CREATE LOGIN Nakke
-WITH PASSWORD = ’P@ssw0rD?’,
+WITH PASSWORD = 'P@ssw0rD?',
 DEFAULT_DATABASE = Takkula,
 CHECK_EXPIRATION = ON, -- (oletus: off)
-CHECK_POLICY = ON      -– (oletus: on)
+CHECK_POLICY = ON      -- (oletus: on)
 ```
 
 Ensimmäisellä kerralla on helpointa tehdä logintunnus SSMS:n käyttöliittymän kautta. New Login -ikkunassa ensimäisellä välilehdellä on tunnukseen liittyvät perusmäärittelyt ja User Mappings -välilehdellä on asetukset käyttäjänimeen (user) sekä oletusschemaan. **DEMO** Tietokannan käyttäjä voidaan tehdä siis käyttöliittymän kautta samalla kun tehdään login-tunnus.
@@ -104,3 +104,17 @@ ALTER ROLE db_owner ADD MEMBER Matti;
 ```
 
 Oikeudet annetaan GRANT-komennolla ja otetaan pois REVOKE:lla, nämä ovat SQL-standardin mukaisia toimintoja. Kannattaa huomata, että oikeuksia voi olla esimerkiksi eri ryhmien kautta. Riittää, että käyttäjällä on oikeudet mitä tahansa kautta. Jos käyttäjä kuuluu kahteen ryhmään ja molempien kautta on esimerkiksi UPDATE-oikeus johonkin tauluun ja jos REVOKE:lla otetaan oikeus pois toisesta ryhmästä, saa käyttäjä edelleen tehdä UPDATE:n. Tämän takia SQL Serverissä on lisäksi oma DENY-komento, jolla voidaan täysin ottaa joltain käyttäjältä tai ryhmältä oikeudet pois.
+
+<!-- TODO:
+Lisää tähänb SECURITY POLICY ja Row Level Security, Demo löytyy esimerkiksi RLSDemo-tietokannasta
+Lisäksi 
+create user Jaakko WOTHOUT LOGIN;
+EXECUTE USER = 'Jaakko';
+REVERT;
+
+näin voi helposti kokeilla ja demota oikeuksia eri käyttäjillä
+SP:ssä execute as CALLER
+Lisäksi execute as LOGIN = 'loginname';
+
+Tutki ja demoa sekä EXECUTE AS että REVERT -komennot
+ -->
