@@ -196,7 +196,6 @@ BEGIN
     )
     BEGIN
         RAISERROR ('Palkka ylittää sallitun enimmäispalkan.', 16, 1);
-
         RETURN;
     END;
 

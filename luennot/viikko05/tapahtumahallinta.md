@@ -3,7 +3,7 @@
 Tietokantatapahtuma eli transaction. Tietokantaa käyttää samanaikaisesti monta käyttäjää (tai sovellusta) ja siksi tietokantapalvelimen pitää huolehtia samanaikaisista päivityksistä ja hakutoiminnoista. Yleensä kyselyt eivät aiheuta ongelmia samaan aikaan suoritettuna, mutta jos on datan muutoksia myös mukana, pitää tietää miten tietokantapalvelin käyttäytyy ja miten samanaikaisuutta voi hallita.
 Lukuoperaatioita voi olla samanaikaisesti monta hakemassa samaa dataa (taulun rivejä). Muutosoperaatiot (INSERT, UPDATE ja DELETE) tietokantapalvelin serialisoi eli laittaa komennot jonoon ja suorittaan niitä peräkkäin. Yhdellä ajanhetkellä vain yksi käyttäjä (yhden käyttäjän skripti) voi olla päivittämässä taulun sisältöä. Tämän toteutetaan lukkojen avulla ja päivityksissä käytetään rivilukkoja. Lukoista lisää hieman tuonnempana. Toisaalta tämä päivitys aiheuttaa seuraavan 'ongelman' eli mitä hakuoperaatio palauttaa, jos haku kohdistuu päivitettävään riviin? Palauttaako haku sillä hetkellä olevan datan, jääko hakuoperaatio odottamaan päivityksen päättymistä, mistä se voi tietää milloin päivitys on valmis, jne... siis paljon kysymyksiä.
 
-Samanaikainen käsittely siis vaatii sääntöjä, muutoin kukaan ei tiedä missä tilanteessa data on. Tapahtumahallinta (transactions) tietokantapalvelimessa huolehtii datan pysymisestä eheänä. Kaikki toiminnot tehdään tapahtuman sisällä (transaction). Tapahtuma on atomaarinen kokonaisuus, joka suoritetaan kokonaan (COMMIT) tai ei ollenkaan (ROLLBACK). Mikään välitila ei ole mahdollinen, joka tarkoittaa että tapahtuma joko perutaan ja palataan edelliseen tilaan tai vahvistetaan ja tietokanta siirtyy seuraavaan eheään tilaan (consistent state).
+Samanaikainen käsittely siis vaatii sääntöjä, muutoin kukaan ei tiedä missä tilanteessa data on. Tapahtumahallinta tietokantapalvelimessa huolehtii datan pysymisestä eheänä. Kaikki toiminnot tehdään tapahtuman sisällä (transaction). Tapahtuma on atomaarinen kokonaisuus, joka suoritetaan kokonaan (COMMIT) tai ei ollenkaan (ROLLBACK). Mikään välitila ei ole mahdollinen, joka tarkoittaa, että tapahtuma joko perutaan ja palataan edelliseen tilaan tai vahvistetaan ja tietokanta siirtyy seuraavaan eheään tilaan (consistent state).
 
 SQL Server:ssä on oletuksena AUTOCOMMIT, joka tarkoittaa sitä, että automaattisesti jokainen komento vahvistetaan tai perutaan sen mukaan, tuleeko komennon suorituksessa virhe. Tästä syystä SQL Serveriä käytettäessä on normaalia aloittaa tapahtuma explisiittisesti BEGIN TRAN[SACTION]; -komennolla. 
 
@@ -74,8 +74,8 @@ SET TRANSACTION ISOLATION LEVEL
 
 
 ### READ COMMITTED
-- Yleensä sessioiden oletusisolaatiotaso, lukuoperaatioiden tuloksena näytetään vain ja ainoastaan vahvistettua (committed) dataa. 
-- Jos koetetaan lukea sellaista dataa, jota ei ole vielä vahvistettu COMMIT-komennolla, lukuoperaatio jää odottamaan päivitystapahtuman päättymistä (COMMIT tai ROLLBACK). 
+- Yleensä sessioiden oletuseristystaso, lukuoperaatioiden tuloksena näytetään vain ja ainoastaan vahvistettua (committed) dataa. 
+- Jos koetetaan lukea sellaista dataa, jota ei ole vielä vahvistettu COMMIT-komennolla jossain tapahtumassa, lukuoperaatio jää odottamaan päivitystapahtuman päättymistä (COMMIT tai ROLLBACK). 
 - Aiheuttaa helposti odotuksia ja siksi kannattaa huomioida myös snapshot isolation tai *query hint* WITH NOLOCK.
 
 
@@ -91,7 +91,7 @@ SET TRANSACTION ISOLATION LEVEL
 
 ### SNAPSHOT
 - Tarkoittaa datan versiointia eli kysely näkee kommitoidun datan eikä odota päivittävän tapahtuman päättymistä
-- Versiointi koskee aina koko kantaa
+- Versiointi koskee aina koko tietokantaa
 - Kaikista muutoksista talletetaan vanha versio Tempdb-kantaan (riippumatta siitä onko muita tapahtumia käynnissä vai ei)
 - Kaksi kantakohtaista asetusta
 - Versiointi voi tapahtua komento- tai tapahtumatasolla
@@ -408,10 +408,10 @@ COMMIT;
 
 NOLOCK on sopiva kun tarvitaan mahdollisimman nopea luku ja ei ole katastrofi jos data on osin virheellistä. SNAPSHOT tai RCSI silloin datan pitää olla luotettavaa ja luku ei saa lukita mitään.
 
-Tilanne	Suositus
-Tarvitset suorituskykyä ja ei haittaa, jos data on väliaikaisesti virheellistä	NOLOCK (vain harkiten, esim. logeihin)
-Tarvitset luotettavaa mutta ei lukitsevaa lukua (esim. raportit)	SNAPSHOT ISOLATION tai RCSI
-Tarvitset 100 % oikeellista dataa ja vältät likaisia lukuja	✅ Käytä snapshotia, älä NOLOCKia
+Sopiva käyttötapaukset:
+- Tarvitset suorituskykyä ja ei haittaa, jos data on väliaikaisesti virheellistä:NOLOCK (vain harkiten, esim. logeihin)
+- Tarvitset luotettavaa mutta ei lukitsevaa lukua (esim. raportit): SNAPSHOT ISOLATION tai RCSI
+- Tarvitset 100 % oikeellista dataa ja vältät likaisia lukuja, käytä snapshotia, älä NOLOCKia
 
 
 ---

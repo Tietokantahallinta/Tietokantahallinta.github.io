@@ -110,6 +110,12 @@ ON dbo.Asiakkaat(PuhelinNumero);
 - Jos sarake on pääavain tai osa computed columnia, tarvitaan enemmän vaiheita.
 - Tuotantoympäristössä kannattaa aina tehdä backup ja testata skripti staging- tai test-ympäristössä ensin.
 
+Edellä oleva esimerkki on yleinen malli muutoksesta, tämä muutos onnistuisi helpomminkin:
+```sql
+ALTER TABLE dbo.Asiakkaat 
+ALTER COLUMN PuhelinNumero VARCHAR(20);
+```
+
 Esimerkki vielä vaikeammasta tilanteesta, kuten sarakkeen jakamisesta kahdeksi (esim. Nimi → Etunimi, Sukunimi):
 
 🎯 **Tilanne:**

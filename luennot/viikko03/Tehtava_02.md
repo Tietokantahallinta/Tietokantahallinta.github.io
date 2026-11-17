@@ -1,6 +1,6 @@
 # Tehtävä 02:
 
-##Function
+## Function
 
 Käytetään yksinkertaista tietokantaa eli kaikille tuttua Takkulaa. Tietokannan tekemiseen löydät viikon 3 materiaalista tarvittavat SQLlauseet.
 

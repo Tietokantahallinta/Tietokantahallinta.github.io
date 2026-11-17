@@ -3,7 +3,8 @@
 Yllättävän usein pitää dataa siirtää toiseen tietokantaan, sovellukseen, API-rajapintaan jne., tai omaan tietokantaan jostain muusta järjestelmästä. Tässä ei käsitellä ohjelmallisia ratkaisuja, vaan pohditaan hieman miten dataa voidaan siirtää esimerkiksi CSV-tiedostojen avulla SQL Serveriin (import) tai sieltä pois (export). Toki on muitakin siirtoformaatteja, esim. XML. 
 
 ### Serverin Import & Export -mahdollisuudet
-1. SQL Server Import and Export Wizard (graafinen työkalu)
+
+#### 1 SQL Server Import and Export Wizard (graafinen työkalu) 
 Käynnistyy SSMS:stä (hiiren oikealla tietokannan päällä → Tasks → Import/Export Data). Siirtomuotoina tai kohteina:
 - Excel, CSV
 - Toinen SQL Server
@@ -11,10 +12,10 @@ Käynnistyy SSMS:stä (hiiren oikealla tietokannan päällä → Tasks → Impor
 - Access-tiedostot
 - Flat file (*.txt, *.csv)
 
-✅ Helppo käyttää, hyvä ad-hoc-siirtoihin
+✅ Helppo käyttää, hyvä ad-hoc-siirtoihin<br>
 ❌ Vähemmän kontrollia, ei toistuviin/monimutkaisiin prosesseihin
 
-2. SQL Server Integration Services (SSIS)
+#### 2 SQL Server Integration Services (SSIS)
 Microsoftin ETL-työkalu datan siirtämiseen, muuntamiseen ja lataamiseen
 - Tukee laajasti formaatteja ja ulkoisia järjestelmiä
 - Toimii sekä SQL Server Management Studion että Visual Studion kautta
@@ -24,7 +25,7 @@ Microsoftin ETL-työkalu datan siirtämiseen, muuntamiseen ja lataamiseen
 ✅ Tukee virheenkäsittelyä, ehtoja, muunnoksia<br>
 ❌ Vaatii lisäasennuksia ja osaamista<br>
 
-3. T-SQL (BULK INSERT, OPENROWSET, BCP)
+#### 3 T-SQL (BULK INSERT, OPENROWSET, BCP) 
 🔹 BULK INSERT – Tiedoston tuonti SQL-tauluun
 
 ```sql
@@ -43,8 +44,7 @@ WITH (
 SELECT *
 FROM OPENROWSET(
     BULK 'C:\data\tuotteet.csv',
-    FORMAT = 'CSV',
-    FIRSTROW = 2
+    SINGLE_CLOB
 ) AS Tuotteet;
 ```
 
@@ -57,7 +57,8 @@ bcp Tietokanta.dbo.Tuotteet out tuotteet.csv -c -t, -S serveri -T
 ✅ Nopeita ja hyviä automatisointiin<br>
 ❌ Vaativat enemmän käsityötä ja virheidenhallintaa
 
-4. Linked Servers
+#### 4 Linked Servers
+
 Mahdollistaa kyselyt muihin SQL Servereihin tai muihin järjestelmiin suoraan T-SQL:llä
 
 ```sql
@@ -67,14 +68,14 @@ FROM [ToinenPalvelin].[Tietokanta].[dbo].[Asiakkaat];
 ✅ Soveltuu jatkuvaan integraatioon<br>
 ❌ Ylläpito ja suorituskyky voivat olla haasteita
 
-5. Azure Data Factory (pilviratkaisu)
+#### 5 Azure Data Factory (pilviratkaisu)
 Soveltuu erityisesti jos käytät Azure SQL, Blob Storagea tai muita pilvipalveluita
 - Tukee satoja eri lähteitä: Google BigQuery, Amazon S3, SAP, Salesforce jne.
 
 ✅ Skaalautuva ja moderni<br>
 ❌ Vaatii Azure-ympäristön ja erillistä konfiguraatiota
 
-5. Muita keinoja
+#### 6 Muita keinoja
 - ohjelmalliset ratkaisut tai kolmannen osapuolen sovellukset
 
 ## ETL

@@ -17,7 +17,7 @@ GROUP BY CUBE(postitmp);
 SELECT COALESCE(postitmp, 'Yhteensä'), count(*)  FROM oppilas
 GROUP BY CUBE(postitmp);
 
--- ei juurikaan eroa CUDE:sta
+-- ei juurikaan eroa CUBE:sta
 SELECT postitmp, count(*)  FROM oppilas
 GROUP BY ROLLUP(postitmp);
 
