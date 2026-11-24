@@ -44,7 +44,7 @@
 **4. 🚨 SQL Server Agent Alerts:**
 
 - Virhekoodien seuranta (esim. 823, 824, 825 → levyongelmat)
-- Häälytykset suorituskyvystä
+- Hälytykset suorituskyvystä
 - Voi asettaa operaattoreita, joille lähetetään sähköposti/SMS
 
 🧩 Esimerkki: Hälytys, jos Transaction Log täynnä (Error 9002)
