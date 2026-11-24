@@ -22,8 +22,8 @@
 **3. 🛠️ Työkalut ja välineet SQL Serverin seurantaan**
 
 🔹 SQL Server Management Studio (SSMS)
-- Activity Monitor (Live overview)
-- Performance Dashboard Reports (sisäänrakennetut)
+- Activity Monitor (Live overview) (Object Explorer ==> Palvelin ==> Activity Monitor)
+- Performance Dashboard Reports (sisäänrakennetut) (Object Explorer ==> Palvelin ==> Reports)
 
 🔹 SQL Server Agent Alerts
 - Mahdollistaa hälytysten lähettämisen tiettyihin virheisiin (esim. Error 9002 = Transaction log full)
