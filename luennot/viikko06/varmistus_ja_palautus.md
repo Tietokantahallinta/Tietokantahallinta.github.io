@@ -15,6 +15,39 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 - 2 eri mediaa
 - 1 kopio eri fyysisessä sijainnissa
 
+### Esimerkki 1 RPO
+
+Tilanne: 
+- Täysi varmistus otetaan joka yö klo 00:00.
+- Lokivarmistus otetaan 15 minuutin välein.
+- Palvelin hajoaa klo 14:07.
+
+Viimeisin lokivarmistus on siis otettu klo 14:00. <br>
+Tällöin menetetään korkeintaan 7 minuutin aikana tehdyt muutokset (14:00-14:07). <br>
+**RPO = 15 minuuttia**
+
+Mitä pienempi RPO halutaan:
+- sitä useammin täytyy ottaa lokivarmistuksia
+- sitä enemmän tarvitaan tallennustilaa
+- palautusprosessi mutkistuu hieman
+
+### Esimerkki 2 RTO
+
+Palvelin rikkoutuu klo 14:07.
+
+Jos sallitaan esim 3 tunnin käyttökatkon<br>
+**RTO = 4 tuntia**
+
+Jos järjestelmän on toimittava uudelleen 15 minuutissa<br>
+**RTO = 15 minuuttia**
+
+SQL Serverissä palautusaikaan vaikuttavat mm.:
+        - tietokannan koko
+- levyjen nopeus
+- verkon nopeus
+- varmistusten määrä
+- palautusmenetelmä
+
 
 ## Miksi varmistuksia pitää ottaa: jotain voi mennä rikki!
 
@@ -54,40 +87,40 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 
 ## Mitä kannattaa huomioida mahdollisten virheitilanteiden välttämiseksi
 
-🔒 1. Tee säännölliset varmuuskopiot (BACKUP)
+#### 1. Tee säännölliset varmuuskopiot (BACKUP)
 - Täysi varmuuskopio (FULL) vähintään kerran päivässä.
 - Transaktiolokin varmuuskopio (LOG) usein, esim. 15 min välein — erityisesti tuotantoympäristöissä.
 - Testaa palautus säännöllisesti: pelkkä varmuuskopio ei riitä, ellei se toimi.
 - Varmista myös master ja msdb kun niihin on tullut muutoksia.
 
-🧪 2. Aja CHECKDB säännöllisesti
+#### 2. Aja CHECKDB säännöllisesti
 - Komento DBCC CHECKDB tarkistaa tietokannan sisäisen eheyden.
 - Ajoita se yöllä tai hiljaisina aikoina.
 - Jos DBCC CHECKDB löytää virheitä, toimi heti: varmuuskopioi ja harkitse palautusta tai korjausta (REPAIR_ALLOW_DATA_LOSS vain viimeisenä keinona).
 
-⚙️ 3. Käytä luotettavaa ja suojattua tallennustilaa
+#### 3. Käytä luotettavaa ja suojattua tallennustilaa
 - Käytä RAID 10 tai muuta vikasietoista levyjärjestelmää.
 - Varmista, että levyillä ei ole huonoja sektoreita.
 - Käytä UPS-laitetta (keskeytymätön virransyöttö) sähkökatkojen varalta.
 
-🧍‍♂️ 4. Rajoita ja hallitse käyttöoikeuksia
+#### 4. Rajoita ja hallitse käyttöoikeuksia
 - Estä ei-teknistä henkilökuntaa suorittamasta kriittisiä DDL-toimintoja (kuten DROP, ALTER).
 - Käytä roolipohjaista käyttöoikeushallintaa.
 - Aktivoi auditoiva lokitus (esim. SQL Server Audit) tärkeille muutoksille.
 
-🌐 5. Pidä SQL Server ja Windows ajan tasalla
+#### 5. Pidä SQL Server ja Windows ajan tasalla
 - Asenna turva- ja bugikorjaukset (Service Packs, Cumulative Updates).
 - Vanhat versiot sisältävät tunnettuja haavoittuvuuksia ja bugeja.
 
-🔁 6. Suojaa ympäristö haittaohjelmilta
+#### 6. Suojaa ympäristö haittaohjelmilta
 - Käytä ajantasaista virustorjuntaa, mutta älä skannaa SQL:n tietokantatiedostoja reaaliajassa (ne voivat lukittua!).
 - Pidä palomuurisäännöt ja käyttöoikeudet minimissä.
 
-📊 7. Seuraa suorituskykyä ja järjestelmälogia
+#### 7. Seuraa suorituskykyä ja järjestelmälogia
 - Monitoroi levyviiveitä (I/O latency), muistin käyttöä ja prosessikuormaa.
 - Tarkkaile SQL Serverin virhelokia (ERRORLOG) ja tapahtumalokia (Event Viewer).
 
-🗂️ 8. Huolla tietokantaa, seuraa kokoa
+#### 8. Huolla tietokantaa, seuraa kokoa
 - Suorita indeksien uudelleenrakennus ja statistiikan päivitys säännöllisesti.
 - Vältä levytilan loppumista, se voi pysäyttää koko palvelimen.
 
@@ -100,6 +133,7 @@ Varmistukset (BACKUP) pitää ottaa säännöllisesti ja varmistussuunnitelma te
 | RAID + UPS             | Suojaa laitevioilta ja sähkökatkoilta  |
 | Käyttöoikeushallinta   | Ehkäisee inhimilliset virheet          |
 | Päivitykset ja suojaus | Estää tunnetut uhat ja haavoittuvuudet |
+
 
 
 ## SQL Server Eheysmallit (Recovery Models)
@@ -115,7 +149,7 @@ SQL Serverissä on kolme pääasiallista recovery modelia: Simple, Full ja Bulk-
 - Hyöty: Yksinkertainen hallita ja transaktiolokit eivät kasva hallitsemattomiksi.
 - Haitat: Et voi palauttaa tietokantaa tarkalleen tiettyyn ajankohtaan, koska transaktiolokit eivät ole käytettävissä.
 
-Sopii parhaitensovelluksiin, joissa ei ole kriittistä tarvetta palauttaa tietoja tarkalleen tiettyyn hetkeen (esim. kehitysympäristöt tai pienet tietokannat, joissa tiedot eivät ole kriittisiä).
+Sopii parhaitensovelluksiin, joissa ei ole kriittistä tarvetta palauttaa tietoja tarkalleen tiettyyn hetkeen (esim. kehitysympäristöt tai tietokannat, joissa tiedot eivät ole kriittisiä).
 
 #### 2. Full Recovery Model
 - SQL Server tallentaa kaikki transaktiot täydellisesti ja säilyttää ne lokitiedostoissa (transaction log).
@@ -124,9 +158,9 @@ Sopii parhaitensovelluksiin, joissa ei ole kriittistä tarvetta palauttaa tietoj
 
 **Hyödyt ja haitat**:
 - Hyöty: Voit palauttaa tietokannan mihin tahansa ajankohtaan, koska kaikki transaktiot tallennetaan.
-- Haitat: Transaktiolokit voivat kasvaa erittäin suuriksi, ja siksi niitä täytyy varmuuskopioida säännöllisesti (log backup). Ilman log varmuuskopioita tietokanta voi käydä liian suureksi ja estää palautukset.
+- Haitat: Transaktiolokit voivat kasvaa erittäin suuriksi, ja siksi niitä täytyy varmuuskopioida säännöllisesti (log backup). 
 
-Sopii parhaiten mihin tahansa ympäristöön, jossa tietojen eheys ja saatavuus ovat kriittisiä ja tietokannan tietoja on ylläpidettävä tarkasti.
+Sopii parhaiten mihin tahansa ympäristöön, jossa tietojen eheys ja saatavuus ovat kriittisiä ja tietokannan tietoja ei saa kadota kuin minimimäärä.
 
 #### 3. Bulk-Logged Recovery Model
 - Bulk-Logged recovery model on eräänlainen välimuoto Full ja Simple mallien välillä.
@@ -172,7 +206,7 @@ Varmistuksien ottamiseen on kolme erilaista menetelmää:
 
 On hyvä osata varmistukset ja palautukset sekä SSMS:n käyttöliittymän kautta, että T-SQL -komennoilla.
 
-1. Tietokannan varmuuskopiointi
+**Tietokannan varmuuskopiointi**
 
 Oletetaan, että tietokannan nimi on MyDatabase ja että varmuuskopio otetaan paikalliselle levylle tiedostoon C:\Backups\MyDatabase.bak.
 
@@ -299,7 +333,7 @@ WITH NORECOVERY;
 -- Palautetaan lokivarmistus ja pysäytetään tarkkaan aikaan
 RESTORE LOG MyDatabase
 FROM DISK = 'C:\Backup\MyDatabase_LOG.trn'
-WITH STOPAT = '2025-04-28T14:59:30', RECOVERY;
+WITH STOPAT = '2026-11-23T14:59:30', RECOVERY;
 ```
 
 Nyt tietokanta on palautettu sekunnilleen ennen virhettä.
@@ -374,7 +408,7 @@ GO
 -- 3. Palautetaan ensimmäinen lokivarmistus, ja STOPAT ennen virhettä
 RESTORE LOG PITRDemoDB
 FROM DISK = 'C:\Backup\PITRDemoDB_LOG1.trn'
-WITH STOPAT = '2025-04-28T12:34:50', -- <-- Aika hetki ennen virhettä (säädä kellonaika)
+WITH STOPAT = '2026-11-248T12:34:50', -- <-- Aika hetki ennen virhettä (säädä kellonaika)
 RECOVERY;
 GO
 
@@ -409,7 +443,7 @@ Ymmärrä tarpeet:
 - Erovarmistus klo 08:00, 14:00, 20:00
 - Lokivarmistukset 30 minuutin välein
 
-**Kriittinen tuotantotietokanta (pankki, verkkokauppa tms.):**
+**Kriittinen tuotantotietokanta (toiminnaohjausjärjestelmä, verkkokauppa tms.):**
 - Täysi varmistus klo 02:00
 - Erovarmistus 4 tunnin välein (06:00, 10:00, 14:00, 18:00, 22:00)
 - Lokivarmistukset 5–10 minuutin välein
@@ -432,7 +466,7 @@ Toimintojen ajastamiseen käytetään SQL Server Agent:ia. Huomaa, että sen pit
 
 Tutustu myös Maintenance Plan Wizard:iin, jossa voi tehdä paljon asioita graafisen käyttöliittymän kautta SSMS:n avulla.
 
-#### Esimerkki ajastus-idea:
+#### Esimerkki ajastus:
 
 (SQL Server Agent Job, joka tekee lokivarmistuksen 15 min välein)
 
